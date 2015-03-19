@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasterFarm.Models", "EasterFarm.Models\EasterFarm.Models.csproj", "{AEF47444-8071-4D8D-AE97-6C46BCFAD4D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasterFarm.Common", "EasterFarm.Common\EasterFarm.Common.csproj", "{E5C262CE-F613-45F4-B9AB-BD137773F299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasterFarm.GameLogic", "EasterFarm.GameLogic\EasterFarm.GameLogic.csproj", "{0F07C499-5CC4-4207-8658-620216FBF920}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEF47444-8071-4D8D-AE97-6C46BCFAD4D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF47444-8071-4D8D-AE97-6C46BCFAD4D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF47444-8071-4D8D-AE97-6C46BCFAD4D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF47444-8071-4D8D-AE97-6C46BCFAD4D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5C262CE-F613-45F4-B9AB-BD137773F299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5C262CE-F613-45F4-B9AB-BD137773F299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5C262CE-F613-45F4-B9AB-BD137773F299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5C262CE-F613-45F4-B9AB-BD137773F299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F07C499-5CC4-4207-8658-620216FBF920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F07C499-5CC4-4207-8658-620216FBF920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F07C499-5CC4-4207-8658-620216FBF920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F07C499-5CC4-4207-8658-620216FBF920}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
