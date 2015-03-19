@@ -8,7 +8,7 @@
 
     using EasterFarm.Models.Contracts;
 
-    public abstract class Livestock : GameObject, IBoughtable
+    public abstract class Livestock : GameObject, IBuyable
     {
     }
 }
