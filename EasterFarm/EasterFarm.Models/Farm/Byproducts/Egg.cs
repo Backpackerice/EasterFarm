@@ -8,7 +8,7 @@
 
     using EasterFarm.Models.Contracts;
 
-    public class Egg : Byproduct, ICookable
+    public class Egg : Byproduct
     {
     }
 }

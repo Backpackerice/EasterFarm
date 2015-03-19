@@ -59,6 +59,7 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Farm\Byproducts\Byproduct.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="EasterFarm.Models.Farm.Byproducts.EasterEgg" Collapsed="true">
     <Position X="16.25" Y="5.5" Width="1.5" />
@@ -73,7 +74,6 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Farm\Byproducts\Egg.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="EasterFarm.Models.Farm.Byproducts.Milk" Collapsed="true">
     <Position X="18.5" Y="4" Width="1.5" />
@@ -81,7 +81,6 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Farm\Byproducts\Milk.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="EasterFarm.Models.Farm.Byproducts.TrophyEgg" Collapsed="true">
     <Position X="16.25" Y="7" Width="1.5" />
@@ -178,7 +177,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="EasterFarm.Models.Contracts.IBoughtable" Collapsed="true">
+  <Interface Name="EasterFarm.Models.Contracts.IBuyable" Collapsed="true">
     <Position X="27.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
