@@ -8,5 +8,8 @@
 
     public abstract class Villain : GameObject
     {
+        protected Villain(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        {
+        }
     }
 }

@@ -67,6 +67,7 @@
     <Compile Include="Market\IngredientType.cs" />
     <Compile Include="Market\Market.cs" />
     <Compile Include="Market\Product.cs" />
+    <Compile Include="MatrixCoords.cs" />
     <Compile Include="PresentFactory\FoodType.cs" />
     <Compile Include="PresentFactory\EasterFood.cs" />
     <Compile Include="PresentFactory\EasterRabbit.cs" />

@@ -10,5 +10,8 @@
 
     public class Egg : Byproduct
     {
+        public Egg(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        {
+        }
     }
 }

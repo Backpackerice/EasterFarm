@@ -10,5 +10,8 @@
 
     public class Milk : Byproduct
     {
+        public Milk(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        {
+        }
     }
 }
