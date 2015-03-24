@@ -10,5 +10,8 @@
 
     public class Lamb : Livestock, IEatBerries, ICookable
     {
+        public Lamb(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        {
+        }
     }
 }
