@@ -8,7 +8,10 @@
 
     using EasterFarm.Models.Contracts;
 
-    public class Milk : Byproduct, ICookable
+    public class Milk : Byproduct
     {
+        public Milk(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        {
+        }
     }
 }

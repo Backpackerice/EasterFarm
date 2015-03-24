@@ -6,7 +6,12 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public abstract class Byproduct : GameObject
+    using EasterFarm.Models.Contracts;
+
+    public abstract class Byproduct : GameObject, ICookable
     {
+        protected Byproduct(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        {
+        }
     }
 }

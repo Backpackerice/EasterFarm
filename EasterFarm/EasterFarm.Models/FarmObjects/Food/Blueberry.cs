@@ -8,5 +8,8 @@
 
     public class Blueberry : FarmFood
     {
+        public Blueberry(MatrixCoords topLeft, char[,] image, bool isSpoiled) : base(topLeft, image, isSpoiled)
+        {
+        }
     }
 }

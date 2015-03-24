@@ -8,5 +8,8 @@
 
     public class EasterEgg : Egg
     {
+        public EasterEgg(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        {
+        }
     }
 }

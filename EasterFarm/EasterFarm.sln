@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasterFarm.Common", "Easter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasterFarm.GameLogic", "EasterFarm.GameLogic\EasterFarm.GameLogic.csproj", "{0F07C499-5CC4-4207-8658-620216FBF920}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasterFarm.Console", "EasterFarm.Console\EasterFarm.Console.csproj", "{B7F985AC-68A8-4929-8A1D-8AA8A23D267A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasterFarm.Console", "EasterFarm.Console\EasterFarm.Console.csproj", "{3F69F5A9-1433-4B30-9C4B-1A68AC3BA90D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{0F07C499-5CC4-4207-8658-620216FBF920}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F07C499-5CC4-4207-8658-620216FBF920}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F07C499-5CC4-4207-8658-620216FBF920}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B7F985AC-68A8-4929-8A1D-8AA8A23D267A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B7F985AC-68A8-4929-8A1D-8AA8A23D267A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B7F985AC-68A8-4929-8A1D-8AA8A23D267A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B7F985AC-68A8-4929-8A1D-8AA8A23D267A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F69F5A9-1433-4B30-9C4B-1A68AC3BA90D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F69F5A9-1433-4B30-9C4B-1A68AC3BA90D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F69F5A9-1433-4B30-9C4B-1A68AC3BA90D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F69F5A9-1433-4B30-9C4B-1A68AC3BA90D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

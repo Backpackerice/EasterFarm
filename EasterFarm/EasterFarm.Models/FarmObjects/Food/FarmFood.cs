@@ -8,6 +8,11 @@
 
     public abstract class FarmFood : GameObject
     {
-        public bool IsSpoilt { get; set; }
+        protected FarmFood(MatrixCoords topLeft, char[,] image, bool isSpoiled) : base(topLeft, image)
+        {
+            this.IsSpoilt = isSpoiled;
+        }
+
+        public bool IsSpoilt { get; private set; }
     }
 }
