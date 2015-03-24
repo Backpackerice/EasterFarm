@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Farm.Byproducts
+﻿namespace EasterFarm.Models.FarmObjects.Animals
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +8,7 @@
 
     using EasterFarm.Models.Contracts;
 
-    public class Milk : Byproduct, ICookable
+    public class Lamb : Livestock, IEatBerries, ICookable
     {
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Farm.Food
+﻿namespace EasterFarm.Models.FarmObjects.Byproducts
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Blueberry : FarmFood
+    using EasterFarm.Models.Contracts;
+
+    public class Milk : Byproduct, ICookable
     {
     }
 }

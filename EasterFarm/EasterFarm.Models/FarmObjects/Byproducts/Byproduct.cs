@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Farm.Animals
+﻿namespace EasterFarm.Models.FarmObjects.Byproducts
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public abstract class Villain : GameObject
+    public abstract class Byproduct : GameObject
     {
     }
 }

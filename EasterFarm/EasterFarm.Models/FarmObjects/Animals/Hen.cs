@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Farm.Food
+﻿namespace EasterFarm.Models.FarmObjects.Animals
 {
     using System;
     using System.Collections.Generic;
@@ -6,8 +6,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public abstract class FarmFood : GameObject
+    using EasterFarm.Models.Contracts;
+
+    public class Hen : Livestock, ICollectBerries
     {
-        public bool IsSpoilt { get; set; }
     }
 }

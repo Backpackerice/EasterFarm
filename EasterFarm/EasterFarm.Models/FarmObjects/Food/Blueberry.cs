@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Farm.Food
+﻿namespace EasterFarm.Models.FarmObjects.Food
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Raspberry : FarmFood
+    public class Blueberry : FarmFood
     {
     }
 }

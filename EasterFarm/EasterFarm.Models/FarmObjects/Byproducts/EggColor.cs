@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Farm.Byproducts
+﻿namespace EasterFarm.Models.FarmObjects.Byproducts
 {
     public enum EggColor
     {

@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Farm.Animals
+﻿namespace EasterFarm.Models.FarmObjects.Animals
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Fox : Villain
+    using EasterFarm.Models.Contracts;
+
+    public abstract class Livestock : GameObject, IBuyable
     {
     }
 }
