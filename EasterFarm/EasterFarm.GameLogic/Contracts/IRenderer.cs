@@ -1,4 +1,4 @@
-﻿    namespace EasterFarm.GameLogic.Contracts
+﻿namespace EasterFarm.GameLogic.Contracts
 {
     using System;
     using System.Collections.Generic;

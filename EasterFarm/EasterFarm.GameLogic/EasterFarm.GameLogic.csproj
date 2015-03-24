@@ -41,7 +41,9 @@
   <ItemGroup>
     <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="Contracts\IRenderer.cs" />
+    <Compile Include="Contracts\IUserInput.cs" />
     <Compile Include="Engine.cs" />
+    <Compile Include="KeyboardInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Score.cs" />
   </ItemGroup>
