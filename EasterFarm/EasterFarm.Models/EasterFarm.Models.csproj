@@ -43,6 +43,7 @@
     <Compile Include="Contracts\ICollectBerries.cs" />
     <Compile Include="Contracts\ICookable.cs" />
     <Compile Include="Contracts\IEatBerries.cs" />
+    <Compile Include="Contracts\IMoveable.cs" />
     <Compile Include="Contracts\IRenderable.cs" />
     <Compile Include="Contracts\ISellable.cs" />
     <Compile Include="FarmManager.cs" />
