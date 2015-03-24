@@ -10,5 +10,8 @@
 
     public class Hen : Livestock, ICollectBerries
     {
+        public Hen(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        {
+        }
     }
 }

@@ -8,5 +8,8 @@
 
     public class Raspberry : FarmFood
     {
+        public Raspberry(MatrixCoords topLeft, char[,] image, bool isSpoiled) : base(topLeft, image, isSpoiled)
+        {
+        }
     }
 }

@@ -10,5 +10,8 @@
 
     public class Rabbit : Livestock, IEatBerries, ICookable
     {
+        public Rabbit(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        {
+        }
     }
 }

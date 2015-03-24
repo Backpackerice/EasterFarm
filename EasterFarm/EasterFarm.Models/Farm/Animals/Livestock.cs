@@ -10,5 +10,8 @@
 
     public abstract class Livestock : GameObject, IBuyable
     {
+        protected Livestock(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        {
+        }
     }
 }

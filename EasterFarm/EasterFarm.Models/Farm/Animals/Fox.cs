@@ -8,5 +8,8 @@
 
     public class Fox : Villain
     {
+        public Fox(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        {
+        }
     }
 }
