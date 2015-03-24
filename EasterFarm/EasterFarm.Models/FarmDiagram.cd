@@ -99,7 +99,7 @@
   <Class Name="EasterFarm.Models.GameObject" Collapsed="true">
     <Position X="25.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAABAQAAAAAAAAEAAAABAAAAAAAAAAEAA=</HashCode>
       <FileName>GameObject.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -170,11 +170,12 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="EasterFarm.Models.Contracts.IBuyable" Collapsed="true">
+  <Interface Name="EasterFarm.Models.Contracts.IMoveable" Collapsed="true">
     <Position X="27.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\IBoughtable.cs</FileName>
+      <FileName>Contracts\IMoveable.cs</FileName>
+      <NewMemberFileName>Contracts\IBoughtable.cs</NewMemberFileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EasterFarm.Models.Contracts.ICollectBerries" Collapsed="true">
@@ -201,7 +202,7 @@
   <Interface Name="EasterFarm.Models.Contracts.IRenderable" Collapsed="true">
     <Position X="29.5" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Contracts\IRenderable.cs</FileName>
     </TypeIdentifier>
   </Interface>
