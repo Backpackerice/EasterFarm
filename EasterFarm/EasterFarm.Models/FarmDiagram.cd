@@ -1,140 +1,140 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="EasterFarm.Models.Farm.Animals.Fox" Collapsed="true">
-    <Position X="27.5" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Animals\Fox.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasterFarm.Models.Farm.Animals.Hen" Collapsed="true">
-    <Position X="20.75" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Animals\Hen.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="EasterFarm.Models.Farm.Animals.Lamb" Collapsed="true">
-    <Position X="23" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Animals\Lamb.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="EasterFarm.Models.Farm.Animals.Livestock" Collapsed="true">
-    <Position X="23" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Animals\Livestock.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="EasterFarm.Models.Farm.Animals.Rabbit" Collapsed="true">
-    <Position X="25.25" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Animals\Rabbit.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="EasterFarm.Models.Farm.Animals.Villain" Collapsed="true">
-    <Position X="28.75" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Animals\Villain.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasterFarm.Models.Farm.Animals.Wolf" Collapsed="true">
-    <Position X="29.75" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Animals\Wolf.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasterFarm.Models.Farm.Byproducts.Byproduct" Collapsed="true">
-    <Position X="17.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Byproducts\Byproduct.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasterFarm.Models.Farm.Byproducts.EasterEgg" Collapsed="true">
-    <Position X="16.25" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Byproducts\EasterEgg.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasterFarm.Models.Farm.Byproducts.Egg" Collapsed="true">
-    <Position X="16.25" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Byproducts\Egg.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="EasterFarm.Models.Farm.Byproducts.Milk" Collapsed="true">
-    <Position X="18.5" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Byproducts\Milk.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="EasterFarm.Models.Farm.Byproducts.TrophyEgg" Collapsed="true">
-    <Position X="16.25" Y="7" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Byproducts\TrophyEgg.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasterFarm.Models.Farm" Collapsed="true">
-    <Position X="27.75" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Farm.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="EasterFarm.Models.FarmManager" Collapsed="true">
-    <Position X="29.5" Y="6.5" Width="1.5" />
+    <Position X="44.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAA=</HashCode>
       <FileName>FarmManager.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="EasterFarm.Models.Farm" Collapsed="true">
+    <Position X="42.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FarmObjects\Farm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="EasterFarm.Models.GameObject" Collapsed="true">
-    <Position X="25.25" Y="1.25" Width="1.5" />
+    <Position X="31.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObject.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="EasterFarm.Models.Farm.Food.Blueberry" Collapsed="true">
-    <Position X="34.25" Y="4" Width="1.5" />
+  <Class Name="EasterFarm.Models.FarmObjects.Animals.Fox" Collapsed="true">
+    <Position X="29" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Food\Blueberry.cs</FileName>
+      <FileName>FarmObjects\Animals\Fox.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="EasterFarm.Models.Farm.Food.FarmFood" Collapsed="true">
-    <Position X="33.25" Y="2.5" Width="1.5" />
+  <Class Name="EasterFarm.Models.FarmObjects.Animals.Hen" Collapsed="true">
+    <Position X="24.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FarmObjects\Animals\Hen.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EasterFarm.Models.FarmObjects.Animals.Lamb" Collapsed="true">
+    <Position X="26.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FarmObjects\Animals\Lamb.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EasterFarm.Models.FarmObjects.Animals.Livestock" Collapsed="true">
+    <Position X="24.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FarmObjects\Animals\Livestock.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EasterFarm.Models.FarmObjects.Animals.Rabbit" Collapsed="true">
+    <Position X="22.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FarmObjects\Animals\Rabbit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EasterFarm.Models.FarmObjects.Animals.Villain" Collapsed="true">
+    <Position X="30.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FarmObjects\Animals\Villain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasterFarm.Models.FarmObjects.Animals.Wolf" Collapsed="true">
+    <Position X="31.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FarmObjects\Animals\Wolf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasterFarm.Models.FarmObjects.Byproducts.Byproduct" Collapsed="true">
+    <Position X="34.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FarmObjects\Byproducts\Byproduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasterFarm.Models.FarmObjects.Byproducts.EasterEgg" Collapsed="true">
+    <Position X="33.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FarmObjects\Byproducts\EasterEgg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasterFarm.Models.FarmObjects.Byproducts.Egg" Collapsed="true">
+    <Position X="33.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FarmObjects\Byproducts\Egg.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EasterFarm.Models.FarmObjects.Byproducts.Milk" Collapsed="true">
+    <Position X="35.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FarmObjects\Byproducts\Milk.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EasterFarm.Models.FarmObjects.Byproducts.TrophyEgg" Collapsed="true">
+    <Position X="33.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FarmObjects\Byproducts\TrophyEgg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasterFarm.Models.FarmObjects.Food.Blueberry" Collapsed="true">
+    <Position X="40.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FarmObjects\Food\Blueberry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasterFarm.Models.FarmObjects.Food.FarmFood" Collapsed="true">
+    <Position X="39.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
-      <FileName>Farm\Food\FarmFood.cs</FileName>
+      <FileName>FarmObjects\Food\FarmFood.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="EasterFarm.Models.Farm.Food.Raspberry" Collapsed="true">
-    <Position X="32" Y="4" Width="1.5" />
+  <Class Name="EasterFarm.Models.FarmObjects.Food.Raspberry" Collapsed="true">
+    <Position X="38" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Food\Raspberry.cs</FileName>
+      <FileName>FarmObjects\Food\Raspberry.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EasterFarm.Models.Market.Ingredient" Collapsed="true">
-    <Position X="24.75" Y="8.25" Width="1.5" />
+    <Position X="21.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Market\Ingredient.cs</FileName>
@@ -142,110 +142,103 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="EasterFarm.Models.Market.Market" Collapsed="true">
-    <Position X="31.25" Y="6.5" Width="1.5" />
+    <Position X="46.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Market\Market.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EasterFarm.Models.Market.Product" Collapsed="true">
-    <Position X="24.75" Y="7" Width="1.5" />
+    <Position X="21.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Market\Product.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="EasterFarm.Models.PresentFactory.EasterFood" Collapsed="true">
-    <Position X="21.75" Y="6.5" Width="1.5" />
+  <Class Name="EasterFarm.Models.PresentFactory.Present" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>PresentFactory\EasterFood.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasterFarm.Models.PresentFactory.EasterRabbit" Collapsed="true">
-    <Position X="19.5" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>PresentFactory\EasterRabbit.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="EasterFarm.Models.PresentFactory.Present" Collapsed="true">
-    <Position X="20.75" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAgAAAAAAAAAAAAAAKABAACgBQACAAAAAgAAIAAIA=</HashCode>
       <FileName>PresentFactory\Present.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Interface Name="EasterFarm.Models.Contracts.IBoughtable" Collapsed="true">
-    <Position X="27.75" Y="7.75" Width="1.5" />
+  <Class Name="EasterFarm.Models.PresentFactory.PresentFactory" Collapsed="true">
+    <Position X="44.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PresentFactory\PresentFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="EasterFarm.Models.Contracts.IBuyable" Collapsed="true">
+    <Position X="42.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\IBoughtable.cs</FileName>
+      <FileName>Contracts\IBuyable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EasterFarm.Models.Contracts.ICollectBerries" Collapsed="true">
-    <Position X="29.5" Y="7.75" Width="1.5" />
+    <Position X="44.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contracts\ICollectBerries.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EasterFarm.Models.Contracts.ICookable" Collapsed="true">
-    <Position X="31.25" Y="7.75" Width="1.5" />
+    <Position X="46.25" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contracts\ICookable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EasterFarm.Models.Contracts.IEatBerries" Collapsed="true">
-    <Position X="27.75" Y="8.5" Width="1.5" />
+    <Position X="42.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contracts\IEatBerries.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EasterFarm.Models.Contracts.IRenderable" Collapsed="true">
-    <Position X="29.5" Y="8.5" Width="1.5" />
+    <Position X="44.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contracts\IRenderable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EasterFarm.Models.Contracts.ISellable" Collapsed="true">
-    <Position X="31.25" Y="8.5" Width="1.5" />
+    <Position X="46.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Contracts\ISellable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="EasterFarm.Models.Farm.Byproducts.EggColor" Collapsed="true">
-    <Position X="27.75" Y="9.5" Width="1.5" />
+  <Enum Name="EasterFarm.Models.FarmObjects.Byproducts.EggColor" Collapsed="true">
+    <Position X="42.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Farm\Byproducts\EggColor.cs</FileName>
+      <FileName>FarmObjects\Byproducts\EggColor.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="EasterFarm.Models.Market.IngredientType" Collapsed="true">
-    <Position X="31.25" Y="9.5" Width="1.5" />
+    <Position X="44.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAAAgAAgAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAAAAAAAAAAgAAgAAQAEAAEAAAAAAAAAAAAAAAAAIA=</HashCode>
       <FileName>Market\IngredientType.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="EasterFarm.Models.PresentFactory.FoodType" Collapsed="true">
-    <Position X="29.5" Y="9.5" Width="1.5" />
+  <Enum Name="EasterFarm.Models.Market.MarketCurrency" Collapsed="true">
+    <Position X="46.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACABAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
-      <FileName>PresentFactory\FoodType.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Market\MarketCurrency.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="EasterFarm.Models.PresentFactory.RabbitType" Collapsed="true">
-    <Position X="27.75" Y="10.25" Width="1.5" />
+  <Enum Name="EasterFarm.Models.PresentFactory.PresentType" Collapsed="true">
+    <Position X="42.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
-      <FileName>PresentFactory\RabbitType.cs</FileName>
+      <HashCode>AAACABAAAAAAAAAAIAAAAAAEAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>PresentFactory\PresentType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

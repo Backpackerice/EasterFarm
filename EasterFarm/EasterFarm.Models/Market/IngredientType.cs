@@ -5,6 +5,9 @@
         Flour,
         Cocoa,
         Basket,
-        Ribbon
+        Ribbon,
+        Egg,
+        Milk,
+        Rabbit
     }
 }

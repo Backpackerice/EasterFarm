@@ -8,7 +8,7 @@
 
     using EasterFarm.Models.Contracts;
 
-    public abstract class Product : IBoughtable
+    public abstract class Product : IBuyable
     {
     }
 }
