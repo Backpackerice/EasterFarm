@@ -8,7 +8,7 @@
 
     using EasterFarm.Models.Contracts;
 
-    public abstract class Livestock : GameObject, IBuyable, IStorable
+    public abstract class Livestock : GameObject, IBuyable, IStorable, IMovable
     {
         protected Livestock(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {
