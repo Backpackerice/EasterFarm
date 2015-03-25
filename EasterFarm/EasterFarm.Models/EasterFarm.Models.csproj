@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IBoughtable.cs" />
+    <Compile Include="Contracts\IBuyable.cs" />
     <Compile Include="Contracts\ICollectBerries.cs" />
     <Compile Include="Contracts\ICookable.cs" />
     <Compile Include="Contracts\IEatBerries.cs" />
@@ -47,37 +47,43 @@
     <Compile Include="Contracts\IRenderable.cs" />
     <Compile Include="Contracts\ISellable.cs" />
     <Compile Include="FarmManager.cs" />
-    <Compile Include="Farm\Byproducts\Byproduct.cs" />
-    <Compile Include="Farm\Byproducts\EggColor.cs" />
-    <Compile Include="Farm\Byproducts\EasterEgg.cs" />
-    <Compile Include="Farm\Byproducts\Egg.cs" />
-    <Compile Include="Farm\Byproducts\Milk.cs" />
-    <Compile Include="Farm\Byproducts\TrophyEgg.cs" />
-    <Compile Include="Farm\Animals\Fox.cs" />
-    <Compile Include="Farm\Animals\Hen.cs" />
-    <Compile Include="Farm\Animals\Lamb.cs" />
-    <Compile Include="Farm\Animals\Livestock.cs" />
-    <Compile Include="Farm\Animals\Rabbit.cs" />
-    <Compile Include="Farm\Animals\Villain.cs" />
-    <Compile Include="Farm\Animals\Wolf.cs" />
-    <Compile Include="Farm\Food\Blueberry.cs" />
-    <Compile Include="Farm\Food\FarmFood.cs" />
-    <Compile Include="Farm\Food\Raspberry.cs" />
+    <Compile Include="FarmObjects\Byproducts\Byproduct.cs" />
+    <Compile Include="FarmObjects\Byproducts\EggColor.cs" />
+    <Compile Include="FarmObjects\Byproducts\EasterEgg.cs" />
+    <Compile Include="FarmObjects\Byproducts\Egg.cs" />
+    <Compile Include="FarmObjects\Byproducts\Milk.cs" />
+    <Compile Include="FarmObjects\Byproducts\TrophyEgg.cs" />
+    <Compile Include="FarmObjects\Farm.cs" />
+    <Compile Include="FarmObjects\Animals\Fox.cs" />
+    <Compile Include="FarmObjects\Animals\Hen.cs" />
+    <Compile Include="FarmObjects\Animals\Lamb.cs" />
+    <Compile Include="FarmObjects\Animals\Livestock.cs" />
+    <Compile Include="FarmObjects\Animals\Rabbit.cs" />
+    <Compile Include="FarmObjects\Animals\Villain.cs" />
+    <Compile Include="FarmObjects\Animals\Wolf.cs" />
+    <Compile Include="FarmObjects\Food\Blueberry.cs" />
+    <Compile Include="FarmObjects\Food\FarmFood.cs" />
+    <Compile Include="FarmObjects\Food\Raspberry.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="Market\MarketCurrency.cs" />
     <Compile Include="Market\Ingredient.cs" />
     <Compile Include="Market\IngredientType.cs" />
     <Compile Include="Market\Market.cs" />
     <Compile Include="Market\Product.cs" />
     <Compile Include="MatrixCoords.cs" />
-    <Compile Include="PresentFactory\FoodType.cs" />
-    <Compile Include="PresentFactory\EasterFood.cs" />
-    <Compile Include="PresentFactory\EasterRabbit.cs" />
     <Compile Include="PresentFactory\Present.cs" />
-    <Compile Include="PresentFactory\RabbitType.cs" />
+    <Compile Include="PresentFactory\PresentFactory.cs" />
+    <Compile Include="PresentFactory\PresentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FarmDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EasterFarm.Common\EasterFarm.Common.csproj">
+      <Project>{e5c262ce-f613-45f4-b9ab-bd137773f299}</Project>
+      <Name>EasterFarm.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

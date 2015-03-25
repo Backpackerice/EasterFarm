@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Farm.Food
+﻿namespace EasterFarm.Models.FarmObjects.Food
 {
     using System;
     using System.Collections.Generic;
