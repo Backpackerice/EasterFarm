@@ -8,10 +8,15 @@
 
     using EasterFarm.Models.Contracts;
 
-    public abstract class Byproduct : GameObject, ICookable
+    public abstract class Byproduct : GameObject, ICookable, IStorable
     {
         protected Byproduct(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {
+        }
+
+        public Enum Type
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }

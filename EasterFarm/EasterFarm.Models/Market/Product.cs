@@ -8,7 +8,11 @@
 
     using EasterFarm.Models.Contracts;
 
-    public abstract class Product : IBuyable
+    public abstract class Product : IBuyable, IStorable
     {
+        public Enum Type
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }

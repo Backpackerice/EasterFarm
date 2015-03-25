@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.PresentFactory
+﻿namespace EasterFarm.Models.Presents
 {
     public enum PresentType
     {

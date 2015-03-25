@@ -1,29 +1,27 @@
-﻿namespace EasterFarm.Models.PresentFactory
+﻿namespace EasterFarm.Models.Presents
 {
+    using System;
     using System.Collections.Generic;
 
     using EasterFarm.Common;
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.Market;
 
-    public class Present : ISellable
+    public class Present : ISellable, IStorable
     {
         private const int NeededBaskets = 1;
-        private readonly Dictionary<IngredientType, int> neededIngredients;
+        private readonly Dictionary<Enum, int> neededIngredients;
 
         private int value;
         private MarketCurrency currency;
-        private PresentType presentType;
-        private FarmManager producer;
+        private Enum type;
 
-        public Present(PresentType presentType, int value, MarketCurrency currency, FarmManager producer, Dictionary<IngredientType, int> ingredients)
+        public Present(PresentType presentType, int value, MarketCurrency currency, Dictionary<Enum, int> ingredients)
         {
-            this.PresentType = presentType;
+            this.Type = presentType;
             this.Value = value;
             this.Currency = currency;
-            this.Producer = producer;
-            this.neededIngredients = new Dictionary<IngredientType, int>(ingredients);
-            this.Make();
+            this.neededIngredients = new Dictionary<Enum, int>(ingredients);
         }
 
         public int Value
@@ -52,52 +50,24 @@
             }
         }
 
-        public PresentType PresentType
+        public Enum Type
         {
             get
             {
-                return this.presentType;
+                return this.type;
             }
 
             internal set
             {
-                this.presentType = value;
+                this.type = value;
             }
         }
 
-        public FarmManager Producer
-        {
-            get
-            {
-                return this.producer;
-            }
-
-            internal set
-            {
-                this.producer = value;
-            }
-        }
-
-        public Dictionary<IngredientType, int> NeededIngredients
+        public Dictionary<Enum, int> NeededIngredients
         {
             get
             {
                 return this.neededIngredients;
-            }
-        }
-
-        public void Make()
-        {
-            foreach (var ingredient in this.NeededIngredients)
-            {
-                if (this.Producer.Inventory.ContainsKey(ingredient.Key) && this.Producer.Inventory[ingredient.Key] >= ingredient.Value)
-                {
-                    this.Producer.Inventory[ingredient.Key] -= ingredient.Value;
-                }
-                else
-                {
-                    throw new InsufficientAmmountException(string.Empty, ingredient.Key.ToString());
-                }
             }
         }
     }
