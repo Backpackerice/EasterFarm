@@ -10,5 +10,11 @@
 
     public class Ingredient : Product, ICookable
     {
+        //задължителен конструктор от наследяването
+        public Ingredient(IngredientType name, int price, MarketCurrency currency)
+            :base(name,price, currency)
+        {
+            
+        }
     }
 }
