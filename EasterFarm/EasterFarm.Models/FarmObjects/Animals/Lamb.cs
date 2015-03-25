@@ -13,5 +13,10 @@
         public Lamb(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {
         }
+
+        public void EatBerry()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -4,6 +4,7 @@
     {
         MatrixCoords TopLeft { get; }
 
+        // TODO : more abstract object?
         char[,] Image { get; }
     }
 }

@@ -14,5 +14,15 @@
         {
             get { throw new NotImplementedException(); }
         }
+
+        public int Price
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public MarketCurrency Currency
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }

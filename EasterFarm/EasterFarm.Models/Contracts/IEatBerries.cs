@@ -8,5 +8,6 @@
 
     public interface IEatBerries
     {
+        void EatBerry();
     }
 }

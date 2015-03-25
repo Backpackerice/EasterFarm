@@ -15,7 +15,7 @@
         private IRenderer renderer;
         private IUserInput userInput;
 
-        private List<GameObject> gameObjects;
+        private ICollection<GameObject> gameObjects;
 
         public Engine(IRenderer renderer, IUserInput userInput)
         {

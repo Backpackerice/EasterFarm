@@ -20,14 +20,14 @@
         // collect eggs
         // milks the lamb
 
-        private Dictionary<Enum, int> inventory;
+        private Dictionary<IStorable, int> inventory;
         
         public FarmManager()
         {
-            this.Inventory = new Dictionary<Enum, int>();
+            this.Inventory = new Dictionary<IStorable, int>();
         }
 
-        public Dictionary<Enum, int> Inventory
+        public Dictionary<IStorable, int> Inventory
         {
             get
             {
@@ -40,27 +40,31 @@
             }
         }
 
-        public void MakePresent(PresentType presentType, Dictionary<Enum, int> ingredients, PresentFactory presentFactory)
+        public Present MakePresent(PresentType presentType, PresentFactory presentFactory)
         {
+            var present = presentFactory.Get(presentType);
+            var ingredients = present.NeededIngredients;
+
             foreach (var ingredient in ingredients)
             {
-                if (this.Inventory.ContainsKey(ingredient.Key) && this.Inventory[ingredient.Key] >= ingredient.Value)
+                var igredient = this.Inventory.Keys.FirstOrDefault(p => p.Type == ingredient.Key);
+                if (igredient != null && this.Inventory[igredient] >= ingredient.Value)
                 {
-                    this.Inventory[ingredient.Key] -= ingredient.Value;
+                    this.Inventory[igredient] -= ingredient.Value;
                 }
                 else
                 {
+                    present = null;
                     throw new InsufficientAmmountException(string.Empty, ingredient.Key.ToString());
                 }
             }
 
-            presentFactory.Get(presentType);
-            this.AddToInventory(presentType);
+            return present;
         }
 
-        public void AddToInventory(Enum type)
+        public void AddToInventory(IStorable item)
         {
-            this.Inventory.Add(type, 1);
+            this.Inventory.Add(item, 1);
         }
     }
 }

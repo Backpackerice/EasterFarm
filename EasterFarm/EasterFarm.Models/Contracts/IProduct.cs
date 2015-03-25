@@ -2,8 +2,8 @@
 {
     using EasterFarm.Models.Market;
 
-    public interface IBuyable : IProduct
+    public  interface IProduct
     {
-        int Price { get; }
+       MarketCurrency Currency { get; }
     }
 }
