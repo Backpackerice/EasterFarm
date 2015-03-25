@@ -6,7 +6,8 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public interface IMoveable
+    public interface IMovable
     {
+        void ChangePosition(MatrixCoords newCoords);
     }
 }
