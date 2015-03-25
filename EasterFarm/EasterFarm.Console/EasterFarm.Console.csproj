@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="EasterFarmMain.cs" />
+    <Compile Include="KeyboardInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
