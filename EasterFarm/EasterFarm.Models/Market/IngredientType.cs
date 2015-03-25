@@ -2,9 +2,21 @@
 {
     public enum IngredientType
     {
+        
         Flour,
         Cocoa,
-        Basket,
         Ribbon,
+        Basket,
+        Berries,
+
+        //animals
+        Rabbit,
+        Hen,
+
+        //resources
+        Milk,
+        Egg
+        
+
     }
 }
