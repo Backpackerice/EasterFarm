@@ -45,6 +45,7 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Farm\Animals\Villain.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="EasterFarm.Models.Farm.Animals.Wolf" Collapsed="true">
     <Position X="29.75" Y="4" Width="1.5" />
@@ -170,12 +171,11 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="EasterFarm.Models.Contracts.IMoveable" Collapsed="true">
+  <Interface Name="EasterFarm.Models.Contracts.IMovable" Collapsed="true">
     <Position X="27.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\IMoveable.cs</FileName>
-      <NewMemberFileName>Contracts\IBoughtable.cs</NewMemberFileName>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IMovable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EasterFarm.Models.Contracts.ICollectBerries" Collapsed="true">
