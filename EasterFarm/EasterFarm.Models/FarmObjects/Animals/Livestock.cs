@@ -8,10 +8,15 @@
 
     using EasterFarm.Models.Contracts;
 
-    public abstract class Livestock : GameObject, IBuyable, IMovable
+    public abstract class Livestock : GameObject, IBuyable, IStorable, IMovable
     {
         protected Livestock(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {
+        }
+
+        public Enum Type
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }

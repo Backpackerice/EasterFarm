@@ -1,71 +1,73 @@
-﻿namespace EasterFarm.Models.PresentFactory
+﻿namespace EasterFarm.Models.Presents
 {
+    using System;
     using System.Collections.Generic;
-
+    
+    using EasterFarm.Models.FarmObjects.Byproducts;
     using EasterFarm.Models.Market;
 
     public class PresentFactory
     {
         private const int BasketAmmount = 1;
 
-        public static Present Get(PresentType presentType, FarmManager producer)
+        public Present Get(PresentType presentType)
         {
-            Dictionary<IngredientType, int> ingredients;
+            Dictionary<Enum, int> ingredients;
 
             switch (presentType)
             {
                 case PresentType.Kozunak:
-                    ingredients = new Dictionary<IngredientType, int>
+                    ingredients = new Dictionary<Enum, int>
                     {
-                        { IngredientType.Egg, 2 },
+                        { ByproductType.PlainEgg, 2 },
                         { IngredientType.Flour, 1 },
                         { IngredientType.Basket, BasketAmmount }
                     };
 
-                    return new Present(PresentType.Kozunak, (int)PresentType.Kozunak, MarketCurrency.Blueberries, producer, ingredients);
+                    return new Present(PresentType.Kozunak, (int)PresentType.Kozunak, MarketCurrency.Blueberries, ingredients);
                 case PresentType.ChocoEgg:
-                    ingredients = new Dictionary<IngredientType, int>
+                    ingredients = new Dictionary<Enum, int>
                     {
-                        { IngredientType.Egg, 3 },
+                        { ByproductType.PlainEgg, 3 },
                         { IngredientType.Flour, 1 },
                         { IngredientType.Cocoa, 2 },
-                        { IngredientType.Milk, 1 },
+                        { ByproductType.Milk, 1 },
                         { IngredientType.Basket, BasketAmmount }
                     };
 
-                    return new Present(PresentType.ChocoEgg, (int)PresentType.ChocoEgg, MarketCurrency.Blueberries, producer, ingredients);
+                    return new Present(PresentType.ChocoEgg, (int)PresentType.ChocoEgg, MarketCurrency.Blueberries, ingredients);
                 case PresentType.Cookie:
-                    ingredients = new Dictionary<IngredientType, int>
+                    ingredients = new Dictionary<Enum, int>
                     {
-                        { IngredientType.Egg, 2 },
+                        { ByproductType.PlainEgg, 2 },
                         { IngredientType.Flour, 1 },
                         { IngredientType.Cocoa, 2 },
-                        { IngredientType.Milk, 1 },
+                        { ByproductType.Milk, 1 },
                         { IngredientType.Basket, BasketAmmount }
                     };
 
-                    return new Present(PresentType.Cookie, (int)PresentType.Cookie, MarketCurrency.Blueberries, producer, ingredients);
+                    return new Present(PresentType.Cookie, (int)PresentType.Cookie, MarketCurrency.Blueberries, ingredients);
                 case PresentType.ChocoRabbit:
-                    ingredients = new Dictionary<IngredientType, int>
+                    ingredients = new Dictionary<Enum, int>
                     {
-                        { IngredientType.Egg, 2 },
+                        { ByproductType.PlainEgg, 2 },
                         { IngredientType.Flour, 1 },
                         { IngredientType.Cocoa, 2 },
-                        { IngredientType.Milk, 1 },
-                        { IngredientType.Rabbit, 1 },
+                        { ByproductType.Milk, 1 },
+                        { LivestockType.Rabbit, 1 },
                         { IngredientType.Basket, BasketAmmount }
                     };
 
-                    return new Present(PresentType.ChocoRabbit, (int)PresentType.ChocoRabbit, MarketCurrency.Raspberries, producer, ingredients);
+                    return new Present(PresentType.ChocoRabbit, (int)PresentType.ChocoRabbit, MarketCurrency.Raspberries, ingredients);
                 case PresentType.RabbitWithRibbon:
-                    ingredients = new Dictionary<IngredientType, int>
+                    ingredients = new Dictionary<Enum, int>
                     {
-                        { IngredientType.Rabbit, 1 },
+                        { LivestockType.Rabbit, 1 },
                         { IngredientType.Ribbon, 1 },
                         { IngredientType.Basket, BasketAmmount }
                     };
 
-                    return new Present(PresentType.RabbitWithRibbon, (int)PresentType.RabbitWithRibbon, MarketCurrency.Raspberries, producer, ingredients);
+                    return new Present(PresentType.RabbitWithRibbon, (int)PresentType.RabbitWithRibbon, MarketCurrency.Raspberries, ingredients);
                 default:
                     return null;
             }
