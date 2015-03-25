@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="EasterFarmMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -48,9 +49,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EasterFarm.Common\EasterFarm.Common.csproj">
+      <Project>{e5c262ce-f613-45f4-b9ab-bd137773f299}</Project>
+      <Name>EasterFarm.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EasterFarm.GameLogic\EasterFarm.GameLogic.csproj">
       <Project>{0f07c499-5cc4-4207-8658-620216fbf920}</Project>
       <Name>EasterFarm.GameLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EasterFarm.Models\EasterFarm.Models.csproj">
+      <Project>{aef47444-8071-4d8d-ae97-6c46bcfad4d9}</Project>
+      <Name>EasterFarm.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

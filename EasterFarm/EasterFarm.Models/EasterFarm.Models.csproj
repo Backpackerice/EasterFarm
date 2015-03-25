@@ -43,6 +43,7 @@
     <Compile Include="Contracts\ICollectBerries.cs" />
     <Compile Include="Contracts\ICookable.cs" />
     <Compile Include="Contracts\IEatBerries.cs" />
+    <Compile Include="Contracts\IMovable.cs" />
     <Compile Include="Contracts\IRenderable.cs" />
     <Compile Include="Contracts\ISellable.cs" />
     <Compile Include="Contracts\IStorable.cs" />
@@ -79,13 +80,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FarmDiagram.cd" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\EasterFarm.Common\EasterFarm.Common.csproj">
       <Project>{e5c262ce-f613-45f4-b9ab-bd137773f299}</Project>
       <Name>EasterFarm.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ModelsDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
