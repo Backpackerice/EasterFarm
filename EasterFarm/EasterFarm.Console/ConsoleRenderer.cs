@@ -98,8 +98,6 @@
                 {
                     scene.Append(this.renderMatrix[row, col]);
                 }
-
-                scene.Append(Environment.NewLine);
             }
 
             Console.Write(scene.ToString());

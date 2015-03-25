@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.GameLogic
+﻿namespace EasterFarm.Console
 {
     using System;
     using System.Collections.Generic;
