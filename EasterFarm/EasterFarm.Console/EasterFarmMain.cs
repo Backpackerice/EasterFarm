@@ -14,12 +14,24 @@
     {
         static void Main()
         {
-            Console.WindowHeight = Console.BufferHeight = Constants.WorldRows;
-            Console.WindowWidth = Console.BufferWidth = Constants.WorldCols;
+            // Setting the console height and width.
+            Console.BufferHeight = Console.WindowHeight = Constants.WorldRows;
+            Console.BufferWidth = Console.WindowWidth = Constants.WorldCols;
 
-            IRenderer consoleRenderer = new ConsoleRenderer(Constants.WorldRows, Constants.WorldCols);
-            Engine engine = new Engine();
-            engine.Run();
+            // Creating a renderer with the console height and width.
+            IRenderer renderer = new ConsoleRenderer(Constants.WorldRows, Constants.WorldCols);
+
+            // Assigning the user input to the keyboard.
+            IUserInput userInput = new KeyboardInput();
+
+            // Creating an engine of the game.
+            Engine engine = new Engine(renderer, userInput);
+
+            // Initializing the game engine.
+            GameInitializator.Initialize(engine);
+
+            // Starting the game.
+            engine.Start();
         }
     }
 }
