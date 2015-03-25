@@ -6,6 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using EasterFarm.Common;
     using EasterFarm.GameLogic;
     using EasterFarm.GameLogic.Contracts;
 
@@ -13,7 +14,10 @@
     {
         static void Main()
         {
-            IRenderer consoleRenderer = new ConsoleRenderer();
+            Console.WindowHeight = Console.BufferHeight = Constants.WorldRows;
+            Console.WindowWidth = Console.BufferWidth = Constants.WorldCols;
+
+            IRenderer consoleRenderer = new ConsoleRenderer(Constants.WorldRows, Constants.WorldCols);
             Engine engine = new Engine();
             engine.Run();
         }

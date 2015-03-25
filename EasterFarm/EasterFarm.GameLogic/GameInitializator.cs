@@ -6,9 +6,8 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    using EasterFarm.GameLogic.Contracts;
-
-    public class ConsoleRenderer : IRenderer
+    public class GameInitializator
     {
+
     }
 }
