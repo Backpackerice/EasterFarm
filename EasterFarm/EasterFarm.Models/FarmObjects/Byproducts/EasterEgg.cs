@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Farm.Animals
+﻿namespace EasterFarm.Models.FarmObjects.Byproducts
 {
     using System;
     using System.Collections.Generic;
@@ -6,9 +6,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Fox : Villain
+    public class EasterEgg : Egg
     {
-        public Fox(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        public EasterEgg(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {
         }
     }

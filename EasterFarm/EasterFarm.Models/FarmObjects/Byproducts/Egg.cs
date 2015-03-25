@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Farm.Byproducts
+﻿namespace EasterFarm.Models.FarmObjects.Byproducts
 {
     using System;
     using System.Collections.Generic;
@@ -8,9 +8,9 @@
 
     using EasterFarm.Models.Contracts;
 
-    public abstract class Byproduct : GameObject, ICookable
+    public class Egg : Byproduct
     {
-        protected Byproduct(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        public Egg(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {
         }
     }

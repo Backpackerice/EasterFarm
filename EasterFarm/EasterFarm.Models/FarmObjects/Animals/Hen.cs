@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Farm.Animals
+﻿namespace EasterFarm.Models.FarmObjects.Animals
 {
     using System;
     using System.Collections.Generic;
@@ -8,9 +8,9 @@
 
     using EasterFarm.Models.Contracts;
 
-    public abstract class Livestock : GameObject, IBuyable, IMovable
+    public class Hen : Livestock, ICollectBerries
     {
-        protected Livestock(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        public Hen(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {
         }
     }

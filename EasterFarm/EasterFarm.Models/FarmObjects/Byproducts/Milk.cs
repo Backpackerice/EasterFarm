@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Farm.Animals
+﻿namespace EasterFarm.Models.FarmObjects.Byproducts
 {
     using System;
     using System.Collections.Generic;
@@ -8,9 +8,9 @@
 
     using EasterFarm.Models.Contracts;
 
-    public abstract class Villain : GameObject, IMovable
+    public class Milk : Byproduct
     {
-        protected Villain(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        public Milk(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {
         }
     }
