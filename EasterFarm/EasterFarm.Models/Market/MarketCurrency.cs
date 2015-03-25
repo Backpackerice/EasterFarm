@@ -3,7 +3,10 @@
 
     public enum MarketCurrency
     {
-        Milk,
-        Egg
+        Raspberries,
+        Blueberries
+
+        //Milk,
+        //Egg
     }
 }

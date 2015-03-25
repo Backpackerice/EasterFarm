@@ -8,18 +8,35 @@
 
     public class Market:Product
     {
-        private IDictionary<string, decimal> productPrice;
-        
-        public Market(IngredientType name)
-            :base( name)
+        private IDictionary<IngredientType, decimal> productWithPrice;
+
+        private int quantity;
+
+        public Market(IngredientType name,int price, MarketCurrency currency ,int quantity)
+            :base(name,price, currency)
         {
+            this.QuantityToBuy = quantity;
+        }
+        public int  QuantityToBuy
+        {
+            get
+            {
+                return this.quantity;
+            }
+            set
+            {
+                if(value<0)
+                {
+                    throw new ArgumentException("Quantity which you want to buy less then 1 product!");
+                }
+                this.quantity = value;
+            }
 
         }
-        public decimal QuantityToBuy { get; set; }
       
-        public decimal CalculateEveryCost()
+        public  int CalculateEveryCost()
         {
-            return ((decimal)this.QuantityToBuy*base.Price);
+            return ((int)this.QuantityToBuy*base.Price);
         }
 
         

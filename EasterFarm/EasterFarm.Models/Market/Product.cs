@@ -11,18 +11,32 @@
     public abstract class Product : IBuyable, IStorable
     {
 
-        private IngredientType name;
-        private int quantity;
-        private decimal price;
+        private Enum type;
+        private int quantity; //може да е излишно ако маркета е с неограничени количества
+        private int price;
+        private MarketCurrency currency;
 
-       public Product(IngredientType name)
+        public Product(Enum name, int price, MarketCurrency currency)
         {
-            this.Name = name;
+            this.Type = type;
             this.Quantity = quantity;
             this.Price = price;
+            this.Currency = currency;
         }
 
-       public IngredientType Name { get; set; }
+        public Enum Type
+        {
+            get
+            {
+                return this.type;
+            }
+            private set
+            {
+                this.type = value;
+            }
+            
+        }
+       
 
         public int Quantity
         {
@@ -32,66 +46,46 @@
             }
             private set
             {
-              
+
             }
         }
 
-        public decimal Price
+        public int Price
         {
             get
             {
-                if (Name == IngredientType.Flour)
-                {
-                    return 2;
-                }
-                else if (Name == IngredientType.Cocoa)
-                {
-                    return 4;
-                }
-                else if (Name == IngredientType.Ribbon)
-                {
-                    return 8;
-                }
-                else if (Name == IngredientType.Basket)
-                {
-                    return 12;
-                }
-                else if (Name == IngredientType.Berries)
-                {
-                    return 1;
-                }
-                else if (Name == IngredientType.Rabbit)
-                {
-                    return 15;
-                }
-                else if (Name == IngredientType.Hen)
-                {
-                    return 25;
-                }
-                else if (Name == IngredientType.Milk)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 2;
-                }
+                return this.price;
+
             }
 
             private set
             {
-
+                this.price = value;
             }
         }
 
-        public abstract decimal CalculateEveryCost();
-       
+        public MarketCurrency Currency
+        {
+            get
+            {
+                return this.currency;
+            }
+            set
+            {
+                this.currency = value;
+            }
+        }
+
+        
+
 
         public override string ToString()
         {
-            return string.Format("{0,-25} {1,6:c}", Name, Price);
+            return string.Format("{0,-25} {1,6:c}", Type, Price);
 
-      
+
         }
+
+       
     }
 }
