@@ -8,6 +8,6 @@
 
     public interface IMovable
     {
-        void ChangePosition(MatrixCoords newCoords);
+        //void ChangePosition(MatrixCoords newCoords);
     }
 }
