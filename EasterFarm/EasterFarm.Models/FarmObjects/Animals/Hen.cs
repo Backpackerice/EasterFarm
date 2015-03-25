@@ -8,10 +8,15 @@
 
     using EasterFarm.Models.Contracts;
 
-    public class Hen : Livestock, ICollectBerries
+    public class Hen : Livestock, IEatBerries
     {
         public Hen(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {
+        }
+
+        public void EatBerry()
+        {
+            throw new NotImplementedException();
         }
     }
 }

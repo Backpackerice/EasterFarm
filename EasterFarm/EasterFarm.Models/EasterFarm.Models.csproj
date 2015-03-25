@@ -44,6 +44,7 @@
     <Compile Include="Contracts\ICookable.cs" />
     <Compile Include="Contracts\IEatBerries.cs" />
     <Compile Include="Contracts\IMovable.cs" />
+    <Compile Include="Contracts\IProduct.cs" />
     <Compile Include="Contracts\IRenderable.cs" />
     <Compile Include="Contracts\ISellable.cs" />
     <Compile Include="Contracts\IStorable.cs" />

@@ -8,5 +8,6 @@
 
     public interface ICollectBerries
     {
+        void CollectBerry();
     }
 }

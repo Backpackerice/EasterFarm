@@ -9,6 +9,8 @@
     using EasterFarm.Common;
     using EasterFarm.GameLogic;
     using EasterFarm.GameLogic.Contracts;
+    using EasterFarm.Models.Presents;
+    using EasterFarm.Models;
 
     class EasterFarmMain
     {
@@ -32,6 +34,13 @@
 
             // Starting the game.
             engine.Start();
+
+            //// test Present Factory - remove eventually
+            //var facotry = new PresentFactory();
+            //var manager = new FarmManager();
+
+            //var present = manager.MakePresent(PresentType.ChocoEgg, facotry);
+            //manager.AddToInventory(present);
         }
     }
 }
