@@ -6,7 +6,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public abstract class FarmFood : GameObject
+    using EasterFarm.Models.Contracts;
+
+    public abstract class FarmFood : GameObject, IStorable
     {
         protected FarmFood(MatrixCoords topLeft, char[,] image, bool isSpoiled) : base(topLeft, image)
         {
@@ -14,5 +16,10 @@
         }
 
         public bool IsSpoilt { get; private set; }
+
+        public Enum Type
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }

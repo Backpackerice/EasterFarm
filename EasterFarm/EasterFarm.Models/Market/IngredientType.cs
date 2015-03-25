@@ -6,8 +6,5 @@
         Cocoa,
         Basket,
         Ribbon,
-        Egg,
-        Milk,
-        Rabbit
     }
 }
