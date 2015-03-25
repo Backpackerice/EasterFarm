@@ -2,8 +2,8 @@
 {
     public enum LivestockType
     {
-        Hen,
-        Rabbit,
-        Lamb
+        Hen=15,
+        Rabbit=20,
+        Lamb=50
     }
 }
