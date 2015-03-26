@@ -10,7 +10,8 @@
 
     public class Hen : Livestock, IEatBerries, IBuyable, IStorable, IMovable
     {
-        public Hen(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        private static char[,] image = new char[,] { { '⌠' } };
+        public Hen(MatrixCoords topLeft) : base(topLeft, image)
         {
         }
 

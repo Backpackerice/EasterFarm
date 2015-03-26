@@ -8,7 +8,8 @@
 
     public class Raspberry : FarmFood
     {
-        public Raspberry(MatrixCoords topLeft, char[,] image, bool isSpoiled) : base(topLeft, image, isSpoiled)
+        private static char[,] image = new char[,] { { '♣' } };
+        public Raspberry(MatrixCoords topLeft, bool isSpoiled) : base(topLeft, image, isSpoiled)
         {
         }
     }
