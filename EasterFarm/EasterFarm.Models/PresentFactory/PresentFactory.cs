@@ -2,13 +2,34 @@
 {
     using System;
     using System.Collections.Generic;
-    
+
+    using EasterFarm.Common;
     using EasterFarm.Models.FarmObjects.Byproducts;
-    using EasterFarm.Models.Market;
+    using EasterFarm.Models.MarketPlace;
 
     public class PresentFactory
     {
         private const int BasketAmmount = 1;
+
+        private FarmManager producer;
+
+        public PresentFactory(FarmManager producer)
+        {
+            this.Producer = producer;
+        }
+
+        public FarmManager Producer
+        {
+            get
+            {
+                return this.producer;
+            }
+
+            private set
+            {
+                this.producer = value;
+            }
+        }
 
         public Present Get(PresentType presentType)
         {
@@ -24,7 +45,9 @@
                         { IngredientType.Basket, BasketAmmount }
                     };
 
-                    return new Present(PresentType.Kozunak, (int)PresentType.Kozunak, MarketCurrency.Blueberries, ingredients);
+                    this.GetIngredients(ingredients);
+
+                    return new Present(PresentType.Kozunak, (int)PresentType.Kozunak, CurrencyType.Blueberries, ingredients);
                 case PresentType.ChocoEgg:
                     ingredients = new Dictionary<Enum, int>
                     {
@@ -35,7 +58,9 @@
                         { IngredientType.Basket, BasketAmmount }
                     };
 
-                    return new Present(PresentType.ChocoEgg, (int)PresentType.ChocoEgg, MarketCurrency.Blueberries, ingredients);
+                    this.GetIngredients(ingredients);
+
+                    return new Present(PresentType.ChocoEgg, (int)PresentType.ChocoEgg, CurrencyType.Blueberries, ingredients);
                 case PresentType.Cookie:
                     ingredients = new Dictionary<Enum, int>
                     {
@@ -46,7 +71,9 @@
                         { IngredientType.Basket, BasketAmmount }
                     };
 
-                    return new Present(PresentType.Cookie, (int)PresentType.Cookie, MarketCurrency.Blueberries, ingredients);
+                    this.GetIngredients(ingredients);
+
+                    return new Present(PresentType.Cookie, (int)PresentType.Cookie, CurrencyType.Blueberries, ingredients);
                 case PresentType.ChocoRabbit:
                     ingredients = new Dictionary<Enum, int>
                     {
@@ -58,7 +85,9 @@
                         { IngredientType.Basket, BasketAmmount }
                     };
 
-                    return new Present(PresentType.ChocoRabbit, (int)PresentType.ChocoRabbit, MarketCurrency.Raspberries, ingredients);
+                    this.GetIngredients(ingredients);
+
+                    return new Present(PresentType.ChocoRabbit, (int)PresentType.ChocoRabbit, CurrencyType.Raspberries, ingredients);
                 case PresentType.RabbitWithRibbon:
                     ingredients = new Dictionary<Enum, int>
                     {
@@ -67,9 +96,27 @@
                         { IngredientType.Basket, BasketAmmount }
                     };
 
-                    return new Present(PresentType.RabbitWithRibbon, (int)PresentType.RabbitWithRibbon, MarketCurrency.Raspberries, ingredients);
+                    this.GetIngredients(ingredients);
+
+                    return new Present(PresentType.RabbitWithRibbon, (int)PresentType.RabbitWithRibbon, CurrencyType.Raspberries, ingredients);
                 default:
                     return null;
+            }
+        }
+
+        private void GetIngredients(Dictionary<Enum, int> ingredients)
+        {
+            foreach (var ingredient in ingredients)
+            {
+                var item = this.Producer.GetFromInventoryByType(ingredient.Key);
+                if (item != null)
+                {
+                    this.Producer.SubtractFromInventoryItem(item, ingredient.Value);
+                }
+                else
+                {
+                    throw new InsufficientAmmountException(ingredient.Key.ToString());
+                }
             }
         }
     }

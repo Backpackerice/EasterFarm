@@ -5,39 +5,39 @@
 
     using EasterFarm.Common;
     using EasterFarm.Models.Contracts;
-    using EasterFarm.Models.Market;
+    using EasterFarm.Models.MarketPlace;
 
     public class Present : ISellable, IStorable
     {
         private const int NeededBaskets = 1;
         private readonly Dictionary<Enum, int> neededIngredients;
 
-        private int value;
-        private MarketCurrency currency;
+        private int price;
+        private CurrencyType currency;
         private Enum type;
 
-        public Present(PresentType presentType, int value, MarketCurrency currency, Dictionary<Enum, int> ingredients)
+        public Present(PresentType presentType, int price, CurrencyType currency, Dictionary<Enum, int> ingredients)
         {
             this.Type = presentType;
-            this.Value = value;
+            this.Price = price;
             this.Currency = currency;
             this.neededIngredients = new Dictionary<Enum, int>(ingredients);
         }
 
-        public int Value
+        public int Price
         {
             get
             {
-                return this.value;
+                return this.price;
             }
 
             internal set
             {
-                this.value = value;
+                this.price = value;
             }
         }
 
-        public MarketCurrency Currency
+        public CurrencyType Currency
         {
             get
             {

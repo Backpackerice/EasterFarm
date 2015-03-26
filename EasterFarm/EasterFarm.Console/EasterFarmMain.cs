@@ -11,6 +11,9 @@
     using EasterFarm.GameLogic.Contracts;
     using EasterFarm.Models.Presents;
     using EasterFarm.Models;
+    using EasterFarm.Models.FarmObjects.Food;
+    using EasterFarm.Models.FarmObjects.Animals;
+    using EasterFarm.Models.MarketPlace;
 
     class EasterFarmMain
     {
@@ -41,6 +44,21 @@
 
             //var present = manager.MakePresent(PresentType.ChocoEgg, facotry);
             //manager.AddToInventory(present);
+
+            //// test custom exception
+            //try
+            //{
+            //    throw new InsufficientAmmountException(new Present(PresentType.ChocoEgg, 20, CurrencyType.Blueberries, new Dictionary<Enum, int>()).ToString());
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //}
+
+            //// test Product Factory
+            //var product = new ProductFactory().Get(LivestockType.Hen);
+            //var basket = new ProductFactory().Get(IngredientType.Basket);
+            //Console.WriteLine(product.ToString());
         }
     }
 }
