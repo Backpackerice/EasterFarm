@@ -8,6 +8,7 @@
 
     using EasterFarm.Common;
 
+    // The ScreenFrame class implements the Singleton design pattern.
     public sealed class ScreenFrame : GameObject
     {
         private static readonly MatrixCoords topLeft = new MatrixCoords(0, 0);
