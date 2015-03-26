@@ -10,12 +10,14 @@
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.Market;
     using EasterFarm.Models.Presents;
+    using EasterFarm.Models.FarmObjects;
+    using EasterFarm.Models.FarmObjects.Byproducts;
+    using EasterFarm.Models.FarmObjects.Animals;
 
     // The player
     public class FarmManager
     {
         // TODO:
-        // clears rocks
         // shoot villains
         // collect eggs
         // milks the lamb
@@ -38,6 +40,17 @@
             {
                 this.inventory = value;
             }
+        }
+
+        public void GatherProduct(Dictionary<IStorable, int> Inventory, Byproduct product)
+        {
+            this.Inventory[product]++;
+            product.IsDestroyed = true;
+        }
+
+        public void EvictVillain(Villain enemy)
+        {
+            enemy.IsDestroyed = true;
         }
 
         public Present MakePresent(PresentType presentType, PresentFactory presentFactory)
