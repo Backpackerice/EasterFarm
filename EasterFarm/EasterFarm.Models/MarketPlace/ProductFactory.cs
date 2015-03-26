@@ -31,11 +31,11 @@
                 switch (livestockType)
                 {
                     case LivestockType.Hen:
-                        return new Hen(new MatrixCoords(0, 0), new char[0, 0]);
+                        return new Hen(new MatrixCoords(0, 0));
                     case LivestockType.Lamb:
-                        return new Lamb(new MatrixCoords(0, 0), new char[0, 0]);
+                        return new Lamb(new MatrixCoords(0, 0));
                     case LivestockType.Rabbit:
-                        return new Rabbit(new MatrixCoords(0, 0), new char[0, 0]);
+                        return new Rabbit(new MatrixCoords(0, 0));
                 }
             }
 

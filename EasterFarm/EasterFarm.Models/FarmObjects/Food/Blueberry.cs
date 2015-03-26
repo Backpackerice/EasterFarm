@@ -8,7 +8,8 @@
 
     public class Blueberry : FarmFood
     {
-        public Blueberry(MatrixCoords topLeft, char[,] image, bool isSpoiled) : base(topLeft, image, isSpoiled)
+        private static char[,] image = new char[,] { { '♠' } };
+        public Blueberry(MatrixCoords topLeft, bool isSpoiled) : base(topLeft, image, isSpoiled)
         {
         }
     }

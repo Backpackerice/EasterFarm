@@ -10,7 +10,8 @@
 
     public class Lamb : Livestock, IEatBerries, IBuyable, IStorable, IMovable
     {
-        public Lamb(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        private static char[,] image = new char[,] {{'π'}};
+        public Lamb(MatrixCoords topLeft) : base(topLeft, image)
         {
         }
 
