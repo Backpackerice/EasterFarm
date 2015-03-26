@@ -7,6 +7,7 @@
     using System.Threading.Tasks;
 
     using EasterFarm.Models.Contracts;
+    using EasterFarm.Models.MarketPlace;
 
     public abstract class FarmFood : GameObject, IStorable
     {

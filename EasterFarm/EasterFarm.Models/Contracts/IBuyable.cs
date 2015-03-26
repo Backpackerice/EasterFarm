@@ -1,9 +1,6 @@
 ﻿namespace EasterFarm.Models.Contracts
 {
-    using EasterFarm.Models.Market;
-
-    public interface IBuyable : IProduct
+    public interface IBuyable : ITradeable
     {
-        int Price { get; }
     }
 }

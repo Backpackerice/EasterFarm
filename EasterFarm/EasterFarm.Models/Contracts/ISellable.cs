@@ -1,7 +1,6 @@
 ﻿namespace EasterFarm.Models.Contracts
 {
-    public interface ISellable : IProduct
+    public interface ISellable : ITradeable
     {
-        int Value { get; }
     }
 }

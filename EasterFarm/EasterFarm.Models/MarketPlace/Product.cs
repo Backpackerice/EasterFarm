@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Market
+﻿namespace EasterFarm.Models.MarketPlace
 {
     using System;
 
@@ -7,14 +7,12 @@
     public abstract class Product : IBuyable, IStorable
     {
         private Enum type;
-        private int quantity; //може да е излишно ако маркета е с неограничени количества
         private int price;
-        private MarketCurrency currency;
+        private CurrencyType currency;
 
-        public Product(Enum name, int price, MarketCurrency currency)
+        public Product(Enum type, int price, CurrencyType currency)
         {
             this.Type = type;
-            this.Quantity = quantity;
             this.Price = price;
             this.Currency = currency;
         }
@@ -25,22 +23,11 @@
             {
                 return this.type;
             }
+
             private set
             {
                 this.type = value;
-            }
-            
-        }
-        public int Quantity
-        {
-            get
-            {
-                return 100;
-            }
-            private set
-            {
-
-            }
+            }           
         }
 
         public int Price
@@ -48,7 +35,6 @@
             get
             {
                 return this.price;
-
             }
 
             private set
@@ -57,13 +43,14 @@
             }
         }
 
-        public MarketCurrency Currency
+        public CurrencyType Currency
         {
             get
             {
                 return this.currency;
             }
-            set
+
+            private set
             {
                 this.currency = value;
             }
@@ -71,7 +58,7 @@
 
         public override string ToString()
         {
-            return string.Format("{0,-25} {1,6:c}", Type, Price);
+            return string.Format("{0,-25} {1,6:c}", this.Type, this.Price);
         }
     }
 }

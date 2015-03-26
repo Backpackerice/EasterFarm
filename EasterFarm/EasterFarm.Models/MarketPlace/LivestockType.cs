@@ -1,4 +1,4 @@
-﻿namespace EasterFarm.Models.Market
+﻿namespace EasterFarm.Models.MarketPlace
 {
     public enum LivestockType
     {
