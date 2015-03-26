@@ -2,13 +2,9 @@
 {
     public static class Constants
     {
-        static Constants()
-        {
-            WorldRows = 30;
-            WorldCols = 50;
-        }
-        public static int WorldRows { get; private set; }
-        public static int WorldCols { get; private set; }
-
+        public const int WorldRows = 30;
+        public const int WorldCols = 100;
+        public const double LeftRightScreenRatio = 0.5;
+        public const double UpDownScreeRatio = 0.5;
     }
 }
