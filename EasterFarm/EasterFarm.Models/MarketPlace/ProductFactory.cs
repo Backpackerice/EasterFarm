@@ -17,13 +17,13 @@
                 switch (ingredientType)
                 {
                     case IngredientType.Basket:
-                        return new Ingredient(IngredientType.Basket, (int)IngredientType.Basket, CurrencyType.Blueberries);
+                        return new Ingredient(IngredientType.Basket, (int)IngredientType.Basket, CurrencyType.Blueberry);
                     case IngredientType.Cocoa:
-                        return new Ingredient(IngredientType.Cocoa, (int)IngredientType.Cocoa, CurrencyType.Raspberries);
+                        return new Ingredient(IngredientType.Cocoa, (int)IngredientType.Cocoa, CurrencyType.Raspberry);
                     case IngredientType.Ribbon:
-                        return new Ingredient(IngredientType.Ribbon, (int)IngredientType.Ribbon, CurrencyType.Blueberries);
+                        return new Ingredient(IngredientType.Ribbon, (int)IngredientType.Ribbon, CurrencyType.Blueberry);
                     case IngredientType.Flour:
-                        return new Ingredient(IngredientType.Flour, (int)IngredientType.Flour, CurrencyType.Raspberries);
+                        return new Ingredient(IngredientType.Flour, (int)IngredientType.Flour, CurrencyType.Raspberry);
                 }
             }
             else if (Enum.TryParse(productType.ToString(), out livestockType))

@@ -47,7 +47,7 @@
 
                     this.GetIngredients(ingredients);
 
-                    return new Present(PresentType.Kozunak, (int)PresentType.Kozunak, CurrencyType.Blueberries, ingredients);
+                    return new Present(PresentType.Kozunak, (int)PresentType.Kozunak, CurrencyType.Blueberry, ingredients);
                 case PresentType.ChocoEgg:
                     ingredients = new Dictionary<Enum, int>
                     {
@@ -60,7 +60,7 @@
 
                     this.GetIngredients(ingredients);
 
-                    return new Present(PresentType.ChocoEgg, (int)PresentType.ChocoEgg, CurrencyType.Blueberries, ingredients);
+                    return new Present(PresentType.ChocoEgg, (int)PresentType.ChocoEgg, CurrencyType.Blueberry, ingredients);
                 case PresentType.Cookie:
                     ingredients = new Dictionary<Enum, int>
                     {
@@ -73,7 +73,7 @@
 
                     this.GetIngredients(ingredients);
 
-                    return new Present(PresentType.Cookie, (int)PresentType.Cookie, CurrencyType.Blueberries, ingredients);
+                    return new Present(PresentType.Cookie, (int)PresentType.Cookie, CurrencyType.Blueberry, ingredients);
                 case PresentType.ChocoRabbit:
                     ingredients = new Dictionary<Enum, int>
                     {
@@ -87,7 +87,7 @@
 
                     this.GetIngredients(ingredients);
 
-                    return new Present(PresentType.ChocoRabbit, (int)PresentType.ChocoRabbit, CurrencyType.Raspberries, ingredients);
+                    return new Present(PresentType.ChocoRabbit, (int)PresentType.ChocoRabbit, CurrencyType.Raspberry, ingredients);
                 case PresentType.RabbitWithRibbon:
                     ingredients = new Dictionary<Enum, int>
                     {
@@ -98,7 +98,7 @@
 
                     this.GetIngredients(ingredients);
 
-                    return new Present(PresentType.RabbitWithRibbon, (int)PresentType.RabbitWithRibbon, CurrencyType.Raspberries, ingredients);
+                    return new Present(PresentType.RabbitWithRibbon, (int)PresentType.RabbitWithRibbon, CurrencyType.Raspberry, ingredients);
                 default:
                     return null;
             }
