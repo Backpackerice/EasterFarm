@@ -32,6 +32,6 @@
             protected set { this.image = value; }
         }
 
-        public bool IsDestroyed { get; protected set; }
+        public bool IsDestroyed { get; set; }
     }
 }
