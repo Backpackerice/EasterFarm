@@ -70,7 +70,6 @@
     <Compile Include="FarmObjects\Food\Raspberry.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="MarketPlace\LivestockType.cs" />
-    <Compile Include="MarketPlace\CurrencyType.cs" />
     <Compile Include="MarketPlace\Ingredient.cs" />
     <Compile Include="MarketPlace\IngredientType.cs" />
     <Compile Include="MarketPlace\Market.cs" />

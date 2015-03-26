@@ -4,8 +4,6 @@
 
     public interface ITradeable : IStorable
     {
-        CurrencyType Currency { get; }
-
         int Price { get; }
     }
 }

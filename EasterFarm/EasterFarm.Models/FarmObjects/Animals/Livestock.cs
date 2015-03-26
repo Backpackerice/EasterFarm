@@ -39,17 +39,5 @@
                 throw new NotImplementedException();
             }
         }
-
-        public CurrencyType Currency
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            protected set
-            {
-                throw new NotImplementedException();
-            }
-        }
     }
 }

@@ -8,13 +8,11 @@
     {
         private Enum type;
         private int price;
-        private CurrencyType currency;
 
-        public Product(Enum type, int price, CurrencyType currency)
+        public Product(Enum type, int price)
         {
             this.Type = type;
             this.Price = price;
-            this.Currency = currency;
         }
 
         public Enum Type
@@ -40,19 +38,6 @@
             private set
             {
                 this.price = value;
-            }
-        }
-
-        public CurrencyType Currency
-        {
-            get
-            {
-                return this.currency;
-            }
-
-            private set
-            {
-                this.currency = value;
             }
         }
 

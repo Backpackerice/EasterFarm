@@ -13,14 +13,12 @@
         private readonly Dictionary<Enum, int> neededIngredients;
 
         private int price;
-        private CurrencyType currency;
         private Enum type;
 
-        public Present(PresentType presentType, int price, CurrencyType currency, Dictionary<Enum, int> ingredients)
+        public Present(PresentType presentType, int price, Dictionary<Enum, int> ingredients)
         {
             this.Type = presentType;
             this.Price = price;
-            this.Currency = currency;
             this.neededIngredients = new Dictionary<Enum, int>(ingredients);
         }
 
@@ -34,19 +32,6 @@
             internal set
             {
                 this.price = value;
-            }
-        }
-
-        public CurrencyType Currency
-        {
-            get
-            {
-                return this.currency;
-            }
-
-            internal set
-            {
-                this.currency = value;
             }
         }
 
