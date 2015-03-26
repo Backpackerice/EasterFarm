@@ -7,8 +7,9 @@
     using System.Threading.Tasks;
 
     using EasterFarm.Models.Contracts;
+    using EasterFarm.Models.MarketPlace;
 
-    public class Rabbit : Livestock, ICollectBerries, ICookable
+    public class Rabbit : Livestock, ICollectBerries, ICookable, IBuyable, IStorable, IMovable
     {
         public Rabbit(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {

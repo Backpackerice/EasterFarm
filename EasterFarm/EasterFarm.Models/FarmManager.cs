@@ -8,8 +8,9 @@
 
     using EasterFarm.Common;
     using EasterFarm.Models.Contracts;
-    using EasterFarm.Models.Market;
+    using EasterFarm.Models.MarketPlace;
     using EasterFarm.Models.Presents;
+    using EasterFarm.Models.FarmObjects.Food;
 
     // The player
     public class FarmManager
@@ -19,6 +20,8 @@
         // shoot villains
         // collect eggs
         // milks the lamb
+
+        private const string NoItemInInventoryExcMsg = "No such item in inventory: ";
 
         private Dictionary<IStorable, int> inventory;
         
@@ -40,31 +43,67 @@
             }
         }
 
-        public Present MakePresent(PresentType presentType, PresentFactory presentFactory)
-        {
-            var present = presentFactory.Get(presentType);
-            var ingredients = present.NeededIngredients;
-
-            foreach (var ingredient in ingredients)
-            {
-                var igredient = this.Inventory.Keys.FirstOrDefault(p => p.Type == ingredient.Key);
-                if (igredient != null && this.Inventory[igredient] >= ingredient.Value)
-                {
-                    this.Inventory[igredient] -= ingredient.Value;
-                }
-                else
-                {
-                    present = null;
-                    throw new InsufficientAmmountException(string.Empty, ingredient.Key.ToString());
-                }
-            }
-
-            return present;
-        }
-
         public void AddToInventory(IStorable item)
         {
-            this.Inventory.Add(item, 1);
+            if (this.Inventory.ContainsKey(item))
+            {
+                this.Inventory[item] += 1;
+            }
+            else
+            {
+                this.Inventory.Add(item, 1);
+            }
+        }
+
+        public void AddMultipleToInventory(IStorable item, int quantity)
+        {
+            if (this.Inventory.ContainsKey(item))
+            {
+                this.Inventory[item] += quantity;
+            }
+            else
+            {
+                this.Inventory.Add(item, quantity);
+            }
+        }
+
+        public void RemoveFromInventory(IStorable item)
+        {
+            if (this.InventoryContains(item))
+            {
+                this.Inventory.Remove(item);
+            }
+            else
+            {
+                throw new InsufficientAmmountException(NoItemInInventoryExcMsg, item.ToString());
+            }
+        }
+
+        public void SubtractFromInventoryItem(IStorable item, int quantity)
+        {
+            if (this.InventoryContains(item) && this.Inventory[item] >= quantity)
+            {
+                this.Inventory[item] -= quantity;
+            }
+            else
+            {
+                throw new InsufficientAmmountException(string.Empty, item.ToString());
+            }
+        }
+
+        public bool InventoryContains(IStorable item)
+        {
+            return this.Inventory.ContainsKey(item) ? true : false;
+        }
+
+        public IStorable GetFromInventoryByType(Enum type)
+        {
+            return this.Inventory.FirstOrDefault(x => x.Key.Type == type).Key;
+        }
+
+        public IStorable GetCurrencyFromInventory(CurrencyType type)
+        {
+            return this.Inventory.FirstOrDefault(x => (CurrencyType)x.Key.Type == type).Key;
         }
     }
 }

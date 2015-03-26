@@ -8,7 +8,7 @@
 
     using EasterFarm.Models.Contracts;
 
-    public class Hen : Livestock, IEatBerries
+    public class Hen : Livestock, IEatBerries, IBuyable, IStorable, IMovable
     {
         public Hen(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {

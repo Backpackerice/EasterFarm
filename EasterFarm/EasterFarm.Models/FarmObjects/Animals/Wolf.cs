@@ -6,7 +6,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Wolf : Villain
+    using EasterFarm.Models.Contracts;
+
+    public class Wolf : Villain, IMovable
     {
         public Wolf(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {

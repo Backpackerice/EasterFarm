@@ -6,7 +6,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class EasterEgg : Egg
+    using EasterFarm.Models.Contracts;
+
+    public class EasterEgg : Egg, ICookable, IStorable
     {
         public EasterEgg(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {
