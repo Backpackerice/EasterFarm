@@ -19,6 +19,7 @@
     {
         static void Main()
         {
+            Console.CursorVisible = false;
             // Setting the console height and width.
             Console.BufferHeight = Console.WindowHeight = Constants.WorldRows + 1;
             Console.BufferWidth = Console.WindowWidth = Constants.WorldCols;
