@@ -20,7 +20,7 @@
         static void Main()
         {
             // Setting the console height and width.
-            Console.BufferHeight = Console.WindowHeight = Constants.WorldRows;
+            Console.BufferHeight = Console.WindowHeight = Constants.WorldRows + 1;
             Console.BufferWidth = Console.WindowWidth = Constants.WorldCols;
 
             // Creating a renderer with the console height and width.

@@ -81,6 +81,7 @@
     <Compile Include="PresentFactory\PresentFactory.cs" />
     <Compile Include="PresentFactory\PresentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScreenFrame.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EasterFarm.Common\EasterFarm.Common.csproj">

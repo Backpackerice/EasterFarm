@@ -13,8 +13,10 @@
     {
         public static void Initialize(Engine engine)
         {
-            GameObject Raspberry = new Raspberry(new MatrixCoords(3, 4), new char[,] {{'R'}}, false);
+            ScreenFrame screenFrame = ScreenFrame.Instance;
+            engine.AddGameObject(screenFrame);
 
+            GameObject Raspberry = new Raspberry(new MatrixCoords(1, 4), new char[,] {{'R'}}, false);
             engine.AddGameObject(Raspberry);
         }
     }
