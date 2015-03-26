@@ -6,6 +6,7 @@
 
     using EasterFarm.Common;
     using EasterFarm.Models.Contracts;
+    using EasterFarm.Models.FarmObjects.Food;
 
     public class Market
     {
@@ -57,7 +58,7 @@
         public void BuyProducts(IBuyable product, int quantity)
         {
             int cost = this.CalculateCost(product, quantity);
-            var currency = this.Dealer.GetCurrencyFromInventory(product.Currency);
+            var currency = this.Dealer.GetFromInventoryByType(FarmFoodType.Raspberry);
 
             if (currency != null && this.Dealer.Inventory[currency] >= cost)
             {
@@ -74,7 +75,7 @@
         public void SellProducts(ISellable product, int quantity)
         {
             int income = this.CalculateCost(product, quantity);
-            var currency = this.Dealer.GetCurrencyFromInventory(product.Currency);
+            var currency = this.Dealer.GetFromInventoryByType(FarmFoodType.Raspberry);
 
             this.Dealer.RemoveFromInventory(product);
             this.Dealer.AddMultipleToInventory(currency, income);

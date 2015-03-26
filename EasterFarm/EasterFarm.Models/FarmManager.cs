@@ -112,10 +112,5 @@
         {
             return this.Inventory.FirstOrDefault(x => x.Key.Type == type).Key;
         }
-
-        public IStorable GetCurrencyFromInventory(CurrencyType type)
-        {
-            return this.Inventory.FirstOrDefault(x => (CurrencyType)x.Key.Type == type).Key;
-        }
     }
 }

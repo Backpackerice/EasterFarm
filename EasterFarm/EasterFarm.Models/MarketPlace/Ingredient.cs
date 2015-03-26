@@ -4,8 +4,8 @@
 
     public class Ingredient : Product, ICookable, IBuyable, IStorable
     {
-        public Ingredient(IngredientType name, int price, CurrencyType currency)
-            : base(name, price, currency)
+        public Ingredient(IngredientType name, int price)
+            : base(name, price)
         {
         }
     }
