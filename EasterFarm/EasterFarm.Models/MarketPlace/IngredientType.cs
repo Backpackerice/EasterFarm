@@ -6,5 +6,6 @@
         Cocoa = 4,
         Ribbon = 8,
         Basket = 12,
+        Rabbit = 18,
     }
 }

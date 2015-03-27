@@ -44,9 +44,9 @@
             }
         }
 
-        public void GatherProduct(Dictionary<IStorable, int> Inventory, Byproduct product)
+        public void GatherProduct(Byproduct product)
         {
-            this.Inventory[product]++;
+            this.AddToInventory(product);
             product.IsDestroyed = true;
         }
 

@@ -10,8 +10,25 @@
 
     public class EasterEgg : Egg, ICookable, IStorable
     {
-        public EasterEgg(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        private EggColor color;
+
+        public EasterEgg(MatrixCoords topLeft, char[,] image, EggColor color) 
+            : base(topLeft, image)
         {
+            this.Color = color;
+        }
+
+        public EggColor Color
+        {
+            get
+            {
+                return this.color;
+            }
+
+            set
+            {
+                this.color = value;
+            }
         }
     }
 }

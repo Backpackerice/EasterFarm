@@ -11,16 +11,39 @@
 
     public abstract class FarmFood : GameObject, IStorable
     {
-        protected FarmFood(MatrixCoords topLeft, char[,] image, bool isSpoiled) : base(topLeft, image)
+        private Enum type;
+        private bool isSpoilt;
+
+        protected FarmFood(MatrixCoords topLeft, char[,] image, bool isSpoiled) 
+            : base(topLeft, image)
         {
             this.IsSpoilt = isSpoiled;
         }
 
-        public bool IsSpoilt { get; private set; }
+        public bool IsSpoilt
+        {
+            get
+            {
+                return this.isSpoilt;
+            }
+
+            private set
+            {
+                this.isSpoilt = value;
+            }
+        }
 
         public Enum Type
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                return this.type;
+            }
+
+            private set
+            {
+                this.type = value;
+            }
         }
     }
 }

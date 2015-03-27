@@ -2,6 +2,7 @@
 {
     public enum EggColor
     {
+        None,
         Red,
         Blue,
     }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasterFarm.GameLogic", "Eas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasterFarm.Console", "EasterFarm.Console\EasterFarm.Console.csproj", "{3F69F5A9-1433-4B30-9C4B-1A68AC3BA90D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasterFarm.WPF", "EasterFarm.WPF\EasterFarm.WPF.csproj", "{81A9E75C-AD63-4659-AFCC-8D818B83AB0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3F69F5A9-1433-4B30-9C4B-1A68AC3BA90D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F69F5A9-1433-4B30-9C4B-1A68AC3BA90D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F69F5A9-1433-4B30-9C4B-1A68AC3BA90D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A9E75C-AD63-4659-AFCC-8D818B83AB0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A9E75C-AD63-4659-AFCC-8D818B83AB0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A9E75C-AD63-4659-AFCC-8D818B83AB0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A9E75C-AD63-4659-AFCC-8D818B83AB0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

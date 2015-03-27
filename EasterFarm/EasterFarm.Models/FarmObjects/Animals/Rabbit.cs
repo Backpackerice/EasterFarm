@@ -9,15 +9,19 @@
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.MarketPlace;
 
-    public class Rabbit : Livestock, ICollectBerries, ICookable, IBuyable, IStorable, IMovable
+    public class Rabbit : Livestock, ICollectBerries, IStorable, IMovable
     {
-        public Rabbit(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        public Rabbit(MatrixCoords topLeft, char[,] image) 
+            : base(topLeft, image)
         {
         }
 
-        public void CollectBerry()
+        public override Livestock Clone()
         {
-            throw new NotImplementedException();
+            Rabbit original = this;
+            Rabbit newRabbit = new Rabbit(this.TopLeft, new char[0, 0]);
+
+            return newRabbit;
         }
     }
 }

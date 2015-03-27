@@ -10,7 +10,8 @@
 
     public class Wolf : Villain, IMovable
     {
-        public Wolf(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        public Wolf(MatrixCoords topLeft, char[,] image) 
+            : base(topLeft, image)
         {
         }
     }

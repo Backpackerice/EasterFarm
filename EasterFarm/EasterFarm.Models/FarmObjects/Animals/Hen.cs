@@ -7,16 +7,21 @@
     using System.Threading.Tasks;
 
     using EasterFarm.Models.Contracts;
+    using EasterFarm.Models.FarmObjects.Food;
 
-    public class Hen : Livestock, IEatBerries, IBuyable, IStorable, IMovable
+    public class Hen : Livestock, IEatBerries, IStorable, IMovable
     {
-        public Hen(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        public Hen(MatrixCoords topLeft, char[,] image) 
+            : base(topLeft, image)
         {
         }
 
-        public void EatBerry()
+        public override Livestock Clone()
         {
-            throw new NotImplementedException();
+            Hen original = this;
+            Hen newHen = new Hen(this.TopLeft, new char[0,0]);
+
+            return newHen;
         }
     }
 }
