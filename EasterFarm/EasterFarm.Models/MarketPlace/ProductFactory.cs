@@ -27,7 +27,7 @@
                     case IngredientType.Rabbit:
                         return new Ingredient(IngredientType.Rabbit, Category.Ingredient, (int)IngredientType.Rabbit);
                 }
-            }
+            }          
             //else if (Enum.TryParse(productType.ToString(), out livestockType))
             //{
             //    switch (livestockType)

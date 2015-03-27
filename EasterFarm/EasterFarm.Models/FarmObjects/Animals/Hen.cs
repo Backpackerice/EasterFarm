@@ -8,18 +8,20 @@
 
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.FarmObjects.Food;
+    using EasterFarm.Models.MarketPlace;
 
     public class Hen : Livestock, IEatBerries, IStorable, IMovable
     {
-        public Hen(MatrixCoords topLeft, char[,] image) 
-            : base(topLeft, image)
+        private static char[,] image = new char[,] { { '⌠' } };
+        public Hen(MatrixCoords topLeft, Enum type) 
+            : base(topLeft, LivestockType.Hen)
         {
         }
 
         public override Livestock Clone()
         {
             Hen original = this;
-            Hen newHen = new Hen(this.TopLeft, new char[0,0]);
+            Hen newHen = new Hen(this.TopLeft, LivestockType.Hen);
 
             return newHen;
         }

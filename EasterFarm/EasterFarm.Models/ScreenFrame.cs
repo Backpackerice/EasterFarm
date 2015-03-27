@@ -18,7 +18,7 @@
         private static readonly ScreenFrame instance = new ScreenFrame();
 
         private ScreenFrame()
-            : base(topLeft, image)
+            : base(topLeft)
         {
         }
 

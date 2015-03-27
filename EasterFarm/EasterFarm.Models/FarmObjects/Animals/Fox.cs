@@ -10,8 +10,9 @@
 
     public class Fox : Villain, IMovable
     {
-        public Fox(MatrixCoords topLeft, char[,] image) 
-            : base(topLeft, image)
+        private static char[,] image = new char[,] { { '¥' } };
+        public Fox(MatrixCoords topLeft) 
+            : base(topLeft)
         {
         }
     }

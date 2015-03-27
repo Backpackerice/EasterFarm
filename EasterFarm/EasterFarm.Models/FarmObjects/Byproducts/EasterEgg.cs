@@ -12,8 +12,8 @@
     {
         private EggColor color;
 
-        public EasterEgg(MatrixCoords topLeft, char[,] image, EggColor color) 
-            : base(topLeft, image)
+        public EasterEgg(MatrixCoords topLeft, EggColor color) 
+            : base(topLeft)
         {
             this.Color = color;
         }

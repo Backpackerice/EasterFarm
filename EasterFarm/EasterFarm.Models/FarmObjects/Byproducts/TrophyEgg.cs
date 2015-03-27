@@ -10,7 +10,8 @@
 
     public class TrophyEgg : EasterEgg, ICookable, IStorable
     {
-        public TrophyEgg(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        public TrophyEgg(MatrixCoords topLeft, EggColor color) 
+            : base(topLeft, color)
         {
         }
     }

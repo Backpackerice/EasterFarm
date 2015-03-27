@@ -5,7 +5,8 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-
+	
+    using EasterFarm.Models.FarmObjects.Animals;
     using EasterFarm.Models;
     using EasterFarm.Models.FarmObjects.Food;
     using EasterFarm.Models.MarketPlace;
@@ -16,9 +17,12 @@
         {
             ScreenFrame screenFrame = ScreenFrame.Instance;
             engine.AddGameObject(screenFrame);
-
-            GameObject raspberry = new Raspberry(new MatrixCoords(1, 4), new char[,] {{'R'}}, false);
-            engine.AddGameObject(raspberry);
+			
+            GameObject farmFood = new Raspberry(new MatrixCoords(1, 4), false);
+            engine.AddGameObject(farmFood);
+			
+            farmFood = new Blueberry(new MatrixCoords(20, 20), false);
+            engine.AddGameObject(farmFood);
         }
     }
 }

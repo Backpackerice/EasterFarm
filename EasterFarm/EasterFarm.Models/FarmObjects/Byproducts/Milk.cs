@@ -10,7 +10,8 @@
 
     public class Milk : Byproduct, ICookable, IStorable
     {
-        public Milk(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        public Milk(MatrixCoords topLeft) 
+            : base(topLeft)
         {
         }
     }
