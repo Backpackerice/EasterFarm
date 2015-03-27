@@ -24,6 +24,15 @@
 
             gameObject = new Hen(new MatrixCoords(10, 10));
             engine.AddGameObject(gameObject);
+
+            gameObject = new Hen(new MatrixCoords(9, 9));
+            engine.AddGameObject(gameObject);
+
+            gameObject = new Hen(new MatrixCoords(15, 15));
+            engine.AddGameObject(gameObject);
+
+            gameObject = new Hen(new MatrixCoords(8, 8));
+            engine.AddGameObject(gameObject);
         }
     }
 }

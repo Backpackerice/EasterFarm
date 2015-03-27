@@ -33,6 +33,8 @@
                     }
                 }
             }
+
+            map[currentRow, currentCol] = int.MaxValue;
         }
     }
 }
