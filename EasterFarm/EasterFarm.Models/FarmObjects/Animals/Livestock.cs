@@ -11,9 +11,25 @@
 
     public abstract class Livestock : GameObject, IStorable, IMovable
     {
-        protected Livestock(MatrixCoords topLeft, char[,] image)
-            : base(topLeft, image)
+        private Enum type;
+
+        protected Livestock(MatrixCoords topLeft, Enum type)
+            : base(topLeft)
         {
+            this.Type = type;
+        }
+
+        public Enum Type
+        {
+            get
+            {
+                return this.type;
+            }
+
+            private set
+            {
+                this.type = value;
+            }
         }
 
         public abstract Livestock Clone();

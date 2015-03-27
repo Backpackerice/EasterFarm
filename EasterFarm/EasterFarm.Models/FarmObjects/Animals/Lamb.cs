@@ -7,18 +7,20 @@
     using System.Threading.Tasks;
 
     using EasterFarm.Models.Contracts;
+    using EasterFarm.Models.MarketPlace;
 
     public class Lamb : Livestock, IEatBerries, IStorable, IMovable
     {
-        public Lamb(MatrixCoords topLeft, char[,] image) 
-            : base(topLeft, image)
+        private static char[,] image = new char[,] {{'π'}};
+        public Lamb(MatrixCoords topLeft, Enum type)
+            : base(topLeft, LivestockType.Lamb)
         {
         }
 
         public override Livestock Clone()
         {
             Lamb original = this;
-            Lamb newLamb = new Lamb(this.TopLeft, new char[0, 0]);
+            Lamb newLamb = new Lamb(this.TopLeft, LivestockType.Lamb);
 
             return newLamb;
         }

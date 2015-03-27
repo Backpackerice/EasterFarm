@@ -10,7 +10,8 @@
 
     public abstract class Byproduct : GameObject, ICookable, IStorable
     {
-        protected Byproduct(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        protected Byproduct(MatrixCoords topLeft) 
+            : base(topLeft)
         {
         }
 

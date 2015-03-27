@@ -14,8 +14,8 @@
         private Enum type;
         private bool isSpoilt;
 
-        protected FarmFood(MatrixCoords topLeft, char[,] image, bool isSpoiled) 
-            : base(topLeft, image)
+        protected FarmFood(MatrixCoords topLeft, bool isSpoiled) 
+            : base(topLeft)
         {
             this.IsSpoilt = isSpoiled;
         }

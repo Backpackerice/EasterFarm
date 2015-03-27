@@ -13,17 +13,16 @@
         private MatrixCoords topLeft;
         private char[,] image;
 
-        protected GameObject(MatrixCoords topLeft, char[,] image)
+        protected GameObject(MatrixCoords topLeft)
         {
             this.topLeft = topLeft;
-            this.image = image;
             this.IsDestroyed = false;
         }
 
         public MatrixCoords TopLeft
         {
             get { return this.topLeft; }
-            public set { this.topLeft = value; }
+            protected set { this.topLeft = value; }
         }
 
         public char[,] Image

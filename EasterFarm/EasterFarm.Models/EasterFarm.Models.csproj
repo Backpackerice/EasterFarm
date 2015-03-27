@@ -49,6 +49,8 @@
     <Compile Include="Contracts\ISellable.cs" />
     <Compile Include="Contracts\IStorable.cs" />
     <Compile Include="FarmManager.cs" />
+    <Compile Include="FarmObjects\Animals\LivestockType.cs" />
+    <Compile Include="FarmObjects\Animals\MovingObject.cs" />
     <Compile Include="FarmObjects\Byproducts\Byproduct.cs" />
     <Compile Include="FarmObjects\Byproducts\ByproductType.cs" />
     <Compile Include="FarmObjects\Byproducts\EggColor.cs" />
@@ -64,8 +66,10 @@
     <Compile Include="FarmObjects\Animals\Rabbit.cs" />
     <Compile Include="FarmObjects\Animals\Villain.cs" />
     <Compile Include="FarmObjects\Animals\Wolf.cs" />
+    <Compile Include="FarmObjects\Food\Blueberry.cs" />
     <Compile Include="FarmObjects\Food\FarmFood.cs" />
     <Compile Include="FarmObjects\Food\FarmFoodType.cs" />
+    <Compile Include="FarmObjects\Food\Raspberry.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="MarketPlace\Category.cs" />
     <Compile Include="MarketPlace\Ingredient.cs" />
