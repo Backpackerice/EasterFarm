@@ -9,7 +9,8 @@
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.MarketPlace;
 
-    public abstract class Livestock : GameObject, IStorable, IMovable
+    public abstract class Livestock : MovingObject, IStorable, IMovable
+
     {
         private Enum type;
 
