@@ -9,7 +9,7 @@
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.MarketPlace;
 
-    public abstract class Livestock : GameObject, IBuyable, IStorable, IMovable
+    public abstract class Livestock : MovingObject, IBuyable, IStorable, IMovable
     {
         protected Livestock(MatrixCoords topLeft, char[,] image)
             : base(topLeft, image)
