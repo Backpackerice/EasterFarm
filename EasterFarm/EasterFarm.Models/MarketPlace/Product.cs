@@ -8,11 +8,26 @@
     {
         private Enum type;
         private int price;
+        private Category category;
 
-        public Product(Enum type, int price)
+        public Product(Enum type, Category category, int price)
         {
             this.Type = type;
             this.Price = price;
+            this.Category = category;
+        }
+
+        public Category Category
+        {
+            get
+            {
+                return this.category;
+            }
+
+            private set
+            {
+                this.category = value;
+            }
         }
 
         public Enum Type

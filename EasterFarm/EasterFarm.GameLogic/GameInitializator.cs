@@ -8,6 +8,7 @@
 
     using EasterFarm.Models;
     using EasterFarm.Models.FarmObjects.Food;
+    using EasterFarm.Models.MarketPlace;
 
     public static class GameInitializator
     {
@@ -16,8 +17,8 @@
             ScreenFrame screenFrame = ScreenFrame.Instance;
             engine.AddGameObject(screenFrame);
 
-            GameObject Raspberry = new Raspberry(new MatrixCoords(1, 4), new char[,] {{'R'}}, false);
-            engine.AddGameObject(Raspberry);
+            GameObject raspberry = new Raspberry(new MatrixCoords(1, 4), new char[,] {{'R'}}, false);
+            engine.AddGameObject(raspberry);
         }
     }
 }

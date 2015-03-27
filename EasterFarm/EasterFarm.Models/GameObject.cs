@@ -23,7 +23,7 @@
         public MatrixCoords TopLeft
         {
             get { return this.topLeft; }
-            protected set { this.topLeft = value; }
+            public set { this.topLeft = value; }
         }
 
         public char[,] Image

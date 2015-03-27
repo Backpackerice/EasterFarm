@@ -8,15 +8,19 @@
 
     using EasterFarm.Models.Contracts;
 
-    public class Lamb : Livestock, IEatBerries, IBuyable, IStorable, IMovable
+    public class Lamb : Livestock, IEatBerries, IStorable, IMovable
     {
-        public Lamb(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        public Lamb(MatrixCoords topLeft, char[,] image) 
+            : base(topLeft, image)
         {
         }
 
-        public void EatBerry()
+        public override Livestock Clone()
         {
-            throw new NotImplementedException();
+            Lamb original = this;
+            Lamb newLamb = new Lamb(this.TopLeft, new char[0, 0]);
+
+            return newLamb;
         }
     }
 }

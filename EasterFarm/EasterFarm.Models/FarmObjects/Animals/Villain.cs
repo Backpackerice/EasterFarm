@@ -10,7 +10,8 @@
 
     public abstract class Villain : GameObject, IMovable
     {
-        protected Villain(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        protected Villain(MatrixCoords topLeft, char[,] image) 
+            : base(topLeft, image)
         {
         }
     }

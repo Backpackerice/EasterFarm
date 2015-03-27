@@ -64,12 +64,10 @@
     <Compile Include="FarmObjects\Animals\Rabbit.cs" />
     <Compile Include="FarmObjects\Animals\Villain.cs" />
     <Compile Include="FarmObjects\Animals\Wolf.cs" />
-    <Compile Include="FarmObjects\Food\Blueberry.cs" />
     <Compile Include="FarmObjects\Food\FarmFood.cs" />
     <Compile Include="FarmObjects\Food\FarmFoodType.cs" />
-    <Compile Include="FarmObjects\Food\Raspberry.cs" />
     <Compile Include="GameObject.cs" />
-    <Compile Include="MarketPlace\LivestockType.cs" />
+    <Compile Include="MarketPlace\Category.cs" />
     <Compile Include="MarketPlace\Ingredient.cs" />
     <Compile Include="MarketPlace\IngredientType.cs" />
     <Compile Include="MarketPlace\Market.cs" />

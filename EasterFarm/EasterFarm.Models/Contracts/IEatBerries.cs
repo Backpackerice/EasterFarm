@@ -1,5 +1,6 @@
 ﻿namespace EasterFarm.Models.Contracts
 {
+    using EasterFarm.Models.FarmObjects.Food;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -8,6 +9,6 @@
 
     public interface IEatBerries
     {
-        void EatBerry();
+        // void EatBerry(FarmFood berry);
     }
 }

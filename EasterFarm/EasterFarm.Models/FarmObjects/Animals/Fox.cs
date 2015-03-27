@@ -10,7 +10,8 @@
 
     public class Fox : Villain, IMovable
     {
-        public Fox(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        public Fox(MatrixCoords topLeft, char[,] image) 
+            : base(topLeft, image)
         {
         }
     }

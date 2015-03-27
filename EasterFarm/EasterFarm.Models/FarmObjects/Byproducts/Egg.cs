@@ -10,7 +10,8 @@
 
     public class Egg : Byproduct, ICookable, IStorable
     {
-        public Egg(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
+        public Egg(MatrixCoords topLeft, char[,] image) 
+            : base(topLeft, image)
         {
         }
     }

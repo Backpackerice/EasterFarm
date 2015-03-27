@@ -11,25 +11,10 @@
     public class Market
     {
         private ICollection<IBuyable> buyableProducts;
-        private FarmManager dealer;
 
-        public Market(FarmManager dealer)
+        public Market()
         {
             this.buyableProducts = new HashSet<IBuyable>();
-            this.Dealer = dealer;
-        }
-
-        public FarmManager Dealer
-        {
-            get
-            {
-                return this.dealer;
-            }
-
-            private set
-            {
-                this.dealer = value;
-            }
         }
 
         public ICollection<IBuyable> BuyableProducts
@@ -54,41 +39,14 @@
         {
             return this.BuyableProducts.FirstOrDefault(x => x.Type == productType);
         }
-
-        public void BuyProducts(IBuyable product, int quantity)
+        public int CalculateCost(ITradeable product, int quantity)
         {
-            int cost = this.CalculateCost(product, quantity);
-            var currency = this.Dealer.GetFromInventoryByType(FarmFoodType.Raspberry);
-
-            if (currency != null && this.Dealer.Inventory[currency] >= cost)
-            {
-                this.Dealer.Inventory[currency] -= cost;
-            }
-            else
-            {
-                throw new InsufficientAmmountException(currency.ToString());
-            }
-
-            this.Dealer.AddToInventory(product);
-        }
-
-        public void SellProducts(ISellable product, int quantity)
-        {
-            int income = this.CalculateCost(product, quantity);
-            var currency = this.Dealer.GetFromInventoryByType(FarmFoodType.Raspberry);
-
-            this.Dealer.RemoveFromInventory(product);
-            this.Dealer.AddMultipleToInventory(currency, income);
+            return product.Price * quantity;
         }
 
         public override string ToString()
         {
             return "Market";
-        }
-
-        private int CalculateCost(ITradeable product, int quantity)
-        {
-            return product.Price * quantity;
         }
     }
 }

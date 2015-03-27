@@ -81,7 +81,7 @@
                         { IngredientType.Flour, 1 },
                         { IngredientType.Cocoa, 2 },
                         { ByproductType.Milk, 1 },
-                        { LivestockType.Rabbit, 1 },
+                        { IngredientType.Rabbit, 1 },
                         { IngredientType.Basket, BasketAmmount }
                     };
 
@@ -91,7 +91,7 @@
                 case PresentType.RabbitWithRibbon:
                     ingredients = new Dictionary<Enum, int>
                     {
-                        { LivestockType.Rabbit, 1 },
+                        { IngredientType.Rabbit, 1 },
                         { IngredientType.Ribbon, 1 },
                         { IngredientType.Basket, BasketAmmount }
                     };
