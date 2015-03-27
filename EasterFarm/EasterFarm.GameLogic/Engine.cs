@@ -48,7 +48,7 @@
                     this.renderer.EnqueueForRendering(gameObject);
                 }
 
-                int[,] map = CreateTopographicMap(typeof(Raspberry));
+                int[,] map = CreateTopographicMap(typeof(FarmFood));
             }
         }
 
@@ -82,7 +82,7 @@
 
             foreach (var gameObject in this.gameObjects)
             {
-                if (gameObject.GetType() == gameObjectType)
+                if (gameObject.GetType().IsSubclassOf(gameObjectType) || gameObject.GetType() == gameObjectType)
                 {
                     map[gameObject.TopLeft.Row, gameObject.TopLeft.Col] = 0;
                     queue.Enqueue(gameObject.TopLeft);

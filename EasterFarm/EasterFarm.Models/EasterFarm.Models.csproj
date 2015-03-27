@@ -49,6 +49,7 @@
     <Compile Include="Contracts\ISellable.cs" />
     <Compile Include="Contracts\IStorable.cs" />
     <Compile Include="FarmManager.cs" />
+    <Compile Include="FarmObjects\Animals\MovingObject.cs" />
     <Compile Include="FarmObjects\Byproducts\Byproduct.cs" />
     <Compile Include="FarmObjects\Byproducts\ByproductType.cs" />
     <Compile Include="FarmObjects\Byproducts\EggColor.cs" />
