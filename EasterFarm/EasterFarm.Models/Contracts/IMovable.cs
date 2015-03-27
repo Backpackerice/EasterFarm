@@ -8,6 +8,6 @@
 
     public interface IMovable
     {
-        //void Move(int[,] map);
+        void Move(int[,] map);
     }
 }

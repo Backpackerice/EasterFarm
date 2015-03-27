@@ -8,7 +8,7 @@
 
     using EasterFarm.Models.Contracts;
 
-    public abstract class Villain : GameObject, IMovable
+    public abstract class Villain : MovingObject, IMovable
     {
         protected Villain(MatrixCoords topLeft, char[,] image) : base(topLeft, image)
         {

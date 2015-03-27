@@ -18,17 +18,25 @@
         private IUserInput userInput;
 
         private ICollection<GameObject> gameObjects;
+        private ICollection<IMovable> movingObjects;
 
         public Engine(IRenderer renderer, IUserInput userInput)
         {
             this.renderer = renderer;
             this.userInput = userInput;
             this.gameObjects = new List<GameObject>();
+            this.movingObjects = new List<IMovable>();
         }
 
         public void AddGameObject(GameObject gameObject)
         {
+            if (gameObject is IMovable)
+            {
+                this.movingObjects.Add(gameObject as IMovable);
+            }
+
             this.gameObjects.Add(gameObject);
+
         }
 
         public void Start()
@@ -49,6 +57,11 @@
                 }
 
                 int[,] map = CreateTopographicMap(typeof(FarmFood));
+
+                foreach (IMovable movingObject in movingObjects)
+                {
+                    movingObject.Move(map);
+                }
             }
         }
 
@@ -98,7 +111,7 @@
                 {
                     for (int j = (col - 1 > 0 ? col - 1 : 0); j <= (col + 1 <= mapWidth - 1 ? col + 1 : mapWidth - 1); j++)
                     {
-                        if (map[i,j] == -1)
+                        if (map[i, j] == -1)
                         {
                             map[i, j] = map[row, col] + 1;
                             queue.Enqueue(new MatrixCoords(i, j));
