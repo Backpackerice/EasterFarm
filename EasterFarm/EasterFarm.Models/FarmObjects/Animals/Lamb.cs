@@ -12,7 +12,7 @@
     public class Lamb : Livestock, IEatBerries, IStorable, IMovable
     {
         private static char[,] image = new char[,] {{'π'}};
-        public Lamb(MatrixCoords topLeft, Enum type)
+        public Lamb(MatrixCoords topLeft)
             : base(topLeft, LivestockType.Lamb)
         {
         }
@@ -20,7 +20,7 @@
         public override Livestock Clone()
         {
             Lamb original = this;
-            Lamb newLamb = new Lamb(this.TopLeft, LivestockType.Lamb);
+            Lamb newLamb = new Lamb(this.TopLeft);
 
             return newLamb;
         }

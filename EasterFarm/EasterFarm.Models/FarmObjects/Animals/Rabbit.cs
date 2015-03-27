@@ -12,7 +12,7 @@
     public class Rabbit : Livestock, ICollectBerries, IStorable, IMovable
     {
         private static char[,] image = new char[,] { { '╓' } };
-        public Rabbit(MatrixCoords topLeft, Enum type)
+        public Rabbit(MatrixCoords topLeft)
             : base(topLeft, LivestockType.Rabbit)
         {
         }
@@ -20,7 +20,7 @@
         public override Livestock Clone()
         {
             Rabbit original = this;
-            Rabbit newRabbit = new Rabbit(this.TopLeft, LivestockType.Rabbit);
+            Rabbit newRabbit = new Rabbit(this.TopLeft);
 
             return newRabbit;
         }

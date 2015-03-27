@@ -13,7 +13,8 @@
     public class Hen : Livestock, IEatBerries, IStorable, IMovable
     {
         private static char[,] image = new char[,] { { '⌠' } };
-        public Hen(MatrixCoords topLeft, Enum type) 
+
+        public Hen(MatrixCoords topLeft) 
             : base(topLeft, LivestockType.Hen)
         {
         }
@@ -21,7 +22,7 @@
         public override Livestock Clone()
         {
             Hen original = this;
-            Hen newHen = new Hen(this.TopLeft, LivestockType.Hen);
+            Hen newHen = new Hen(this.TopLeft);
 
             return newHen;
         }
