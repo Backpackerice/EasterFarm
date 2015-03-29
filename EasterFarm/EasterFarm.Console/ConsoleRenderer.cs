@@ -11,6 +11,7 @@
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.FarmObjects.Animals;
     using EasterFarm.Models.FarmObjects.Food;
+    using EasterFarm.Models.FarmObjects.Byproducts;
 
     public class ConsoleRenderer : IRenderer
     {
@@ -23,8 +24,14 @@
             { typeof(Wolf), new char[,] { {'╪'} } },
             { typeof(Blueberry), new char[,] { { '♠' } } },
             { typeof(Raspberry), new char[,] { { '♣' } } },
-            { typeof(ScreenFrame), ScreenFrame.Instance.Image }
+            { typeof(ScreenFrame), ScreenFrame.Instance.Image },
+            { typeof(Egg), new char[,] {{'#'}}},
+            { typeof(TrophyEgg), new char[,] {{'#'}}},
+            { typeof(EasterEgg), new char[,] {{'#'}}},
+            { typeof(Milk), new char[,] {{'#'}}},
+            { typeof(Villain), new char[,] {{'#'}}},
         };
+        //Added default symbol # because we dont yet know what symbols we are gonna use for the classes.
 
         private int worldRows;
         private int worldCols;
