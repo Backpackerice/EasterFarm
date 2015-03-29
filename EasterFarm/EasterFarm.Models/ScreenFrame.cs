@@ -11,21 +11,29 @@
     // The ScreenFrame class implements the Singleton design pattern.
     public sealed class ScreenFrame : GameObject
     {
-        private static readonly MatrixCoords topLeft = new MatrixCoords(0, 0);
+        private static readonly MatrixCoords topLeft;
+        private static ScreenFrame instance;
 
-        private static readonly char[,] image = GetScreenFrameImage();
-
-        private static readonly ScreenFrame instance = new ScreenFrame();
+        static ScreenFrame()
+        {
+            topLeft = new MatrixCoords(0, 0);
+        }
 
         private ScreenFrame()
             : base(topLeft)
         {
+            this.Image = GetScreenFrameImage();
         }
 
         public static ScreenFrame Instance
         {
             get
             {
+                if (instance == null)
+                {
+                    instance = new ScreenFrame();
+                }
+
                 return instance;
             }
         }

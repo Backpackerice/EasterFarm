@@ -27,6 +27,7 @@
             gameObject = new Hen(new MatrixCoords(10, 10));
             engine.AddGameObject(gameObject);
 
+            //TODO : .Clone() instead? - Prototype design pattern
             gameObject = new Hen(new MatrixCoords(9, 9));
             engine.AddGameObject(gameObject);
 

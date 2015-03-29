@@ -135,83 +135,22 @@
         public void SetInitialGameObjects()
         {
             this.farmManager = new FarmManager();
-            this.market = new Market();
-            var productFactory = new ProductFactory();
-            this.FillMarket(productFactory);
-            this.presentFactory = new PresentFactory(farmManager);
-        }
 
-        // Farm
-        // TODO : move each method to each livestock class
-        public void HandleCollisionWithBerry(Livestock livestock, FarmFood berry)
-        {
-            berry.IsDestroyed = true;
+            this.market = Market.Instance;
+            var ingredientFactory = EasterFarm.Models.MarketPlace.MarketFactory.Get(Category.Ingredient);
+            this.FillMarketCategory(ingredientFactory, IngredientType.Basket);
 
-            if (!berry.IsSpoilt)
-            {
-                var livestockType = livestock.GetType().ToString();
-                switch (livestockType)
-                {
-                    case "Hen":
-                        EggColor color = EggColor.None;
-
-                        if ((FarmFoodType)berry.Type == FarmFoodType.Blueberry)
-                        {
-                            color = EggColor.Blue;
-                        }
-                        else if ((FarmFoodType)berry.Type == FarmFoodType.Raspberry)
-                        {
-                            color = EggColor.Red;
-                        }
-
-                        var egg = new EasterEgg(livestock.TopLeft, color);
-                        farmManager.AddToInventory(egg);
-                        break;
-                    case "Rabbit":
-                        farmManager.AddToInventory(berry);
-                        break;
-                    case "Lamb":
-                        var milk = new Milk(livestock.TopLeft);
-                        farmManager.AddToInventory(milk);
-                        break;
-                }
-            }
+            this.presentFactory = new PresentFactory();
         }
 
         // Market
-        public void BuyProducts(IBuyable product, int quantity)
+        // TODO : foreach category - more abstract?
+        private void FillMarketCategory(ProductFactory productFactory, Enum productType)
         {
-            int cost = this.market.CalculateCost(product, quantity);
-            var currency = this.farmManager.GetFromInventoryByType(FarmFoodType.Raspberry);
-
-            if (currency != null && this.farmManager.Inventory[currency] >= cost)
+            foreach (Enum type in Enum.GetValues(productType.GetType()))
             {
-                this.farmManager.Inventory[currency] -= cost;
-            }
-            else
-            {
-                throw new InsufficientAmmountException(currency.ToString());
-            }
-
-            this.farmManager.AddToInventory(product);
-        }
-
-        public void SellProducts(ISellable product, int quantity)
-        {
-            int income = this.market.CalculateCost(product, quantity);
-            var currency = this.farmManager.GetFromInventoryByType(FarmFoodType.Raspberry);
-
-            this.farmManager.RemoveFromInventory(product);
-            this.farmManager.AddMultipleToInventory(currency, income);
-        }
-
-        // TODO : foreach category?
-        private void FillMarket(ProductFactory productFactory)
-        {
-            foreach (IngredientType ingredientType in Enum.GetValues(typeof(IngredientType)))
-            {
-                IBuyable product = productFactory.Get(ingredientType);
-                this.market.AddProduct(product);
+                IBuyable ingredient = productFactory.Get(type);
+                this.market.AddProduct(ingredient);
             }
         }
     }

@@ -10,7 +10,7 @@
     public class Present : ISellable, IStorable
     {
         private const int NeededBaskets = 1;
-        private readonly Dictionary<Enum, int> neededIngredients;
+        private readonly Dictionary<Enum, int> ingredients;
 
         private int price;
         private Enum type;
@@ -19,7 +19,7 @@
         {
             this.Type = presentType;
             this.Price = price;
-            this.neededIngredients = new Dictionary<Enum, int>(ingredients);
+            this.ingredients = new Dictionary<Enum, int>(ingredients);
         }
 
         public int Price
@@ -48,11 +48,11 @@
             }
         }
 
-        public Dictionary<Enum, int> NeededIngredients
+        public Dictionary<Enum, int> Ingredients
         {
             get
             {
-                return this.neededIngredients;
+                return this.ingredients;
             }
         }
     }

@@ -1,17 +1,17 @@
 ﻿namespace EasterFarm.Models.FarmObjects.Food
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using EasterFarm.Models.FarmObjects.Byproducts;
 
     public class Blueberry : FarmFood
     {
-        private static char[,] image = new char[,] { { '♠' } };
         public Blueberry(MatrixCoords topLeft, bool isSpoiled) 
-            : base(topLeft, isSpoiled)
+            : base(topLeft, FarmFoodType.Blueberry, isSpoiled)
         {
+        }
+
+        public override EggColor GetEggColor()
+        {
+            return EggColor.Blue;
         }
     }
 }

@@ -8,9 +8,9 @@
 
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.MarketPlace;
+    using EasterFarm.Models.FarmObjects.Food;
 
     public abstract class Livestock : MovingObject, IStorable, IMovable
-
     {
         private Enum type;
 
@@ -34,5 +34,7 @@
         }
 
         public abstract Livestock Clone();
+
+        public abstract void HandleBerry(FarmFood berry);
     }
 }

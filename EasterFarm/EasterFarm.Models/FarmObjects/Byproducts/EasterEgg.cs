@@ -1,11 +1,5 @@
 ﻿namespace EasterFarm.Models.FarmObjects.Byproducts
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     using EasterFarm.Models.Contracts;
 
     public class EasterEgg : Egg, ICookable, IStorable
@@ -16,6 +10,7 @@
             : base(topLeft)
         {
             this.Color = color;
+            this.Type = ByproductType.EasterEgg;
         }
 
         public EggColor Color

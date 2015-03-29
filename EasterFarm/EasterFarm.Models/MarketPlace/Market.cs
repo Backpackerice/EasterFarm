@@ -8,13 +8,27 @@
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.FarmObjects.Food;
 
-    public class Market
+    public sealed class Market
     {
+        private static Market marketInstance;
         private ICollection<IBuyable> buyableProducts;
 
-        public Market()
+        private Market()
         {
             this.buyableProducts = new HashSet<IBuyable>();
+        }
+
+        public static Market Instance
+        {
+            get
+            {
+                if (marketInstance == null)
+                {
+                    marketInstance = new Market();
+                }
+
+                return marketInstance;
+            }
         }
 
         public ICollection<IBuyable> BuyableProducts
