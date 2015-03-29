@@ -9,14 +9,47 @@
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.FarmObjects.Food;
     using EasterFarm.Models.MarketPlace;
+    using EasterFarm.Models.FarmObjects.Byproducts;
 
     public class Hen : Livestock, IEatBerries, IStorable, IMovable
     {
-        private static char[,] image = new char[,] { { '⌠' } };
+        private bool hasEgg;
 
-        public Hen(MatrixCoords topLeft) 
+        public Hen(MatrixCoords topLeft)
             : base(topLeft, LivestockType.Hen)
         {
+            this.HasEgg = false;
+        }
+
+        public bool HasEgg
+        {
+            get
+            {
+                return this.hasEgg;
+            }
+
+            private set
+            {
+                this.hasEgg = value;
+            }
+        }
+
+        // TODO: move to engine?
+        public override void HandleBerry(FarmFood berry)
+        {
+            berry.IsDestroyed = true;
+
+            if (!berry.IsSpoilt)
+            {
+                this.HasEgg = true;
+            }
+        }
+
+        public Egg LayEgg(EggColor color)
+        {          
+            this.HasEgg = false;
+
+            return new EasterEgg(this.TopLeft, color);
         }
 
         public override Livestock Clone()

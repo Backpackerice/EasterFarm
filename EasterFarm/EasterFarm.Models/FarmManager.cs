@@ -21,6 +21,7 @@
         // shoot villains
         // collect eggs
         // milks the lamb
+        // add name?
 
         private const string NoItemInInventoryExcMsg = "No such item in inventory: ";
 
@@ -111,6 +112,51 @@
         public IStorable GetFromInventoryByType(Enum type)
         {
             return this.Inventory.FirstOrDefault(x => x.Key.Type == type).Key;
+        }
+
+        public void MakePresent(PresentType presentType, PresentFactory presentFactory)
+        {
+            foreach (var ingredient in presentFactory.Recepies[presentType])
+            {
+                var item = this.GetFromInventoryByType(ingredient.Key);
+                if (item != null)
+                {
+                    this.SubtractFromInventoryItem(item, ingredient.Value);
+                }
+                else
+                {
+                    throw new InsufficientAmmountException(ingredient.Key.ToString());
+                }
+            }
+
+            var present = presentFactory.Get(presentType);
+            this.AddToInventory(present);
+        }
+
+        public void BuyProducts(IBuyable product, int quantity, Market market)
+        {
+            int cost = market.CalculateCost(product, quantity);
+            var currency = this.GetFromInventoryByType(FarmFoodType.Raspberry);
+
+            if (currency != null && this.Inventory[currency] >= cost)
+            {
+                this.Inventory[currency] -= cost;
+            }
+            else
+            {
+                throw new InsufficientAmmountException(currency.ToString());
+            }
+
+            this.AddToInventory(product);
+        }
+
+        public void SellProducts(ISellable product, int quantity, Market market)
+        {
+            int income = market.CalculateCost(product, quantity);
+            var currency = this.GetFromInventoryByType(FarmFoodType.Raspberry);
+
+            this.RemoveFromInventory(product);
+            this.AddMultipleToInventory(currency, income);
         }
     }
 }

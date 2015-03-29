@@ -9,9 +9,23 @@
     using EasterFarm.GameLogic.Contracts;
     using EasterFarm.Models;
     using EasterFarm.Models.Contracts;
+    using EasterFarm.Models.FarmObjects.Animals;
+    using EasterFarm.Models.FarmObjects.Food;
 
     public class ConsoleRenderer : IRenderer
     {
+        private readonly Dictionary<Type, char[,]> images = new Dictionary<Type, char[,]>
+        {
+            { typeof(Hen), new char[,] { { '⌠' } } },
+            { typeof(Fox), new char[,] { { '¥' } } },
+            { typeof(Lamb), new char[,]  { {'π'} } },
+            { typeof(Rabbit), new char[,] { { '╓' } } },
+            { typeof(Wolf), new char[,] { {'╪'} } },
+            { typeof(Blueberry), new char[,] { { '♠' } } },
+            { typeof(Raspberry), new char[,] { { '♣' } } },
+            { typeof(ScreenFrame), ScreenFrame.Instance.Image }
+        };
+
         private int worldRows;
         private int worldCols;
         private char[,] renderMatrix;
@@ -64,7 +78,7 @@
 
         public void EnqueueForRendering(IRenderable obj)
         {
-            char[,] objImage = obj.Image;
+            char[,] objImage = images[obj.GetType()];
 
             int imageRows = objImage.GetLength(0);
             int imageCols = objImage.GetLength(1);

@@ -4,7 +4,7 @@
     {
         PlainEgg,
         EasterEgg,
-        TriphyEgg,
+        TrophyEgg,
         Milk,
     }
 }

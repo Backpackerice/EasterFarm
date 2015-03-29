@@ -1,23 +1,20 @@
 ﻿namespace EasterFarm.Models.FarmObjects.Food
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     using EasterFarm.Models.Contracts;
-    using EasterFarm.Models.MarketPlace;
+    using EasterFarm.Models.FarmObjects.Byproducts;
 
     public abstract class FarmFood : GameObject, IStorable
     {
         private Enum type;
         private bool isSpoilt;
 
-        protected FarmFood(MatrixCoords topLeft, bool isSpoiled) 
+        protected FarmFood(MatrixCoords topLeft, Enum type, bool isSpoiled)
             : base(topLeft)
         {
             this.IsSpoilt = isSpoiled;
+            this.Type = type;
         }
 
         public bool IsSpoilt
@@ -45,5 +42,7 @@
                 this.type = value;
             }
         }
+
+        public abstract EggColor GetEggColor();
     }
 }

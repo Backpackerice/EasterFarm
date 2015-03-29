@@ -8,6 +8,7 @@
 
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.MarketPlace;
+    using EasterFarm.Models.FarmObjects.Food;
 
     public class Rabbit : Livestock, ICollectBerries, IStorable, IMovable
     {
@@ -15,6 +16,11 @@
         public Rabbit(MatrixCoords topLeft)
             : base(topLeft, LivestockType.Rabbit)
         {
+        }
+
+        public override void HandleBerry(FarmFood berry)
+        {
+            berry.IsDestroyed = true;
         }
 
         public override Livestock Clone()
