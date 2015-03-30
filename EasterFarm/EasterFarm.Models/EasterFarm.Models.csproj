@@ -83,6 +83,7 @@
     <Compile Include="Presents\Present.cs" />
     <Compile Include="Presents\PresentFactory.cs" />
     <Compile Include="Presents\PresentType.cs" />
+    <Compile Include="Presents\RecipeConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenFrame.cs" />
   </ItemGroup>

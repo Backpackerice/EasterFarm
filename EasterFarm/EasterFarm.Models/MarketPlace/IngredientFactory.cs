@@ -6,22 +6,24 @@
 
     public class IngredientFactory : ProductFactory
     {
+        public const string InvalidProductTypeExcMsg = "The ingredient you're trying to make cannot currently be produced by this factory.";
+
         public override IBuyable Get(Enum productType)
         {
             switch ((IngredientType)productType)
             {
                 case IngredientType.Basket:
-                    return new Ingredient(IngredientType.Basket, Category.Ingredient, (int)IngredientType.Basket);
+                    return new Ingredient(IngredientType.Basket, (int)IngredientType.Basket);
                 case IngredientType.Cocoa:
-                    return new Ingredient(IngredientType.Cocoa, Category.Ingredient, (int)IngredientType.Cocoa);
+                    return new Ingredient(IngredientType.Cocoa, (int)IngredientType.Cocoa);
                 case IngredientType.Ribbon:
-                    return new Ingredient(IngredientType.Ribbon, Category.Ingredient, (int)IngredientType.Ribbon);
+                    return new Ingredient(IngredientType.Ribbon, (int)IngredientType.Ribbon);
                 case IngredientType.Flour:
-                    return new Ingredient(IngredientType.Flour, Category.Ingredient, (int)IngredientType.Flour);
+                    return new Ingredient(IngredientType.Flour, (int)IngredientType.Flour);
                 case IngredientType.Rabbit:
-                    return new Ingredient(IngredientType.Rabbit, Category.Ingredient, (int)IngredientType.Rabbit);
+                    return new Ingredient(IngredientType.Rabbit, (int)IngredientType.Rabbit);
                 default:
-                    return null;
+                    throw new InvalidOperationException(InvalidProductTypeExcMsg);
             }
         }
     }

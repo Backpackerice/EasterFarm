@@ -28,7 +28,7 @@
             IRenderer renderer = new ConsoleRenderer(Constants.WorldRows, Constants.WorldCols);
 
             // Assigning the user input to the keyboard.
-            IUserInput userInput = new KeyboardInput();
+            IUserKeyboardInput userInput = new KeyboardInput();
 
             // Creating an engine of the game.
             Engine engine = new Engine(renderer, userInput);

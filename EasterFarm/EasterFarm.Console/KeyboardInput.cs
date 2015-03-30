@@ -8,7 +8,7 @@
 
     using EasterFarm.GameLogic.Contracts;
 
-    public class KeyboardInput : IUserInput
+    public class KeyboardInput : IUserKeyboardInput
     {
         public event EventHandler OnLeftPressed;
 

@@ -116,7 +116,7 @@
 
         public void MakePresent(PresentType presentType, PresentFactory presentFactory)
         {
-            foreach (var ingredient in presentFactory.Recepies[presentType])
+            foreach (var ingredient in RecipeConstants.Recipes[presentType])
             {
                 var item = this.GetFromInventoryByType(ingredient.Key);
                 if (item != null)

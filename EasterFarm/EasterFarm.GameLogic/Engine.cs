@@ -19,7 +19,7 @@
     public class Engine
     {
         private IRenderer renderer;
-        private IUserInput userInput;
+        private IUserKeyboardInput userInput;
         private FarmManager farmManager;
         private Market market;
         private PresentFactory presentFactory;
@@ -27,7 +27,7 @@
         private ICollection<GameObject> gameObjects;
         private ICollection<IMovable> movingObjects;
 
-        public Engine(IRenderer renderer, IUserInput userInput)
+        public Engine(IRenderer renderer, IUserKeyboardInput userInput)
         {
             this.renderer = renderer;
             this.userInput = userInput;
