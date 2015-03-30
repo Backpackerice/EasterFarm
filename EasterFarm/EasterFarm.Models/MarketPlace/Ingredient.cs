@@ -4,8 +4,8 @@
 
     public class Ingredient : Product, ICookable, IBuyable, IStorable
     {
-        public Ingredient(IngredientType type, Category category, int price)
-            : base(type, category, price)
+        public Ingredient(IngredientType type, int price)
+            : base(type, Category.Ingredient, price)
         {
         }
     }
