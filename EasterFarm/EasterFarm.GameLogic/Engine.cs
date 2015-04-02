@@ -18,8 +18,6 @@
 
     public class Engine
     {
-        private IRenderer renderer;
-        private IUserKeyboardInput userInput;
         private FarmManager farmManager;
         private Market market;
         private PresentFactory presentFactory;
@@ -29,11 +27,15 @@
 
         public Engine(IRenderer renderer, IUserKeyboardInput userInput)
         {
-            this.renderer = renderer;
-            this.userInput = userInput;
+            this.Renderer = renderer;
+            this.UserInput = userInput;
             this.gameObjects = new List<GameObject>();
             this.movingObjects = new List<IMovable>();
         }
+
+        internal IRenderer Renderer { get; private set; }
+
+        internal IUserKeyboardInput UserInput { get; private set; }
 
         public void AddGameObject(GameObject gameObject)
         {
@@ -43,7 +45,6 @@
             }
 
             this.gameObjects.Add(gameObject);
-
         }
 
         public void Start()
@@ -52,17 +53,17 @@
 
             while (true)
             {
-                this.renderer.RenderAll();
+                this.Renderer.RenderAll();
 
                 Thread.Sleep(200);
 
-                this.userInput.ProcessInput();
+                this.UserInput.ProcessInput();
 
-                this.renderer.ClearRenderer();
+                this.Renderer.ClearRenderer();
 
                 foreach (var gameObject in gameObjects)
                 {
-                    this.renderer.EnqueueForRendering(gameObject);
+                    this.Renderer.EnqueueForRendering(gameObject);
                 }
 
                 int[,] map = CreateTopographicMap(typeof(FarmFood));
