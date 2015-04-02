@@ -1,41 +1,22 @@
-﻿namespace EasterFarm.Models
+﻿namespace EasterFarm.Console
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     using EasterFarm.Common;
 
     // The ScreenFrame class implements the Singleton design pattern.
-    public sealed class ScreenFrame : GameObject
+    internal sealed class ConsoleFrame
     {
-        private static readonly MatrixCoords topLeft;
-        private static ScreenFrame instance;
+        private static ConsoleFrame instance;
 
-        static ScreenFrame()
-        {
-            topLeft = new MatrixCoords(0, 0);
-        }
-
-        private ScreenFrame()
-            : base(topLeft)
+        private ConsoleFrame()
         {
             this.Image = GetScreenFrameImage();
         }
 
-        public static ScreenFrame Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new ScreenFrame();
-                }
+        public char[,] Image { get; private set; }
 
-                return instance;
-            }
+        public static ConsoleFrame Instance
+        {
+            get { return instance ?? (instance = new ConsoleFrame()); }
         }
 
         private static char[,] GetScreenFrameImage()

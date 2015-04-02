@@ -15,9 +15,6 @@
     {
         public static void Initialize(Engine engine)
         {
-            ScreenFrame screenFrame = ScreenFrame.Instance;
-            engine.AddGameObject(screenFrame);
-
             GameObject gameObject = new Raspberry(new MatrixCoords(1, 4), false);
             engine.AddGameObject(gameObject);
 

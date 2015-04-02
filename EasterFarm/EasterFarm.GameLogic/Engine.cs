@@ -41,7 +41,7 @@
         {
             if (gameObject is IMovable)
             {
-                this.movingObjects.Add(gameObject as IMovable);
+                this.movingObjects.Add((IMovable)gameObject);
             }
 
             this.gameObjects.Add(gameObject);

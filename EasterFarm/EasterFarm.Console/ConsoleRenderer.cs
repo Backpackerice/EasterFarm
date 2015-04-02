@@ -2,9 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
 
     using EasterFarm.GameLogic.Contracts;
     using EasterFarm.Models;
@@ -24,7 +22,6 @@
             { typeof(Wolf), new char[,] { {'╪'} } },
             { typeof(Blueberry), new char[,] { { '♠' } } },
             { typeof(Raspberry), new char[,] { { '♣' } } },
-            { typeof(ScreenFrame), ScreenFrame.Instance.Image },
             { typeof(Egg), new char[,] {{'#'}}},
             { typeof(TrophyEgg), new char[,] {{'#'}}},
             { typeof(EasterEgg), new char[,] {{'#'}}},
@@ -35,7 +32,8 @@
 
         private int worldRows;
         private int worldCols;
-        private char[,] renderMatrix;
+        private readonly char[,] renderMatrix;
+        private readonly ConsoleFrame frame = ConsoleFrame.Instance;
 
         public ConsoleRenderer(int worldRows, int worldCols)
         {
@@ -130,7 +128,7 @@
             {
                 for (int col = 0; col < this.WorldCols; col++)
                 {
-                    this.renderMatrix[row, col] = ' ';
+                    this.renderMatrix[row, col] = frame.Image[row, col];
                 }
             }
         }

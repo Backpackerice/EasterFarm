@@ -45,6 +45,7 @@
     <Compile Include="EasterFarmMain.cs" />
     <Compile Include="KeyboardInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ConsoleFrame.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
