@@ -8,26 +8,11 @@
     public abstract class FarmFood : GameObject, IStorable
     {
         private Enum type;
-        private bool isSpoilt;
 
-        protected FarmFood(MatrixCoords topLeft, Enum type, bool isSpoiled)
+        protected FarmFood(MatrixCoords topLeft, Enum type)
             : base(topLeft)
         {
-            this.IsSpoilt = isSpoiled;
             this.Type = type;
-        }
-
-        public bool IsSpoilt
-        {
-            get
-            {
-                return this.isSpoilt;
-            }
-
-            private set
-            {
-                this.isSpoilt = value;
-            }
         }
 
         public Enum Type
@@ -43,6 +28,6 @@
             }
         }
 
-        public abstract EggColor GetEggColor();
+        public abstract ByproductColor GetColor();
     }
 }

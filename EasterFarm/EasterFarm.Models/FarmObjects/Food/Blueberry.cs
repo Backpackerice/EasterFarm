@@ -4,14 +4,14 @@
 
     public class Blueberry : FarmFood
     {
-        public Blueberry(MatrixCoords topLeft, bool isSpoiled) 
-            : base(topLeft, FarmFoodType.Blueberry, isSpoiled)
+        public Blueberry(MatrixCoords topLeft) 
+            : base(topLeft, FarmFoodType.Blueberry)
         {
         }
 
-        public override EggColor GetEggColor()
+        public override ByproductColor GetColor()
         {
-            return EggColor.Blue;
+            return ByproductColor.Blue;
         }
     }
 }

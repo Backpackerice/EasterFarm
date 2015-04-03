@@ -1,4 +1,6 @@
-﻿namespace EasterFarm.GameLogic
+﻿using System.Runtime.Remoting.Channels;
+
+namespace EasterFarm.GameLogic
 {
     using System;
     using System.Collections.Generic;
@@ -22,15 +24,19 @@
         private Market market;
         private PresentFactory presentFactory;
 
-        private ICollection<GameObject> gameObjects;
-        private ICollection<IMovable> movingObjects;
+        private readonly ICollection<GameObject> gameObjects;
+        private readonly ICollection<FarmFood> farmFoods;
+        private readonly ICollection<Livestock> livestocks;
+        private readonly ICollection<Villain> villains;
 
         public Engine(IRenderer renderer, IUserKeyboardInput userInput)
         {
             this.Renderer = renderer;
             this.UserInput = userInput;
             this.gameObjects = new List<GameObject>();
-            this.movingObjects = new List<IMovable>();
+            this.farmFoods = new List<FarmFood>();
+            this.livestocks = new List<Livestock>();
+            this.villains = new List<Villain>();
         }
 
         internal IRenderer Renderer { get; private set; }
@@ -39,9 +45,21 @@
 
         public void AddGameObject(GameObject gameObject)
         {
-            if (gameObject is IMovable)
+            var farmFood = gameObject as FarmFood;
+            if (farmFood != null)
             {
-                this.movingObjects.Add((IMovable)gameObject);
+                this.farmFoods.Add(farmFood);
+            }
+            var livestock = gameObject as Livestock;
+            if (livestock != null)
+            {
+                this.livestocks.Add(livestock);
+            }
+
+            var villain = gameObject as Villain;
+            if (villain != null)
+            {
+                this.villains.Add(villain);
             }
 
             this.gameObjects.Add(gameObject);
@@ -66,12 +84,39 @@
                     this.Renderer.EnqueueForRendering(gameObject);
                 }
 
-                int[,] map = CreateTopographicMap(typeof(FarmFood));
+                this.Seek(livestocks, typeof(FarmFood));
+                this.Destroy(livestocks,farmFoods);
 
-                foreach (IMovable movingObject in movingObjects)
+                this.Seek(villains, typeof(Livestock));
+                this.Destroy(villains, livestocks);
+            }
+        }
+
+        private void Destroy(IEnumerable<GameObject> destroyers, IEnumerable<GameObject> destroyables)
+        {
+            foreach (var destroyable in destroyables)
+            {
+                foreach (var destroyer in destroyers)
                 {
-                    movingObject.Move(map);
+                    if (destroyable.TopLeft == destroyer.TopLeft)
+                    {
+                        destroyable.IsDestroyed = true;
+                    }
                 }
+            }
+
+            //foreach (var destroyable in destroyables)
+            //{
+            //    this.gameObjects.Remove(destroyable);
+            //}
+        }
+
+        private void Seek(IEnumerable<Animal> chasers, Type targetType)
+        {
+            var map = this.CreateTopographicMap(targetType);
+            foreach (var chaser in chasers)
+            {
+                chaser.Move(map);
             }
         }
 

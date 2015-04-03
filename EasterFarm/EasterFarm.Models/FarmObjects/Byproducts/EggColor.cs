@@ -1,6 +1,6 @@
 ﻿namespace EasterFarm.Models.FarmObjects.Byproducts
 {
-    public enum EggColor
+    public enum ByproductColor
     {
         None,
         Red,

@@ -1,4 +1,6 @@
-﻿namespace EasterFarm.Models.FarmObjects.Animals
+﻿using EasterFarm.Models.FarmObjects.Byproducts;
+
+namespace EasterFarm.Models.FarmObjects.Animals
 {
     using System;
     using System.Collections.Generic;
@@ -10,7 +12,7 @@
     using EasterFarm.Models.MarketPlace;
     using EasterFarm.Models.FarmObjects.Food;
 
-    public abstract class Livestock : MovingObject, IStorable, IMovable
+    public abstract class Livestock : Animal, IStorable, IMovable, IProduce
     {
         private Enum type;
 
@@ -35,6 +37,6 @@
 
         public abstract Livestock Clone();
 
-        public abstract void HandleBerry(FarmFood berry);
+        public abstract Byproduct Produce(ByproductColor color);
     }
 }

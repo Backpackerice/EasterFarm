@@ -4,7 +4,7 @@
 
     public class TrophyEgg : EasterEgg, ICookable, IStorable
     {
-        public TrophyEgg(MatrixCoords topLeft, EggColor color) 
+        public TrophyEgg(MatrixCoords topLeft, ByproductColor color) 
             : base(topLeft, color)
         {
             this.Type = ByproductType.TrophyEgg;

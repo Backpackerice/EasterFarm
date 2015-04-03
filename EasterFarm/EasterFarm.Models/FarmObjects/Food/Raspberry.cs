@@ -4,14 +4,14 @@
 
     public class Raspberry : FarmFood
     {
-        public Raspberry(MatrixCoords topLeft, bool isSpoiled) 
-            : base(topLeft, FarmFoodType.Raspberry, isSpoiled)
+        public Raspberry(MatrixCoords topLeft)
+            : base(topLeft, FarmFoodType.Raspberry)
         {
         }
 
-        public override EggColor GetEggColor()
+        public override ByproductColor GetColor()
         {
-            return EggColor.Red;
+            return ByproductColor.Red;
         }
     }
 }

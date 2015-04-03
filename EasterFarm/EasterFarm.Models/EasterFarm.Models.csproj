@@ -44,6 +44,7 @@
     <Compile Include="Contracts\ICookable.cs" />
     <Compile Include="Contracts\IEatBerries.cs" />
     <Compile Include="Contracts\IMovable.cs" />
+    <Compile Include="Contracts\IProduce.cs" />
     <Compile Include="MarketPlace\ProductFactory.cs" />
     <Compile Include="Contracts\ITradeable.cs" />
     <Compile Include="Contracts\IRenderable.cs" />
@@ -51,7 +52,7 @@
     <Compile Include="Contracts\IStorable.cs" />
     <Compile Include="FarmManager.cs" />
     <Compile Include="FarmObjects\Animals\LivestockType.cs" />
-    <Compile Include="FarmObjects\Animals\MovingObject.cs" />
+    <Compile Include="FarmObjects\Animals\Animal.cs" />
     <Compile Include="FarmObjects\Byproducts\Byproduct.cs" />
     <Compile Include="FarmObjects\Byproducts\ByproductType.cs" />
     <Compile Include="FarmObjects\Byproducts\EggColor.cs" />
@@ -93,7 +94,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ModelsDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

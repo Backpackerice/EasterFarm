@@ -10,26 +10,13 @@
 
     public abstract class GameObject : IRenderable
     {
-        private MatrixCoords topLeft;
-        private char[,] image;
-
         protected GameObject(MatrixCoords topLeft)
         {
-            this.topLeft = topLeft;
+            this.TopLeft = topLeft;
             this.IsDestroyed = false;
         }
 
-        public MatrixCoords TopLeft
-        {
-            get { return this.topLeft; }
-            protected set { this.topLeft = value; }
-        }
-
-        public char[,] Image
-        {
-            get { return this.image; }
-            protected set { this.image = value; }
-        }
+        public MatrixCoords TopLeft { get; protected set; }
 
         public bool IsDestroyed { get; set; }
     }

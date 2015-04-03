@@ -1,8 +1,6 @@
 ﻿namespace EasterFarm.Models.FarmObjects.Animals
 {
-    using EasterFarm.Models.Contracts;
-
-    public abstract class Villain : MovingObject, IMovable
+    public abstract class Villain : Animal
     {
         protected Villain(MatrixCoords topLeft) 
             : base(topLeft)

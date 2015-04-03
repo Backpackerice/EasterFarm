@@ -4,16 +4,16 @@
 
     public class EasterEgg : Egg, ICookable, IStorable
     {
-        private EggColor color;
+        private ByproductColor color;
 
-        public EasterEgg(MatrixCoords topLeft, EggColor color) 
+        public EasterEgg(MatrixCoords topLeft, ByproductColor color) 
             : base(topLeft)
         {
             this.Color = color;
             this.Type = ByproductType.EasterEgg;
         }
 
-        public EggColor Color
+        public ByproductColor Color
         {
             get
             {

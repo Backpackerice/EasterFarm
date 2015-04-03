@@ -2,14 +2,14 @@
 {
     using EasterFarm.Models.Contracts;
 
-    public abstract class MovingObject : GameObject, IMovable
+    public abstract class Animal : GameObject, IMovable
     {
-        protected MovingObject(MatrixCoords topLeft) 
+        protected Animal(MatrixCoords topLeft) 
             : base(topLeft)
         {
         }
 
-        public void Move(int[,] map)
+        public virtual void Move(int[,] map)
         {
             int mapHeight = map.GetLength(0);
             int mapWidth = map.GetLength(1);
