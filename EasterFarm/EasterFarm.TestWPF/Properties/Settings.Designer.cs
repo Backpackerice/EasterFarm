@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestCanvas.Properties
+namespace EasterFarm.TestWPF.Properties
 {
 
 

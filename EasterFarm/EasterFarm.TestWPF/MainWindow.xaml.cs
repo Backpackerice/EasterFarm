@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TestCanvas
+namespace EasterFarm.TestWPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,7 +23,7 @@ namespace TestCanvas
     {
         public MainWindow()
         {
-            InitializeComponent();
+            // InitializeComponent();
         }
     }
 }
