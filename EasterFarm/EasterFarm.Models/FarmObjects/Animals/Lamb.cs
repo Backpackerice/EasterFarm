@@ -37,11 +37,7 @@
         public override void HandleBerry(FarmFood berry)
         {
             berry.IsDestroyed = true;
-
-            if (!berry.IsSpoilt)
-            {
-                this.HasMilk = true;
-            }
+            this.HasMilk = true;
         }
 
         public Milk ProduceMilk()

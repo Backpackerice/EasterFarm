@@ -38,11 +38,7 @@
         public override void HandleBerry(FarmFood berry)
         {
             berry.IsDestroyed = true;
-
-            if (!berry.IsSpoilt)
-            {
-                this.HasEgg = true;
-            }
+            this.HasEgg = true;
         }
 
         public Egg LayEgg(EggColor color)
