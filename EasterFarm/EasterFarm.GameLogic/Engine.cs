@@ -49,6 +49,11 @@ namespace EasterFarm.GameLogic
 
         public void AddGameObject(GameObject gameObject)
         {
+            if (gameObject == null)
+            {
+                return;
+            }
+
             var farmFood = gameObject as FarmFood;
             if (farmFood != null)
             {
@@ -239,28 +244,36 @@ namespace EasterFarm.GameLogic
         // TODO: Introduce difficulty and remove the hardcode from this method.
         private GameObject ProduceNewGameObject()
         {
-            int next = this.random.Next(0, 20);
-            if (next == 0)
+            int next = this.random.Next(0, Constants.Difficulty);
+
+            if (next == 0) // On each n-th cicle on avarage will produce a new object.
             {
-                return new Wolf(GetRandomMatrixCoords());
+                next = random.Next(0, Constants.Difficulty);
+
+                if (next < Constants.DifficultyLevel)
+                {
+                    return new Wolf(GetRandomMatrixCoords());
+                }
+
+                if (next < Constants.DifficultyLevel * 2)
+                {
+                    return new Fox(GetRandomMatrixCoords());
+                }
+
+                if (next < (2*Constants.DifficultyLevel + Constants.Difficulty) / 2)
+                {
+                    return new Raspberry(GetRandomMatrixCoords());
+                }
+
+                return new Blueberry(GetRandomMatrixCoords());
             }
 
-            if (next == 1)
-            {
-                return new Fox(GetRandomMatrixCoords());
-            }
-
-            if (next < 11)
-            {
-                return new Raspberry(GetRandomMatrixCoords());
-            }
-
-            return new Blueberry(GetRandomMatrixCoords());
+            return null;
         }
 
         private MatrixCoords GetRandomMatrixCoords()
         {
-            return new MatrixCoords(random.Next(1, Constants.WorldRows - 1), random.Next(1, (int)(Constants.WorldCols*Constants.LeftRightScreenRatio)));
+            return new MatrixCoords(random.Next(1, Constants.WorldRows - 1), random.Next(1, (int)(Constants.WorldCols * Constants.LeftRightScreenRatio)));
         }
     }
 }
