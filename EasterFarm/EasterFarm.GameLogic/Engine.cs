@@ -23,6 +23,7 @@ namespace EasterFarm.GameLogic
         private FarmManager farmManager;
         private Market market;
         private PresentFactory presentFactory;
+        private Random random;
 
         private readonly HashSet<GameObject> gameObjects;
         private readonly HashSet<FarmFood> farmFoods;
@@ -34,6 +35,7 @@ namespace EasterFarm.GameLogic
         {
             this.Renderer = renderer;
             this.UserInput = userInput;
+            this.random = new Random();
             this.gameObjects = new HashSet<GameObject>();
             this.farmFoods = new HashSet<FarmFood>();
             this.livestocks = new HashSet<Livestock>();
@@ -100,6 +102,8 @@ namespace EasterFarm.GameLogic
                 this.Collide(villains, livestocks);
 
                 ClearCollections();
+
+                this.AddGameObject(ProduceNewGameObject());
             }
         }
 
@@ -230,6 +234,33 @@ namespace EasterFarm.GameLogic
                 IBuyable ingredient = productFactory.Get(type);
                 this.market.AddProduct(ingredient);
             }
+        }
+
+        // TODO: Introduce difficulty and remove the hardcode from this method.
+        private GameObject ProduceNewGameObject()
+        {
+            int next = this.random.Next(0, 20);
+            if (next == 0)
+            {
+                return new Wolf(GetRandomMatrixCoords());
+            }
+
+            if (next == 1)
+            {
+                return new Fox(GetRandomMatrixCoords());
+            }
+
+            if (next < 11)
+            {
+                return new Raspberry(GetRandomMatrixCoords());
+            }
+
+            return new Blueberry(GetRandomMatrixCoords());
+        }
+
+        private MatrixCoords GetRandomMatrixCoords()
+        {
+            return new MatrixCoords(random.Next(1, Constants.WorldRows - 1), random.Next(1, (int)(Constants.WorldCols*Constants.LeftRightScreenRatio)));
         }
     }
 }
