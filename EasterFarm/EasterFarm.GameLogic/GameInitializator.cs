@@ -33,9 +33,6 @@
 
             gameObject = new Hen(new MatrixCoords(8, 8));
             engine.AddGameObject(gameObject);
-
-            gameObject = new Wolf(new MatrixCoords(2, 2));
-            engine.AddGameObject(gameObject);
         }
     }
 }
