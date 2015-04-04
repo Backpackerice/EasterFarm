@@ -1,8 +1,9 @@
 ﻿namespace EasterFarm.Models.FarmObjects.Animals
 {
+    using EasterFarm.Models.FarmObjects.Byproducts;
     using EasterFarm.Models.Contracts;
 
-    public abstract class Animal : GameObject, IMovable
+    public abstract class Animal : GameObject, IMovable, IProduce
     {
         protected Animal(MatrixCoords topLeft) 
             : base(topLeft)
@@ -30,6 +31,13 @@
             }
 
             map[currentRow, currentCol] = int.MaxValue;
+        }
+
+        public bool HasProduct { get; protected set; }
+
+        public virtual Byproduct Produce(Byproducts.ByproductColor color)
+        {
+            return null;
         }
     }
 }

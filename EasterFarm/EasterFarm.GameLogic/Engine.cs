@@ -16,7 +16,7 @@ namespace EasterFarm.GameLogic
     using EasterFarm.Models.FarmObjects.Animals;
     using EasterFarm.Models.FarmObjects.Byproducts;
     using EasterFarm.Models.MarketPlace;
-	using EasterFarm.Models.Presents;
+    using EasterFarm.Models.Presents;
 
     public class Engine
     {
@@ -28,6 +28,7 @@ namespace EasterFarm.GameLogic
         private readonly HashSet<FarmFood> farmFoods;
         private readonly HashSet<Livestock> livestocks;
         private readonly HashSet<Villain> villains;
+        private readonly HashSet<Byproduct> byproducts;
 
         public Engine(IRenderer renderer, IUserKeyboardInput userInput)
         {
@@ -37,6 +38,7 @@ namespace EasterFarm.GameLogic
             this.farmFoods = new HashSet<FarmFood>();
             this.livestocks = new HashSet<Livestock>();
             this.villains = new HashSet<Villain>();
+            this.byproducts = new HashSet<Byproduct>();
         }
 
         internal IRenderer Renderer { get; private set; }
@@ -50,6 +52,7 @@ namespace EasterFarm.GameLogic
             {
                 this.farmFoods.Add(farmFood);
             }
+
             var livestock = gameObject as Livestock;
             if (livestock != null)
             {
@@ -60,6 +63,12 @@ namespace EasterFarm.GameLogic
             if (villain != null)
             {
                 this.villains.Add(villain);
+            }
+
+            var byproduct = gameObject as Byproduct;
+            if (byproduct != null)
+            {
+                this.byproducts.Add(byproduct);
             }
 
             this.gameObjects.Add(gameObject);
@@ -87,8 +96,8 @@ namespace EasterFarm.GameLogic
                 this.Seek(livestocks, typeof(FarmFood));
                 this.Seek(villains, typeof(Livestock));
 
-                this.Destroy(livestocks,farmFoods);
-                this.Destroy(villains, livestocks);
+                this.Collide(livestocks, farmFoods);
+                this.Collide(villains, livestocks);
 
                 ClearCollections();
             }
@@ -99,18 +108,26 @@ namespace EasterFarm.GameLogic
             farmFoods.RemoveWhere(ff => ff.IsDestroyed);
             livestocks.RemoveWhere(ls => ls.IsDestroyed);
             villains.RemoveWhere(v => v.IsDestroyed);
+            byproducts.RemoveWhere(bp => bp.IsDestroyed);
             gameObjects.RemoveWhere(go => go.IsDestroyed);
         }
 
-        private void Destroy(IEnumerable<GameObject> destroyers, IEnumerable<GameObject> destroyables)
+        private void Collide(IEnumerable<Animal> colliders, IEnumerable<GameObject> destroyables)
         {
             foreach (var destroyable in destroyables)
             {
-                foreach (var destroyer in destroyers)
+                foreach (var collider in colliders)
                 {
-                    if (destroyable.TopLeft == destroyer.TopLeft)
+                    if (destroyable.TopLeft == collider.TopLeft)
                     {
                         destroyable.IsDestroyed = true;
+
+                        //TODO: Think of a way to get the color of the destroyable.
+                        Byproduct byproduct = collider.Produce((ByproductColor.Red));
+                        if (byproduct != null)
+                        {
+                            this.AddGameObject(byproduct);
+                        }
                     }
                 }
             }

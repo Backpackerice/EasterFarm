@@ -12,7 +12,7 @@ namespace EasterFarm.Models.FarmObjects.Animals
     using EasterFarm.Models.MarketPlace;
     using EasterFarm.Models.FarmObjects.Food;
 
-    public abstract class Livestock : Animal, IStorable, IMovable, IProduce
+    public abstract class Livestock : Animal, IStorable
     {
         private Enum type;
 
@@ -22,9 +22,6 @@ namespace EasterFarm.Models.FarmObjects.Animals
             this.Type = type;
             this.HasProduct = false;
         }
-
-        public bool HasProduct { get; protected set; }
-
 
         public Enum Type
         {
@@ -40,7 +37,5 @@ namespace EasterFarm.Models.FarmObjects.Animals
         }
 
         public abstract Livestock Clone();
-
-        public abstract Byproduct Produce(ByproductColor color);
     }
 }
