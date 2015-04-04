@@ -122,8 +122,7 @@ namespace EasterFarm.GameLogic
                     {
                         destroyable.IsDestroyed = true;
 
-                        //TODO: Think of a way to get the color of the destroyable.
-                        Byproduct byproduct = collider.Produce((ByproductColor.Red));
+                        Byproduct byproduct = collider.Produce((GetByproductColor(destroyable)));
                         if (byproduct != null)
                         {
                             this.AddGameObject(byproduct);
@@ -131,6 +130,17 @@ namespace EasterFarm.GameLogic
                     }
                 }
             }
+        }
+
+        private ByproductColor GetByproductColor(GameObject gameObject)
+        {
+            FarmFood farmFood = gameObject as FarmFood;
+            if (farmFood != null)
+            {
+                return farmFood.GetColor();
+            }
+
+            return ByproductColor.None;
         }
 
         private void Seek(IEnumerable<Animal> chasers, Type targetType)
