@@ -7,6 +7,13 @@ using System.Windows;
 using System.Windows.Controls;
 using EasterFarm.TestWPF.ViewModels;
 
+using EasterFarm.Common;
+using EasterFarm.GameLogic;
+using EasterFarm.Models;
+using EasterFarm.Models.FarmObjects.Animals;
+using EasterFarm.Models.FarmObjects.Byproducts;
+using EasterFarm.Models.FarmObjects.Food;
+
 namespace EasterFarm.TestWPF
 {
     class GameObjectTemplateSelector : DataTemplateSelector
@@ -21,7 +28,7 @@ namespace EasterFarm.TestWPF
         public override System.Windows.DataTemplate SelectTemplate(object item, System.Windows.DependencyObject container)
         {
             GameObject o = item as GameObject;
-            switch (o.Type)
+            switch (o.GetType().Name)
             {
                 case "Wolf":
                     return WolfTemplate;
@@ -33,7 +40,7 @@ namespace EasterFarm.TestWPF
                     return HenTemplate;
                 case "Raspberry":
                     return RaspberryTemplate;
-                case "Bluepberry":
+                case "Blueberry":
                     return BlueberryTemplate;
                 case "Egg":
                 //    return EggTemplate;

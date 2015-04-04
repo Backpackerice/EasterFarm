@@ -31,5 +31,11 @@
         {
             return (this.Row << 16) ^ this.Col;
         }
+
+        public override string ToString()
+        {
+            string result = String.Format("{0}  {1}", this.Row, this.Col);
+            return result;
+        }
     }
 }

@@ -24,19 +24,19 @@ namespace EasterFarm.GameLogic
         private Market market;
         private PresentFactory presentFactory;
 
-        private readonly ICollection<GameObject> gameObjects;
-        private readonly ICollection<FarmFood> farmFoods;
-        private readonly ICollection<Livestock> livestocks;
-        private readonly ICollection<Villain> villains;
+        private readonly HashSet<GameObject> gameObjects;
+        private readonly HashSet<FarmFood> farmFoods;
+        private readonly HashSet<Livestock> livestocks;
+        private readonly HashSet<Villain> villains;
 
         public Engine(IRenderer renderer, IUserKeyboardInput userInput)
         {
             this.Renderer = renderer;
             this.UserInput = userInput;
-            this.gameObjects = new List<GameObject>();
-            this.farmFoods = new List<FarmFood>();
-            this.livestocks = new List<Livestock>();
-            this.villains = new List<Villain>();
+            this.gameObjects = new HashSet<GameObject>();
+            this.farmFoods = new HashSet<FarmFood>();
+            this.livestocks = new HashSet<Livestock>();
+            this.villains = new HashSet<Villain>();
         }
 
         internal IRenderer Renderer { get; private set; }
@@ -85,11 +85,21 @@ namespace EasterFarm.GameLogic
                 }
 
                 this.Seek(livestocks, typeof(FarmFood));
-                this.Destroy(livestocks,farmFoods);
-
                 this.Seek(villains, typeof(Livestock));
+
+                this.Destroy(livestocks,farmFoods);
                 this.Destroy(villains, livestocks);
+
+                ClearCollections();
             }
+        }
+
+        private void ClearCollections()
+        {
+            farmFoods.RemoveWhere(ff => ff.IsDestroyed);
+            livestocks.RemoveWhere(ls => ls.IsDestroyed);
+            villains.RemoveWhere(v => v.IsDestroyed);
+            gameObjects.RemoveWhere(go => go.IsDestroyed);
         }
 
         private void Destroy(IEnumerable<GameObject> destroyers, IEnumerable<GameObject> destroyables)
@@ -104,11 +114,6 @@ namespace EasterFarm.GameLogic
                     }
                 }
             }
-
-            //foreach (var destroyable in destroyables)
-            //{
-            //    this.gameObjects.Remove(destroyable);
-            //}
         }
 
         private void Seek(IEnumerable<Animal> chasers, Type targetType)

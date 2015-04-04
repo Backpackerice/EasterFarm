@@ -10,6 +10,7 @@ namespace EasterFarm.Models.FarmObjects.Animals
         public Rabbit(MatrixCoords topLeft)
             : base(topLeft, LivestockType.Rabbit)
         {
+            this.HasProduct = false;
         }
 
         public override Livestock Clone()
@@ -21,6 +22,7 @@ namespace EasterFarm.Models.FarmObjects.Animals
 
         public override Byproduct Produce(ByproductColor color)
         {
+            this.HasProduct = false;
             return new TrophyEgg(this.TopLeft, color);
         }
     }

@@ -5,47 +5,58 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using EasterFarm.Common;
+using EasterFarm.GameLogic;
+using EasterFarm.Models;
+using EasterFarm.Models.FarmObjects.Animals;
+using EasterFarm.Models.FarmObjects.Byproducts;
+using EasterFarm.Models.FarmObjects.Food;
+using System.Windows.Media;
+
 namespace EasterFarm.TestWPF.ViewModels
 {
     public class MainViewModel
     {
+        //public ObservableCollection<WPFRenderableObjects> Items { get; set; }
+
         public ObservableCollection<GameObject> Items { get; set; }
+        public WPFEngine wpfEngine { get; set; }
 
         public MainViewModel()
         {
+            // Initializing objects
+
+            this.wpfEngine = new WPFEngine();
             this.Items = new ObservableCollection<GameObject>();
 
-            Items.Add(new GameObject() { Top = 0, Left = 0, Type = "Wolf" });
-            Items.Add(new GameObject() { Top = 120, Left = 120, Type = "Fox" });
-            Items.Add(new GameObject() { Top = 160, Left = 200, Type = "Lamb" });
-            Items.Add(new GameObject() { Top = 400, Left = 280, Type = "Hen" });
-            Items.Add(new GameObject() { Top = 80, Left = 320, Type = "Wolf" });
-            Items.Add(new GameObject() { Top = 120, Left = 40, Type = "Lamb" });
-            Items.Add(new GameObject() { Top = 120, Left = 80, Type = "Lamb" });
-            Items.Add(new GameObject() { Top = 320, Left = 320, Type = "Fox" });
-            Items.Add(new GameObject() { Top = 40, Left = 80, Type = "Raspberry" });
-            Items.Add(new GameObject() { Top = 200, Left = 120, Type = "Bluepberry" });
-            Items.Add(new GameObject() { Top = 240, Left = 120, Type = "Wolf" });
-            Items.Add(new GameObject() { Top = 160, Left = 320, Type = "Raspberry" });
-            Items.Add(new GameObject() { Top = 480, Left = 640, Type = "Wolf" });
-            Items.Add(new GameObject() { Top = 720, Left = 120, Type = "Fox" });
-            Items.Add(new GameObject() { Top = 800, Left = 1240, Type = "Hen" });
-            Items.Add(new GameObject() { Top = 600, Left = 800, Type = "Wolf" });
-            Items.Add(new GameObject() { Top = 840, Left = 400, Type = "Lamb" });
-            Items.Add(new GameObject() { Top = 520, Left = 600, Type = "Hen" });
-            Items.Add(new GameObject() { Top = 120, Left = 240, Type = "Lamb" });
-            Items.Add(new GameObject() { Top = 320, Left = 720, Type = "Fox" });
-            Items.Add(new GameObject() { Top = 400, Left = 640, Type = "Raspberry" });
-            Items.Add(new GameObject() { Top = 600, Left = 320, Type = "Bluepberry" });
-            Items.Add(new GameObject() { Top = 840, Left = 120, Type = "Wolf" });
-            Items.Add(new GameObject() { Top = 760, Left = 720, Type = "Raspberry" });
-        }
-    }
+            wpfEngine.AddGameObject(new Raspberry(new MatrixCoords(1, 4)));
+            wpfEngine.AddGameObject(new Raspberry(new MatrixCoords(11, 20)));
+            wpfEngine.AddGameObject(new Hen(new MatrixCoords(10, 17)));
+            wpfEngine.AddGameObject(new Hen(new MatrixCoords(10, 10)));
+            wpfEngine.AddGameObject(new Hen(new MatrixCoords(9, 9)));
+            wpfEngine.AddGameObject(new Hen(new MatrixCoords(9, 15)));
+            wpfEngine.AddGameObject(new Hen(new MatrixCoords(8, 8)));
 
-    public class GameObject
-    {
-        public int Top { get; set; }
-        public int Left { get; set; }
-        public string Type { get; set; }
+            //pseudoEngine.AddGameObject(new TestingObjects(1, 4, "RaspBerry"));
+            //pseudoEngine.AddGameObject(new TestingObjects(10, 17, "RaspBerry"));
+            //pseudoEngine.AddGameObject(new TestingObjects(10, 10, "Hen"));
+            //pseudoEngine.AddGameObject(new TestingObjects(9, 9, "Hen"));
+            //pseudoEngine.AddGameObject(new TestingObjects(9, 15, "Hen"));
+            //pseudoEngine.AddGameObject(new TestingObjects(8, 8, "Hen"));
+
+            //for (int i = 0; i < wpfEngine.GameObjects.Count; i++)
+            //{
+            //    Items.Add(new WPFRenderableObjects(
+            //        wpfEngine.GameObjects[i].TopLeft.Col * 10,
+            //        wpfEngine.GameObjects[i].TopLeft.Row * 10,
+            //        wpfEngine.GameObjects[i].GetType().Name)
+            //    );
+            //}            
+
+            Items = wpfEngine.GameObjects;
+
+            wpfEngine.Start();
+        }
+
     }
 }
