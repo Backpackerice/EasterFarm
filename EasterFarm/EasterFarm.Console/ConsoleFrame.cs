@@ -23,46 +23,56 @@
         {
             char[,] frame = new char[Constants.WorldRows, Constants.WorldCols];
 
-            for (int row = 1; row < frame.GetLength(0) - 1; row++)
+            for (int row = 0; row < frame.GetLength(0); row++)
             {
-                for (int col = 1; col < frame.GetLength(1) - 1; col++)
+                for (int col = 0; col < frame.GetLength(1); col++)
                 {
-                    frame[row, col] = ' ';
+                    if ((row == 0 || row == frame.GetLength(0) - 1) && (col > 0 && col < frame.GetLength(1) - 1) && col != (int)(Constants.LeftRightScreenRatio * frame.GetLength(1))
+                        || row == (int)(Constants.UpDownScreenRatio * frame.GetLength(0)) && (col > (int)(Constants.LeftRightScreenRatio * frame.GetLength(1)) && col < frame.GetLength(1) - 1))
+                    {
+                        frame[row, col] = '═';
+                    }
+                    else if (row == 0 && col == 0)
+                    {
+                        frame[row, col] = '╔';           
+                    }
+                    else if (row == 0 && col == frame.GetLength(1) - 1)
+                    {
+                        frame[row, col] = '╗'; 
+                    }
+                    else if (row == 0 && col == (int)(Constants.LeftRightScreenRatio * frame.GetLength(1)))
+                    {
+                        frame[row, col] = '╦';
+                    }
+                    else if (row == frame.GetLength(0) - 1 && col == (int)(Constants.LeftRightScreenRatio * frame.GetLength(1)))
+                    {
+                        frame[row, col] = '╩';
+                    }
+                    else if (row == frame.GetLength(0) - 1 && col == 0)
+                    {
+                        frame[row, col] = '╚';
+                    }
+                    else if (row == frame.GetLength(0) - 1 && col == frame.GetLength(1) - 1)
+                    {
+                        frame[row, col] = '╝';
+                    }
+                    else if (col == 0 || col == frame.GetLength(1) - 1 && row != (int)(Constants.UpDownScreenRatio * frame.GetLength(0))
+                        || col == (int)(Constants.LeftRightScreenRatio * frame.GetLength(1)) && row != (int)(Constants.UpDownScreenRatio * frame.GetLength(0)))
+                    {
+                        frame[row, col] = '║';
+                    }
+                    else if (row == (int)(Constants.UpDownScreenRatio * frame.GetLength(0)) && col == (int)(Constants.LeftRightScreenRatio * frame.GetLength(1)))
+                    {
+                        frame[row, col] = '╠';
+                    }
+                    else if (row == (int)(Constants.UpDownScreenRatio * frame.GetLength(0)) && col ==  frame.GetLength(1) - 1)
+                    {
+                        frame[row, col] = '╣';
+                    }
+                    else frame[row, col] = ' '; 
                 }
-            }
-
-            for (int col = 1; col < (int)(Constants.LeftRightScreenRatio * frame.GetLength(1)); col++)
-            {
-                frame[0, col] = '═';
-                frame[frame.GetLength(0) - 1, col] = '═';
-            }
-
-            for (int col = (int)(Constants.LeftRightScreenRatio * frame.GetLength(1)) + 1; col < frame.GetLength(1) - 1; col++)
-            {
-                frame[0, col] = '═';
-                frame[(int)(Constants.UpDownScreeRatio * frame.GetLength(0)), col] = '═';
-                frame[frame.GetLength(0) - 1, col] = '═';
-            }
-
-            for (int row = 1; row < frame.GetLength(0) - 1; row++)
-            {
-                frame[row, 0] = '║';
-                frame[row, (int)(Constants.LeftRightScreenRatio * frame.GetLength(1))] = '║';
-                frame[row, frame.GetLength(1) - 1] = '║';
-            }
-
-            frame[0, 0] = '╔';
-            frame[0, (int)(Constants.LeftRightScreenRatio * frame.GetLength(1))] = '╦';
-            frame[0, frame.GetLength(1) - 1] = '╗';
-
-            frame[(int)(Constants.UpDownScreeRatio * frame.GetLength(0)), (int)(Constants.LeftRightScreenRatio * frame.GetLength(1))] = '╠';
-            frame[(int)(Constants.UpDownScreeRatio * frame.GetLength(0)), frame.GetLength(1) - 1] = '╣';
-
-            frame[frame.GetLength(0) - 1, 0] = '╚';
-            frame[frame.GetLength(0) - 1, (int)(Constants.LeftRightScreenRatio * frame.GetLength(1))] = '╩';
-            frame[frame.GetLength(0) - 1, frame.GetLength(1) - 1] = '╝';
-
-            return frame;
+            }           
+             return frame;
         }
     }
 }
