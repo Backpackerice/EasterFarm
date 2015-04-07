@@ -35,7 +35,7 @@
 
         public bool HasProduct { get; protected set; }
 
-        public virtual Byproduct Produce(Byproducts.ByproductColor color)
+        public virtual Byproduct Produce(ByproductColor color)
         {
             return null;
         }

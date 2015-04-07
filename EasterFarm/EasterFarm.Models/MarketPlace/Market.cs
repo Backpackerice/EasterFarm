@@ -10,25 +10,11 @@
 
     public sealed class Market
     {
-        private static Market marketInstance;
         private ICollection<IBuyable> buyableProducts;
 
-        private Market()
+        public Market()
         {
             this.buyableProducts = new HashSet<IBuyable>();
-        }
-
-        public static Market Instance
-        {
-            get
-            {
-                if (marketInstance == null)
-                {
-                    marketInstance = new Market();
-                }
-
-                return marketInstance;
-            }
         }
 
         public ICollection<IBuyable> BuyableProducts
