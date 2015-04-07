@@ -19,20 +19,23 @@
         private IList<IStorable> presents;
         private ProductFactory ingredientFactory;
         private PresentFactory presentFactory;
+
         public GameInitializator()
         {
-
             this.ingredientFactory = MarketFactory.Get(Category.Ingredient);
             this.presentFactory = new PresentFactory();
 
             this.gameObjects = new List<GameObject> 
-            {
-                new Raspberry(new MatrixCoords(1, 4)),
-                new Hen(new MatrixCoords(10, 10)),
+            {               
+                new Raspberry(new MatrixCoords(10, 10)),
+                new Blueberry(new MatrixCoords(20, 5)),
+                new Raspberry(new MatrixCoords(20, 25)),
+                new Hen(new MatrixCoords(1, 4)),
                 new Hen(new MatrixCoords(9, 9)),
-                new Hen(new MatrixCoords(15, 15)),
-                new Lamb(new MatrixCoords(8, 8)),
-                 new Rabbit(new MatrixCoords(12, 12)),
+                new Lamb(new MatrixCoords(20, 20)),
+                new Lamb(new MatrixCoords(5, 20)),
+                new Rabbit(new MatrixCoords(12, 12)),
+                new Rabbit(new MatrixCoords(2, 20)),
             };
 
             this.inventoryItems = new List<IStorable>
@@ -66,7 +69,7 @@
         {
             foreach (PresentType type in Enum.GetValues(typeof(PresentType)))
             {
-                this.presents.Add(presentFactory.Get(type));
+                this.presents.Add(this.presentFactory.Get(type));
             }
         }
 
@@ -74,12 +77,10 @@
         {
             foreach (IngredientType type in Enum.GetValues(typeof(IngredientType)))
             {
-                this.marketIngredients.Add(ingredientFactory.Get(type));
+                this.marketIngredients.Add(this.ingredientFactory.Get(type));
             }
         }
 
-        //Market
-        //TODO : foreach category - more abstract?
         private void FillMarketIngredients(Market market)
         {
             foreach (var ingredient in this.marketIngredients)

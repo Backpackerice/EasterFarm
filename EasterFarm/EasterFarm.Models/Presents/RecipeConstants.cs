@@ -9,11 +9,11 @@
     public class RecipeConstants
     {
         private const int BasketAmmount = 1;
-        private static readonly Dictionary<PresentType, Dictionary<Enum, int>> recipes;
+        private static readonly Dictionary<PresentType, Dictionary<Enum, int>> AllRecipes;
 
         static RecipeConstants()
         {
-            recipes = new Dictionary<PresentType, Dictionary<Enum, int>>
+            AllRecipes = new Dictionary<PresentType, Dictionary<Enum, int>>
             {
                 { PresentType.Kozunak, 
                     new Dictionary<Enum, int>
@@ -69,7 +69,7 @@
         {
             get
             {
-                return recipes;
+                return AllRecipes;
             }
         }
     }

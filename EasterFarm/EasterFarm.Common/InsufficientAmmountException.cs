@@ -10,7 +10,7 @@
         public InsufficientAmmountException(string item)
             : this(string.Empty, item)
         {
-            otherMessage = string.Format("Insufficient ammount. You don't have enough of item <<{0}>>.", this.Item);
+            this.otherMessage = string.Format("Insufficient ammount. You don't have enough of item <<{0}>>.", this.Item);
         }
 
         public InsufficientAmmountException(string message, string item)
@@ -42,7 +42,7 @@
         {
             get
             {
-                return otherMessage;
+                return this.otherMessage;
             }
         }
     }

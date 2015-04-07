@@ -6,18 +6,18 @@
     internal sealed class ConsoleFrame
     {
         private static ConsoleFrame instance;
-        
+
         private ConsoleFrame()
         {
             this.Image = GetScreenFrameImage();
         }
 
-        public char[,] Image { get; private set; }
-
         public static ConsoleFrame Instance
         {
             get { return instance ?? (instance = new ConsoleFrame()); }
         }
+
+        public char[,] Image { get; private set; }
 
         private static char[,] GetScreenFrameImage()
         {
@@ -34,11 +34,11 @@
                     }
                     else if (row == 0 && col == 0)
                     {
-                        frame[row, col] = '╔';           
+                        frame[row, col] = '╔';
                     }
                     else if (row == 0 && col == frame.GetLength(1) - 1)
                     {
-                        frame[row, col] = '╗'; 
+                        frame[row, col] = '╗';
                     }
                     else if (row == 0 && col == (int)(Constants.LeftRightScreenRatio * frame.GetLength(1)))
                     {
@@ -65,14 +65,18 @@
                     {
                         frame[row, col] = '╠';
                     }
-                    else if (row == (int)(Constants.UpDownScreenRatio * frame.GetLength(0)) && col ==  frame.GetLength(1) - 1)
+                    else if (row == (int)(Constants.UpDownScreenRatio * frame.GetLength(0)) && col == frame.GetLength(1) - 1)
                     {
                         frame[row, col] = '╣';
                     }
-                    else frame[row, col] = ' '; 
+                    else
+                    {
+                        frame[row, col] = ' ';
+                    }
                 }
-            }           
-             return frame;
+            }
+
+            return frame;
         }
     }
 }

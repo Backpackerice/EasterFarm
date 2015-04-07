@@ -40,7 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
-    <Compile Include="HelperMethods.cs" />
     <Compile Include="InsufficientAmmountException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

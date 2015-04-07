@@ -1,8 +1,9 @@
 ﻿namespace EasterFarm.GameLogic.Contracts
 {
+    using System.Collections.Generic;
+
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.Presents;
-    using System.Collections.Generic;
 
     public interface IRenderer
     {

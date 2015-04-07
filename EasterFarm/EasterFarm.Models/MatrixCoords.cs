@@ -34,7 +34,7 @@
 
         public override string ToString()
         {
-            string result = String.Format("{0}  {1}", this.Row, this.Col);
+            string result = string.Format("{0}  {1}", this.Row, this.Col);
             return result;
         }
     }

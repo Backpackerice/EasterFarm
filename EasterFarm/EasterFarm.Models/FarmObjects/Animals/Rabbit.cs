@@ -1,11 +1,10 @@
-﻿using EasterFarm.Models.FarmObjects.Byproducts;
-
-namespace EasterFarm.Models.FarmObjects.Animals
+﻿namespace EasterFarm.Models.FarmObjects.Animals
 {
     using EasterFarm.Models.Contracts;
+    using EasterFarm.Models.FarmObjects.Byproducts;
     using EasterFarm.Models.MarketPlace;
 
-    public class Rabbit : Livestock, ICollectBerries, IStorable
+    public class Rabbit : Livestock, IStorable, IProduce
     {
         public Rabbit()
             : this(new MatrixCoords())
@@ -15,7 +14,6 @@ namespace EasterFarm.Models.FarmObjects.Animals
         public Rabbit(MatrixCoords topLeft)
             : base(topLeft, LivestockType.Rabbit)
         {
-            //this.HasProduct = false;
         }
 
         public override Livestock Clone()
@@ -27,7 +25,6 @@ namespace EasterFarm.Models.FarmObjects.Animals
 
         public override Byproduct Produce(ByproductColor color)
         {
-            //this.HasProduct = false;
             return new TrophyEgg(this.TopLeft, color);
         }
     }

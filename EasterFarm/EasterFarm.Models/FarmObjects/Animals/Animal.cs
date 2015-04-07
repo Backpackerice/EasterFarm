@@ -1,7 +1,7 @@
 ﻿namespace EasterFarm.Models.FarmObjects.Animals
 {
-    using EasterFarm.Models.FarmObjects.Byproducts;
     using EasterFarm.Models.Contracts;
+    using EasterFarm.Models.FarmObjects.Byproducts;
 
     public abstract class Animal : GameObject, IMovable, IProduce
     {
@@ -21,7 +21,7 @@
             {
                 for (int col = (currentCol - 1 > 0 ? currentCol - 1 : 0); col <= (currentCol + 1 <= mapWidth - 1 ? currentCol + 1 : mapWidth - 1); col++)
                 {
-                    if (map[row,col] < map[currentRow,currentCol])
+                    if (map[row, col] < map[currentRow, currentCol])
                     {
                         this.TopLeft = new MatrixCoords(row, col);
                         map[row, col] = int.MaxValue;
@@ -32,8 +32,6 @@
 
             map[currentRow, currentCol] = int.MaxValue;
         }
-
-        public bool HasProduct { get; protected set; }
 
         public virtual Byproduct Produce(ByproductColor color)
         {
