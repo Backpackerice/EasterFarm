@@ -5,8 +5,13 @@
     public interface IConsoleAim : IRenderable
     {
         void MoveUp();
+
         void MoveDown();
+
         void MoveLeft();
+
         void MoveRight();
+
+        int Size { get; }
     }
 }
