@@ -16,40 +16,38 @@
     {
         private readonly Dictionary<Type, char[,]> images = new Dictionary<Type, char[,]>
         {
-
-            //{ typeof(Aim), new char[,]{{'┌', ' ', '┐'}, {' ', ' ', ' '}, {'└', ' ', '┘'}}},
-            //{ typeof(Hen), new char[,] { { '⌠' } } },
-            //{ typeof(Fox), new char[,] { { '¥' } } },
-            //{ typeof(Lamb), new char[,]  { {'π'} } },
-            //{ typeof(Rabbit), new char[,] { { '╓' } } },
-            //{ typeof(Wolf), new char[,] { {'╪'} } },
-            //{ typeof(Blueberry), new char[,] { { '♠' } } },
-            //{ typeof(Raspberry), new char[,] { { '♣' } } },
-            //{ typeof(Egg), new char[,] {{'#'}}},
-            //{ typeof(TrophyEgg), new char[,] {{'#'}}},
-            //{ typeof(EasterEgg), new char[,] {{'#'}}},
-            //{ typeof(Milk), new char[,] {{'#'}}},
-            //{ typeof(Villain), new char[,] {{'#'}}},
-
-            { typeof(Aim), new char[,]{{'┌', ' ', '┐'}, {' ', ' ', ' '}, {'└', ' ', '┘'}}},
+            // { typeof(Aim), new char[,]{{'┌', ' ', '┐'}, {' ', ' ', ' '}, {'└', ' ', '┘'}}},
+            // { typeof(Hen), new char[,] { { '⌠' } } },
+            // { typeof(Fox), new char[,] { { '¥' } } },
+            // { typeof(Lamb), new char[,]  { {'π'} } },
+            // { typeof(Rabbit), new char[,] { { '╓' } } },
+            // { typeof(Wolf), new char[,] { {'╪'} } },
+            // { typeof(Blueberry), new char[,] { { '♠' } } },
+            // { typeof(Raspberry), new char[,] { { '♣' } } },
+            // { typeof(Egg), new char[,] {{'#'}}},
+            // { typeof(TrophyEgg), new char[,] {{'#'}}},
+            // { typeof(EasterEgg), new char[,] {{'#'}}},
+            // { typeof(Milk), new char[,] {{'#'}}},
+            // { typeof(Villain), new char[,] {{'#'}}},
+            { typeof(Aim), new char[,] { {'┌', ' ', '┐'}, {' ', ' ', ' '}, {'└', ' ', '┘'} } },
             { typeof(Hen), new char[,] { { '\\', '_', '/','^'} } },
             { typeof(Fox), new char[,] { { '/', '|', ' ' }, { '@', '@', '-' } } },
-            { typeof(Lamb), new char[,]  { {'-', '(', '_', ')', '-'}, {'(','_', '_', ')', ' '} } },
+            { typeof(Lamb), new char[,] { {'-', '(', '_', ')', '-'}, {'(','_', '_', ')', ' '} } },
             { typeof(Rabbit), new char[,] { { ' ', '!', '!' }, { '*', '_', '"' } } },
-            { typeof(Wolf), new char[,] { { '(', '\\', '_', ' ' }, { ' ',' ', '"', '.' } } },
+            { typeof(Wolf), new char[,] { { '(', '\\', '_', ' ' }, { ' ', ' ', '"', '.' } } },
             { typeof(Blueberry), new char[,] { { '♠' } } },
             { typeof(Raspberry), new char[,] { { '♣' } } },
-            { typeof(Egg), new char[,] {{'/', '^', '\\'}, {'\\', '_', '/'}}},
-            { typeof(TrophyEgg), new char[,] {{'/', '^', '\\'}, {'\\', '@', '/'}}},
-            { typeof(EasterEgg), new char[,] {{'/', '^', '\\'}, {'\\', '#', '/'}}},
-            { typeof(Milk), new char[,] {{' ', '_', ' '}, {'|',' ', '|'}, {'(','_', ')'}}},
+            { typeof(Egg), new char[,] { {'/', '^', '\\'}, {'\\', '_', '/'} } },
+            { typeof(TrophyEgg), new char[,] { {'/', '^', '\\'}, {'\\', '@', '/'} } },
+            { typeof(EasterEgg), new char[,] { {'/', '^', '\\'}, {'\\', '#', '/'} } },
+            { typeof(Milk), new char[,] { {' ', '_', ' '}, {'|',' ', '|'}, {'(','_', ')'} } },
         };
-        //Added default symbol # because we dont yet know what symbols we are gonna use for the classes.
+
+        private readonly char[,] renderMatrix;
+        private readonly ConsoleFrame frame = ConsoleFrame.Instance;
 
         private int worldRows;
         private int worldCols;
-        private readonly char[,] renderMatrix;
-        private readonly ConsoleFrame frame = ConsoleFrame.Instance;
 
         public ConsoleRenderer(int worldRows, int worldCols)
         {
@@ -99,7 +97,7 @@
 
         public void EnqueueForRendering(IRenderable obj)
         {
-            char[,] objImage = images[obj.GetType()];
+            char[,] objImage = this.images[obj.GetType()];
 
             int imageRows = objImage.GetLength(0);
             int imageCols = objImage.GetLength(1);
@@ -145,44 +143,44 @@
             {
                 for (int col = 0; col < this.WorldCols; col++)
                 {
-                    this.renderMatrix[row, col] = frame.Image[row, col];
+                    this.renderMatrix[row, col] = this.frame.Image[row, col];
                 }
             }
         }
 
         public void RenderPresentFactory(IDictionary<IStorable, int> inventory)
         {
-            HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 2, (int)(worldRows * Constants.UpDownScreenRatio) + 1, new string('_', 45), ConsoleColor.Red);
-            HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 20, (int)(worldRows * Constants.UpDownScreenRatio) + 1, "INVENTORY", ConsoleColor.Red);
+            HelperMethods.PrintOnPosition((int)(this.WorldCols * Constants.LeftRightScreenRatio) + 2, (int)(this.WorldRows * Constants.UpDownScreenRatio) + 1, new string('_', 45), ConsoleColor.Red);
+            HelperMethods.PrintOnPosition((int)(this.WorldCols * Constants.LeftRightScreenRatio) + 20, (int)(this.WorldRows * Constants.UpDownScreenRatio) + 1, "INVENTORY", ConsoleColor.Red);
 
-            int row = (int)(worldRows * Constants.UpDownScreenRatio) + 3;
-            int colItem = (int)(WorldCols * Constants.LeftRightScreenRatio) + 5;
-            int colQuantity = (int)(WorldCols * Constants.LeftRightScreenRatio) + 20;
+            int row = (int)(this.WorldRows * Constants.UpDownScreenRatio) + 3;
+            int colItem = (int)(this.WorldCols * Constants.LeftRightScreenRatio) + 5;
+            int colQuantity = (int)(this.WorldCols * Constants.LeftRightScreenRatio) + 20;
             foreach (var item in inventory.Keys)
             {
                 HelperMethods.PrintOnPosition(colItem, row, item.Type.ToString(), ConsoleColor.Black);
                 HelperMethods.PrintOnPosition(colQuantity, row, inventory[item].ToString(), ConsoleColor.Black);
                 row++;
 
-                if (row == (WorldRows - 2))
+                if (row == (this.WorldRows - 2))
                 {
-                    row = (int)(worldRows * Constants.UpDownScreenRatio) + 3;
-                    colItem = (int)(WorldCols * Constants.LeftRightScreenRatio) + 25;
-                    colQuantity = (int)(WorldCols * Constants.LeftRightScreenRatio) + 42;
+                    row = (int)(this.WorldRows * Constants.UpDownScreenRatio) + 3;
+                    colItem = (int)(this.WorldCols * Constants.LeftRightScreenRatio) + 25;
+                    colQuantity = (int)(this.WorldCols * Constants.LeftRightScreenRatio) + 42;
                 }
             }
         }
 
         public void RenderMarket(ICollection<IBuyable> products)
         {
-            HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 2, 2, new string('_', 45), ConsoleColor.Red);
-            HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 20, 2, "MARKET PLACE", ConsoleColor.Red);
+            HelperMethods.PrintOnPosition((int)(this.WorldCols * Constants.LeftRightScreenRatio) + 2, 2, new string('_', 45), ConsoleColor.Red);
+            HelperMethods.PrintOnPosition((int)(this.WorldCols * Constants.LeftRightScreenRatio) + 20, 2, "MARKET PLACE", ConsoleColor.Red);
 
             int row = 4;
             foreach (var product in products)
             {
-                HelperMethods.PrintOnPosition(((int)(WorldCols * Constants.LeftRightScreenRatio) + 5), row, product.Type.ToString(), ConsoleColor.Black);
-                HelperMethods.PrintOnPosition(((int)(WorldCols * Constants.LeftRightScreenRatio) + 40), row, product.Price.ToString() + " rbs", ConsoleColor.Black);
+                HelperMethods.PrintOnPosition((int)(this.WorldCols * Constants.LeftRightScreenRatio) + 5, row, product.Type.ToString(), ConsoleColor.Black);
+                HelperMethods.PrintOnPosition((int)(this.WorldCols * Constants.LeftRightScreenRatio) + 40, row, product.Price.ToString() + " rbs", ConsoleColor.Black);
                 row += 2;
             }
         }

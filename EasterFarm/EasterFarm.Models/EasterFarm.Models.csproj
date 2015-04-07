@@ -40,9 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IBuyable.cs" />
-    <Compile Include="Contracts\ICollectBerries.cs" />
     <Compile Include="Contracts\ICookable.cs" />
-    <Compile Include="Contracts\IEatBerries.cs" />
     <Compile Include="Contracts\IMovable.cs" />
     <Compile Include="Contracts\IProduce.cs" />
     <Compile Include="MarketPlace\ProductFactory.cs" />

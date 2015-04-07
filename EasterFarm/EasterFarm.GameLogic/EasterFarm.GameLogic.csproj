@@ -47,7 +47,6 @@
     <Compile Include="Engine.cs" />
     <Compile Include="GameInitializator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Score.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EasterFarm.Common\EasterFarm.Common.csproj">

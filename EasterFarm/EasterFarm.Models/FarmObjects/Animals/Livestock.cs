@@ -1,16 +1,8 @@
-﻿using EasterFarm.Models.FarmObjects.Byproducts;
-
-namespace EasterFarm.Models.FarmObjects.Animals
+﻿namespace EasterFarm.Models.FarmObjects.Animals
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     using EasterFarm.Models.Contracts;
-    using EasterFarm.Models.MarketPlace;
-    using EasterFarm.Models.FarmObjects.Food;
 
     public abstract class Livestock : Animal, IStorable
     {

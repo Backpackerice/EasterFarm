@@ -37,6 +37,7 @@
         {
             return this.BuyableProducts.FirstOrDefault(x => x.Type == productType);
         }
+
         public int CalculateCost(ITradeable product, int quantity)
         {
             return product.Price * quantity;

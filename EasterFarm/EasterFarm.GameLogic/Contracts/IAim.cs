@@ -4,6 +4,8 @@
 
     public interface IAim : IRenderable
     {
+        int Size { get; }
+
         void MoveUp();
 
         void MoveDown();
@@ -11,7 +13,5 @@
         void MoveLeft();
 
         void MoveRight();
-
-        int Size { get; }
     }
 }

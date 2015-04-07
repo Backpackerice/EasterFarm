@@ -22,7 +22,6 @@
 
         public GameInitializator()
         {
-
             this.ingredientFactory = MarketFactory.Get(Category.Ingredient);
             this.presentFactory = new PresentFactory();
 
@@ -70,7 +69,7 @@
         {
             foreach (PresentType type in Enum.GetValues(typeof(PresentType)))
             {
-                this.presents.Add(presentFactory.Get(type));
+                this.presents.Add(this.presentFactory.Get(type));
             }
         }
 
@@ -78,7 +77,7 @@
         {
             foreach (IngredientType type in Enum.GetValues(typeof(IngredientType)))
             {
-                this.marketIngredients.Add(ingredientFactory.Get(type));
+                this.marketIngredients.Add(this.ingredientFactory.Get(type));
             }
         }
 
