@@ -1,4 +1,4 @@
-﻿<Window x:Class="TestCanvas.MainWindow"
+﻿<Window x:Class="EasterFarm.TestWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:EasterFarm.TestWPF"
@@ -18,12 +18,32 @@
         <converters:MatrixToLeftConverter x:Key="leftConverter" />
         <converters:MatrixToTopConverter x:Key="topConverter" />
         <viewModels:MainViewModel x:Key="ViewModel"/>
-
-        <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+        
+        <Style x:Key="inactiveButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Height" Value="32"/>
             <Setter Property="Width" Value="32"/>
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Overlay">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Overlay" Property="Background" Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="activeButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Width" Value="32"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Command" Value="{Binding DataContext.DestroyObject, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl},Mode=FindAncestor}}"/>
             <Setter Property="CommandParameter" Value="{Binding}"/>
         </Style>
@@ -66,7 +86,6 @@
         </Style>
 
         <Style x:Key="factoryMarketTextStyle" TargetType="{x:Type TextBlock}">
-            <Setter Property="Margin" Value="4"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontFamily" Value="Segoe UI Light"/>
             <Setter Property="Foreground" Value="White"/>
@@ -85,43 +104,64 @@
 
         <DataTemplate x:Key="wolfTemplate">
             <Grid>
-                <Button Style="{StaticResource buttonStyle}">
-                    <Image Source="pack://siteoforigin:,,,/Icons/Wolf-01.png"/>
+                <Button Style="{StaticResource activeButtonStyle}">
+                    <Image DataContext="{Binding}" Source="Icons/Wolf-01.png"/>
                 </Button>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="foxTemplate">
             <Grid>
-                <Button Style="{StaticResource buttonStyle}">
-                    <Image Source="pack://siteoforigin:,,,/Icons/Fox-01.png"/>
+                <Button Style="{StaticResource activeButtonStyle}">
+                    <Image DataContext="{Binding}" Source="Icons/Fox-01.png"/>
                 </Button>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="lambTemplate">
             <Grid>
-                <Button Style="{StaticResource buttonStyle}">
-                    <Image Source="pack://siteoforigin:,,,/Icons/Lamb-01.png"/>
+                <Button Style="{StaticResource inactiveButtonStyle}">
+                    <Image DataContext="{Binding}" Source="Icons/Lamb-01.png"/>
                 </Button>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="henTemplate">
             <Grid>
-                <Button Style="{StaticResource buttonStyle}">
-                    <Image Source="pack://siteoforigin:,,,/Icons/Hen-01.png"/>
+                <Button Style="{StaticResource inactiveButtonStyle}">
+                    <Image DataContext="{Binding}" Source="Icons/Hen-01.png"/>
                 </Button>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="raspberryTemplate">
             <Grid>
-                <Button Style="{StaticResource buttonStyle}">
-                    <Image Source="pack://siteoforigin:,,,/Icons/Raspberry-01.png"/>
+                <Button Style="{StaticResource inactiveButtonStyle}">
+                    <Image DataContext="{Binding}" Source="Icons/Raspberry-01.png"/>
                 </Button>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="blueberryTemplate">
             <Grid>
-                <Button Style="{StaticResource buttonStyle}">
-                    <Image Source="pack://siteoforigin:,,,/Icons/Blueberry-01.png"/>
+                <Button Style="{StaticResource inactiveButtonStyle}">
+                    <Image DataContext="{Binding}" Source="Icons/Blueberry-01.png"/>
+                </Button>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="milkTemplate">
+            <Grid>
+                <Button Style="{StaticResource activeButtonStyle}">
+                    <Image DataContext="{Binding}" Source="Icons/Milk-01.png"/>
+                </Button>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="eggTemplate">
+            <Grid>
+                <Button Style="{StaticResource activeButtonStyle}">
+                    <Image DataContext="{Binding}" Source="Icons/Egg-01.png"/>
+                </Button>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="rabbitTemplate">
+            <Grid>
+                <Button Style="{StaticResource inactiveButtonStyle}">
+                    <Image DataContext="{Binding}" Source="Icons/Rabbit-01.png"/>
                 </Button>
             </Grid>
         </DataTemplate>
@@ -132,7 +172,10 @@
             LambTemplate="{StaticResource lambTemplate}"
             HenTemplate="{StaticResource henTemplate}"
             RaspberryTemplate="{StaticResource raspberryTemplate}"
-            BlueberryTemplate="{StaticResource blueberryTemplate}"/> 
+            BlueberryTemplate="{StaticResource blueberryTemplate}"
+            MilkTemplate="{StaticResource milkTemplate}"
+            EggTemplate="{StaticResource eggTemplate}"
+            RabbitTemplate="{StaticResource rabbitTemplate}"/> 
     </Window.Resources>
     
     <Grid Margin="10">
@@ -155,7 +198,6 @@
                            Background="Transparent"/>
             </Grid>
             <Grid Grid.Row="1" Margin="10">
-                <!--<viewModels:CanvasItemsControl></viewModels:CanvasItemsControl>-->
                 <ItemsControl ItemsSource="{Binding GameObjects}" 
                     ItemTemplateSelector="{StaticResource templateSelector}">
                     <ItemsControl.ItemsPanel>
@@ -205,7 +247,7 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Style="{StaticResource factorySellButtonStyle}" Command="{Binding Path=MinusCom}">
+                        <Button Grid.Column="0" Style="{StaticResource factorySellButtonStyle}" Command="{Binding Path=MinusKozunak}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -215,8 +257,15 @@
                                 <TextBlock Grid.Row="1" Style="{StaticResource textStyle}" Text ="Price: 24rb"/>
                             </Grid>
                         </Button>
-                        <TextBlock Grid.Column="1" Text="{Binding Collection[0], Mode=TwoWay}" Style="{StaticResource factoryMarketTextStyle}"/>
-                        <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}" Command="{Binding Path=PlusCom}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Kozunak" Style="{StaticResource factoryMarketTextStyle}"/>
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[0], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                        </Grid>
+                        <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}" Command="{Binding Path=PlusKozunak}"/>
                     </Grid>
                     <Grid  Grid.Row="1" Style="{StaticResource factoryStyle}">
                         <Grid.ColumnDefinitions>
@@ -234,7 +283,14 @@
                                 <TextBlock Grid.Row="1" Style="{StaticResource textStyle}" Text ="Price: 24rb"/>
                             </Grid>
                         </Button>
-                        <TextBlock Grid.Column="1" Text="Choco Egg" Style="{StaticResource factoryMarketTextStyle}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Choco Egg" Style="{StaticResource factoryMarketTextStyle}"/>
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[1], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                        </Grid>
                         <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}"/>
                     </Grid>
                     <Grid  Grid.Row="2" Style="{StaticResource factoryStyle}">
@@ -253,7 +309,14 @@
                                 <TextBlock Grid.Row="1" Style="{StaticResource textStyle}" Text ="Price: 24rb"/>
                             </Grid>
                         </Button>
-                        <TextBlock Grid.Column="1" Text="Cookie" Style="{StaticResource factoryMarketTextStyle}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Cookie" Style="{StaticResource factoryMarketTextStyle}"/>
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[2], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                        </Grid>
                         <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}"/>
                     </Grid>
                     <Grid  Grid.Row="3" Style="{StaticResource factoryStyle}">
@@ -271,9 +334,15 @@
                                 <TextBlock Grid.Row="0" Style="{StaticResource textStyle}" Text="SELL"/>
                                 <TextBlock Grid.Row="1" Style="{StaticResource textStyle}" Text ="Price: 24rb"/>
                             </Grid>
-                        </Button>  
-                        
-                        <TextBlock Grid.Column="1" Text="Choco Rabbit" Style="{StaticResource factoryMarketTextStyle}"/>
+                        </Button>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Choco Rabbit" Style="{StaticResource factoryMarketTextStyle}"/>
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[3], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                        </Grid>
                         <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}"/>
                     </Grid>
                     <Grid  Grid.Row="4" Style="{StaticResource factoryStyle}">
@@ -292,7 +361,14 @@
                                 <TextBlock Grid.Row="1" Style="{StaticResource textStyle}" Text ="Price: 24rb"/>
                             </Grid>
                         </Button>
-                        <TextBlock Grid.Column="1" Text="Rabbit with Ribbon" Style="{StaticResource factoryMarketTextStyle}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Rabbit with Ribbon" Style="{StaticResource factoryMarketTextStyle}"/>
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[4], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                        </Grid>
                         <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}"/>
                     </Grid>
 
@@ -339,7 +415,14 @@
                                 <TextBlock Grid.Row="1" Style="{StaticResource textStyle}" Text ="Price: 24rb"/>
                             </Grid>
                         </Button>
-                        <TextBlock Grid.Column="1" Text="Flour" Style="{StaticResource factoryMarketTextStyle}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Flour" Style="{StaticResource factoryMarketTextStyle}"/>
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[5], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                        </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -367,7 +450,14 @@
                                 <TextBlock Grid.Row="1" Style="{StaticResource textStyle}" Text ="Price: 24rb"/>
                             </Grid>
                         </Button>
-                        <TextBlock Grid.Column="1" Text="Eggs" Style="{StaticResource factoryMarketTextStyle}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Eggs" Style="{StaticResource factoryMarketTextStyle}"/>
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[6], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                        </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -395,7 +485,14 @@
                                 <TextBlock Grid.Row="1" Style="{StaticResource textStyle}" Text ="Price: 24rb"/>
                             </Grid>
                         </Button>
-                        <TextBlock Grid.Column="1" Text="EasterEgg" Style="{StaticResource factoryMarketTextStyle}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="EasterEggs" Style="{StaticResource factoryMarketTextStyle}"/>
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[7], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                        </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -423,7 +520,14 @@
                                 <TextBlock Grid.Row="1" Style="{StaticResource textStyle}" Text ="Price: 24rb"/>
                             </Grid>
                         </Button>
-                        <TextBlock Grid.Column="1" Text="TrophyEgg" Style="{StaticResource factoryMarketTextStyle}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="TrophyEggs" Style="{StaticResource factoryMarketTextStyle}"/>
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[8], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                        </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -451,7 +555,14 @@
                                 <TextBlock Grid.Row="1" Style="{StaticResource textStyle}" Text ="Price: 24rb"/>
                             </Grid>
                         </Button>
-                        <TextBlock Grid.Column="1" Text="Ribbon" Style="{StaticResource factoryMarketTextStyle}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Ribbon" Style="{StaticResource factoryMarketTextStyle}"/>
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[9], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                        </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -479,7 +590,14 @@
                                 <TextBlock Grid.Row="1" Style="{StaticResource textStyle}" Text ="Price: 24rb"/>
                             </Grid>
                         </Button>
-                        <TextBlock Grid.Column="1" Text="Basket" Style="{StaticResource factoryMarketTextStyle}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Basket" Style="{StaticResource factoryMarketTextStyle}"/>
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[10], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                        </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -507,7 +625,14 @@
                                 <TextBlock Grid.Row="1" Style="{StaticResource textStyle}" Text ="Price: 24rb"/>
                             </Grid>
                         </Button>
-                        <TextBlock Grid.Column="1" Text="Cocoa" Style="{StaticResource factoryMarketTextStyle}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Cocoa" Style="{StaticResource factoryMarketTextStyle}"/>
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[11], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                        </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -534,7 +659,7 @@
                            HorizontalAlignment="Center"
                            FontFamily="Segoe UI Light"/>
                 <TextBlock Grid.Column="1"
-                           Text="245 rb"
+                           Text="{Binding Path=inventory[12], Mode=TwoWay}"
                            FontSize="20" 
                            Foreground="White" 
                            VerticalAlignment="Center" 

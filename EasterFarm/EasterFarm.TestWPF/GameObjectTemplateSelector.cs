@@ -24,6 +24,9 @@ namespace EasterFarm.TestWPF
         public DataTemplate HenTemplate { get; set; }
         public DataTemplate RaspberryTemplate { get; set; }
         public DataTemplate BlueberryTemplate { get; set; }
+        public DataTemplate MilkTemplate { get; set; }
+        public DataTemplate EggTemplate { get; set; }
+        public DataTemplate RabbitTemplate { get; set; }
 
         public override System.Windows.DataTemplate SelectTemplate(object item, System.Windows.DependencyObject container)
         {
@@ -42,19 +45,16 @@ namespace EasterFarm.TestWPF
                     return RaspberryTemplate;
                 case "Blueberry":
                     return BlueberryTemplate;
-                case "Egg":
-                //    return EggTemplate;
-                //case "TrophyEgg":
-                //    return TrophyEggTemplate;
-                //case "Milk":
-                //    return MilkTemplate;
-                //case "Rabbit":
-                //    return MilkTemplate;
+                case "Milk":
+                    return MilkTemplate;
+                case "EasterEgg":
+                    return EggTemplate;
+                case "TrophyEgg":
+                    return EggTemplate;
+                case "Rabbit":
+                    return RabbitTemplate;
                 default: return null;
             }
-            //if (o.Type == 0) return Template1;
-            //else if (o.Type == 1) return Template2;
-            //else return Template3;
         }
     }
 }

@@ -32,11 +32,11 @@ namespace EasterFarm.TestWPF.ViewModels
 
     public class MainViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<int> Collection { get; set; } // Checking the button. Delete later
+        public ObservableCollection<uint> inventory {get; set; }
 
-        private FarmManager farmManager;
-        private Market market;
-        private PresentFactory presentFactory;
+        //private FarmManager farmManager;
+        // private Market market;
+        //private PresentFactory presentFactory;
         private Random random;
 
         private ObservableCollection<GameObject> gameObjects;
@@ -47,54 +47,38 @@ namespace EasterFarm.TestWPF.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
         DispatcherTimer timer;
-        private ICommand clickedMinus;
-        private ICommand clickedPlus;
 
         public MainViewModel()
-        {
-            this.Collection = new ObservableCollection<int> { 5, 5, 5, 5 }; /// Button checker
-                                                                            
+        {                                                                        
             this.gameObjects = new ObservableCollection<GameObject>();
             this.farmFoods = new ObservableCollection<FarmFood>();
             this.livestocks = new ObservableCollection<Livestock>();
             this.villains = new ObservableCollection<Villain>();
             this.byproducts = new ObservableCollection<Byproduct>();
 
+            
+
             this.random = new Random();
 
             this.DestroyObject = new RelayCommand(OnDestroyObjectExecute, OnDestroyObjectCanExecute);
+            this.MinusKozunak = new RelayCommand(OnMinusClickedExecute, OnMinusClickCanExecute);
+            this.PlusKozunak = new RelayCommand(OnPlusClickedExecute, OnPlusClickCanExecute);
             this.timer = new DispatcherTimer();
 
             InitialiazeGameObjectsLists();
+            InitaliazeInventoryObjects();
 
-            // Start();
+            Start();
+        }
+
+        private void InitaliazeInventoryObjects()
+        {
+            this.inventory = new ObservableCollection<uint> { 4, 1, 3, 4, 1, 0, 0, 0, 0, 0, 0, 0, 250 };
         }
 
         public RelayCommand DestroyObject { get; set; }
-
-        public ICommand MinusCom
-        {
-            get
-            {
-                if (this.clickedMinus == null)
-                {
-                    this.clickedMinus = new RelayCommand(this.Minus);
-                }
-                return clickedMinus;
-            }
-        }
-
-        public ICommand PlusCom
-        {
-            get
-            {
-                if (this.clickedPlus == null)
-                {
-                    this.clickedPlus = new RelayCommand(this.Plus);
-                }
-                return clickedPlus;
-            }
-        }
+        public RelayCommand MinusKozunak { get; set; }
+        public RelayCommand PlusKozunak { get; set; }
 
         public ObservableCollection<GameObject> GameObjects
         {
@@ -102,7 +86,7 @@ namespace EasterFarm.TestWPF.ViewModels
             private set { this.gameObjects = value; }
         }
 
-        private void RebuildCollections() // Check how Simo did this, so you can implement the logic for the different types of GameObject
+        private void RebuildCollections()
         {
             ObservableCollection<GameObject> temp = new ObservableCollection<GameObject>();
             foreach (var item in gameObjects)
@@ -137,6 +121,16 @@ namespace EasterFarm.TestWPF.ViewModels
                     }
                 }
             }
+            if (this.livestocks.Count < 1)
+            {
+                GameOver();
+            }
+        }
+
+        private void GameOver()
+        {
+            timer.Stop();
+            MessageBox.Show("Game Over!!!");
         }
 
         private void InitialiazeGameObjectsLists()
@@ -144,44 +138,31 @@ namespace EasterFarm.TestWPF.ViewModels
             this.AddGameObject(new Raspberry(new MatrixCoords(1, 4)));
             this.AddGameObject(new Raspberry(new MatrixCoords(20, 29)));
             this.AddGameObject(new Hen(new MatrixCoords(10, 17)));
-            this.AddGameObject(new Hen(new MatrixCoords(10, 10)));
+            this.AddGameObject(new Rabbit(new MatrixCoords(10, 10)));
             this.AddGameObject(new Hen(new MatrixCoords(9, 9)));
             this.AddGameObject(new Hen(new MatrixCoords(9, 15)));
-            this.AddGameObject(new Hen(new MatrixCoords(8, 8)));
+            this.AddGameObject(new Rabbit(new MatrixCoords(8, 8)));
             this.AddGameObject(new Hen(new MatrixCoords(1, 17)));
-            this.AddGameObject(new Hen(new MatrixCoords(1, 10)));
-            this.AddGameObject(new Hen(new MatrixCoords(9, 1)));
-            this.AddGameObject(new Hen(new MatrixCoords(9, 16)));
+            this.AddGameObject(new Lamb(new MatrixCoords(1, 10)));
+            this.AddGameObject(new Lamb(new MatrixCoords(9, 1)));
+            this.AddGameObject(new Lamb(new MatrixCoords(9, 16)));
             this.AddGameObject(new Hen(new MatrixCoords(5, 8)));
         }
 
         public void Start()
         {
-            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Interval = TimeSpan.FromMilliseconds(700);
             timer.Tick += delegate
             {
                 this.Seek(livestocks, typeof(FarmFood));
                 this.Seek(villains, typeof(Livestock));
-
                 this.Collide(livestocks, farmFoods);
                 this.Collide(villains, livestocks);
-
-                //    ClearCollections();
                 this.RebuildCollections();
-
                 this.AddGameObject(this.ProduceNewGameObject());
             };
             timer.Start();
         }
-
-        //private void ClearCollections()
-        //{
-        //    farmFoods.RemoveWhere(ff => ff.IsDestroyed);
-        //    livestocks.RemoveWhere(ls => ls.IsDestroyed);
-        //    villains.RemoveWhere(v => v.IsDestroyed);
-        //    byproducts.RemoveWhere(bp => bp.IsDestroyed);
-        //    gameObjects.RemoveWhere(go => go.IsDestroyed);
-        //}
 
         private void Collide(IEnumerable<Animal> colliders, IEnumerable<GameObject> destroyables)
         {
@@ -212,12 +193,12 @@ namespace EasterFarm.TestWPF.ViewModels
             return ByproductColor.None;
         }
 
-        private void Seek(IEnumerable<Animal> chasers, Type targetType) // The move method is used in here
+        private void Seek(IEnumerable<Animal> chasers, Type targetType) 
         {
             var map = this.CreateTopographicMap(targetType);
             foreach (var chaser in chasers)
             {
-                chaser.Move(map); // the move method should be considered!!!!!!!!
+                chaser.Move(map);
             }
         }
 
@@ -258,14 +239,6 @@ namespace EasterFarm.TestWPF.ViewModels
             }
             return position;
         }
-
-        //private void FillGameObjectCollections(ICollection<GameObject> gameObjects) // this is not needed at the moment
-        //{
-        //    foreach (var gameObject in gameObjects)
-        //    {
-        //        this.AddGameObject(gameObject);
-        //    }
-        //}
 
         public void AddGameObject(GameObject gameObject)
         {
@@ -358,44 +331,45 @@ namespace EasterFarm.TestWPF.ViewModels
             return map;
         }
 
-        public void SetInitialGameObjects()
+        //public void SetInitialGameObjects()
+        //{
+        //    this.farmManager = new FarmManager();
+        //    // this.market = Market.Instance; Market instance?? wtf?
+        //    var ingredientFactory = MarketFactory.Get(Category.Ingredient);
+        //    this.FillMarketCategory(ingredientFactory, IngredientType.Basket);
+        //    this.presentFactory = new PresentFactory();
+        //}
+
+        //private void FillMarketCategory(ProductFactory productFactory, Enum productType)
+        //{
+        //    foreach (Enum type in Enum.GetValues(productType.GetType()))
+        //    {
+        //        IBuyable ingredient = productFactory.Get(type);
+        //        this.market.AddProduct(ingredient);
+        //    }
+        //}
+
+        private bool OnMinusClickCanExecute(object sender)
         {
-            this.farmManager = new FarmManager();
-
-            // this.market = Market.Instance; Market instance?? wtf?
-            var ingredientFactory = EasterFarm.Models.MarketPlace.MarketFactory.Get(Category.Ingredient);
-            this.FillMarketCategory(ingredientFactory, IngredientType.Basket);
-
-            this.presentFactory = new PresentFactory();
+            return inventory[0] > 0;
+        }
+        private void OnMinusClickedExecute(object sender)
+        {
+            this.inventory[0]--;
         }
 
-        private void FillMarketCategory(ProductFactory productFactory, Enum productType)
-        {
-            foreach (Enum type in Enum.GetValues(productType.GetType()))
-            {
-                IBuyable ingredient = productFactory.Get(type);
-                this.market.AddProduct(ingredient);
-            }
-        }
-
-        private bool CanClick()
+        private bool OnPlusClickCanExecute(object sender)
         {
             return true;
         }
-
-        private void Minus(object obj)
+        private void OnPlusClickedExecute(object sender)
         {
-            this.Collection[0]--;
-        }
-
-        private void Plus(object obj)
-        {
-            this.Collection[0]++;
+            this.inventory[0]++;
         }
 
         private bool OnDestroyObjectCanExecute(object sender)
         {
-            if (sender is Hen)
+            if (sender is Villain || sender is Byproduct)
             {
                 return true;
             }
@@ -405,6 +379,22 @@ namespace EasterFarm.TestWPF.ViewModels
         private void OnDestroyObjectExecute(object sender)
         {
             gameObjects.Remove(sender as GameObject);
+            if (sender is Milk)
+            {
+                this.inventory[5]++;
+            }
+            else if (sender is TrophyEgg)
+            {
+                this.inventory[8]++;
+            }
+            else if (sender is EasterEgg)
+            {
+                this.inventory[7]++;
+            }
+            else if (sender is Egg)
+            {
+                this.inventory[6]++;
+            }
         }
 
         protected void OnPropertyChanged(string propertyName)

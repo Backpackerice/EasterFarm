@@ -98,6 +98,7 @@
     <Content Include="Icons\BlueBerry-01.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Icons\Egg-01.png" />
     <Content Include="Icons\Fox-01.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -107,6 +108,8 @@
     <Content Include="Icons\Lamb-01.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Icons\Milk-01.png" />
+    <Resource Include="Icons\Rabbit-01.png" />
     <Content Include="Icons\RaspBerry-01.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
