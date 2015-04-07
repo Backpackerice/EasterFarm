@@ -12,6 +12,8 @@
 
         void RenderPresentFactory(IDictionary<IStorable, int> presents);
 
+        void RenderMarket(ICollection<IBuyable> proucts);
+
         void ClearRenderer();
     }
 }

@@ -34,7 +34,8 @@
                 new Hen(new MatrixCoords(10, 10)),
                 new Hen(new MatrixCoords(9, 9)),
                 new Hen(new MatrixCoords(15, 15)),
-                new Hen(new MatrixCoords(8, 8))
+                new Lamb(new MatrixCoords(8, 8)),
+                 new Rabbit(new MatrixCoords(12, 12)),
             };
 
             this.inventoryItems = new List<IStorable>

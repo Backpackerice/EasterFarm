@@ -99,6 +99,8 @@
             {
                 this.Renderer.RenderAll();
                 this.Renderer.RenderPresentFactory(GetPresentsFromInventory());
+                this.Renderer.RenderMarket(GetMarketItems());
+
                 Thread.Sleep(200);
 
                 this.UserInput.ProcessInput();
@@ -313,6 +315,11 @@
                 .Where(i => i.Key.GetType() == typeof(Present));
 
             return presents.ToDictionary(x => x.Key, x => x.Value);
+        }
+
+        private ICollection<IBuyable> GetMarketItems()
+        {
+            return this.market.BuyableProducts;
         }
     }
 }

@@ -4,8 +4,8 @@
     {
         Flour = 2,
         Cocoa = 4,
-        Ribbon = 8,
-        Basket = 12,
-        Rabbit = 18,
+        Ribbon = 5,
+        Basket = 6,
+        Rabbit = 8,
     }
 }
