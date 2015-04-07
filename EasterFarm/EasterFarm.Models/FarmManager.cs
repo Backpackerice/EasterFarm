@@ -3,16 +3,14 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     using EasterFarm.Common;
     using EasterFarm.Models.Contracts;
+    using EasterFarm.Models.FarmObjects.Animals;
+    using EasterFarm.Models.FarmObjects.Byproducts;
+    using EasterFarm.Models.FarmObjects.Food;
     using EasterFarm.Models.MarketPlace;
     using EasterFarm.Models.Presents;
-    using EasterFarm.Models.FarmObjects.Food;
-    using EasterFarm.Models.FarmObjects.Byproducts;
-    using EasterFarm.Models.FarmObjects.Animals;
 
     public class FarmManager
     {

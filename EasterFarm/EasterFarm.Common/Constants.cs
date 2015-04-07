@@ -1,6 +1,4 @@
-﻿using System.Runtime.Remoting.Messaging;
-
-namespace EasterFarm.Common
+﻿namespace EasterFarm.Common
 {
     public static class Constants
     {
@@ -10,5 +8,7 @@ namespace EasterFarm.Common
         public const double UpDownScreenRatio = 0.5;
         public const int Difficulty = 10; // the greater, the easyer
         public const int DifficultyLevel = 1; // should be lesser than Difficulty/2
+        public const int WorldRowsWPF = 20;
+        public const int WorldColsWPF = 29;
     }
 }

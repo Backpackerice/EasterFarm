@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleAim.cs" />
+    <Compile Include="Aim.cs" />
     <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="EasterFarmMain.cs" />
     <Compile Include="HelperMethods.cs" />

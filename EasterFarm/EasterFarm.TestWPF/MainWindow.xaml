@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:EasterFarm.TestWPF"
         xmlns:converters="clr-namespace:EasterFarm.TestWPF.Converters"
         xmlns:viewModels="clr-namespace:EasterFarm.TestWPF.ViewModels"
-        Title="MainWindow" Height="768" Width="1366">
+        Title="MainWindow" Height="800" Width="1300">
 
     
 
@@ -15,15 +15,17 @@
     
     
     <Window.Resources>
-
         <converters:MatrixToLeftConverter x:Key="leftConverter" />
         <converters:MatrixToTopConverter x:Key="topConverter" />
+        <viewModels:MainViewModel x:Key="ViewModel"/>
 
         <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Width" Value="32"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Command" Value="{Binding DataContext.DestroyObject, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl},Mode=FindAncestor}}"/>
+            <Setter Property="CommandParameter" Value="{Binding}"/>
         </Style>
 
         <Style x:Key="marketStyle" TargetType="{x:Type Grid}">
@@ -124,8 +126,6 @@
             </Grid>
         </DataTemplate>
         
-        
-
         <local:GameObjectTemplateSelector x:Key="templateSelector"
             WolfTemplate="{StaticResource wolfTemplate}" 
             FoxTemplate="{StaticResource foxTemplate}"
@@ -151,10 +151,13 @@
                            Foreground="White" 
                            VerticalAlignment="Center" 
                            HorizontalAlignment="Center"
-                           FontFamily="Segoe UI Light"/>
+                           FontFamily="Segoe UI Light"
+                           Background="Transparent"/>
             </Grid>
             <Grid Grid.Row="1" Margin="10">
-                <ItemsControl ItemsSource="{Binding Items}" ItemTemplateSelector="{StaticResource templateSelector}">
+                <!--<viewModels:CanvasItemsControl></viewModels:CanvasItemsControl>-->
+                <ItemsControl ItemsSource="{Binding GameObjects}" 
+                    ItemTemplateSelector="{StaticResource templateSelector}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <Canvas/>
@@ -202,7 +205,7 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Style="{StaticResource factorySellButtonStyle}">
+                        <Button Grid.Column="0" Style="{StaticResource factorySellButtonStyle}" Command="{Binding Path=MinusCom}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -212,8 +215,8 @@
                                 <TextBlock Grid.Row="1" Style="{StaticResource textStyle}" Text ="Price: 24rb"/>
                             </Grid>
                         </Button>
-                        <TextBlock Grid.Column="1" Text="Kozunak" Style="{StaticResource factoryMarketTextStyle}"/>
-                        <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Collection[0], Mode=TwoWay}" Style="{StaticResource factoryMarketTextStyle}"/>
+                        <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}" Command="{Binding Path=PlusCom}"/>
                     </Grid>
                     <Grid  Grid.Row="1" Style="{StaticResource factoryStyle}">
                         <Grid.ColumnDefinitions>

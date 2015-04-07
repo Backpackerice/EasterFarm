@@ -2,8 +2,6 @@
 {
     using System;
 
-    using EasterFarm.Models.Contracts;
-    
     public class MarketFactory
     {
         public const string InvalidCategoryExcMsg = "Invalid product category. Are you sure you got the right one?";

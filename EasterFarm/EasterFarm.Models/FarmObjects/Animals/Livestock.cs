@@ -20,7 +20,6 @@ namespace EasterFarm.Models.FarmObjects.Animals
             : base(topLeft)
         {
             this.Type = type;
-           // this.HasProduct = false;
         }
 
         public Enum Type

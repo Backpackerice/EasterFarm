@@ -30,7 +30,7 @@
         private readonly HashSet<Villain> villains;
         private readonly HashSet<Byproduct> byproducts;
 
-        public Engine(IRenderer renderer, IUserKeyboardInput userInput, IConsoleAim aim, GameInitializator gameInitializator)
+        public Engine(IRenderer renderer, IUserKeyboardInput userInput, IAim aim, GameInitializator gameInitializator)
         {
             this.Renderer = renderer;
             this.UserInput = userInput;
@@ -51,7 +51,7 @@
 
         internal IUserKeyboardInput UserInput { get; private set; }
 
-        internal IConsoleAim Aim { get; private set; }
+        internal IAim Aim { get; private set; }
 
         internal GameInitializator GameInitializator { get; set; }
 

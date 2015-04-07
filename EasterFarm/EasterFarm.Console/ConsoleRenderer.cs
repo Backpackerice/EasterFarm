@@ -3,23 +3,21 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
-    using System.Linq;
 
     using EasterFarm.Common;
     using EasterFarm.GameLogic.Contracts;
     using EasterFarm.Models;
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.FarmObjects.Animals;
-    using EasterFarm.Models.FarmObjects.Food;
     using EasterFarm.Models.FarmObjects.Byproducts;
-    using EasterFarm.Models.Presents;
-    using EasterFarm.Models.MarketPlace;
+    using EasterFarm.Models.FarmObjects.Food;
 
     public class ConsoleRenderer : IRenderer
     {
         private readonly Dictionary<Type, char[,]> images = new Dictionary<Type, char[,]>
         {
-            //{ typeof(ConsoleAim), new char[,]{{'┌', ' ', '┐'}, {' ', ' ', ' '}, {'└', ' ', '┘'}}},
+
+            //{ typeof(Aim), new char[,]{{'┌', ' ', '┐'}, {' ', ' ', ' '}, {'└', ' ', '┘'}}},
             //{ typeof(Hen), new char[,] { { '⌠' } } },
             //{ typeof(Fox), new char[,] { { '¥' } } },
             //{ typeof(Lamb), new char[,]  { {'π'} } },
@@ -33,7 +31,7 @@
             //{ typeof(Milk), new char[,] {{'#'}}},
             //{ typeof(Villain), new char[,] {{'#'}}},
 
-            { typeof(ConsoleAim), new char[,]{{'┌', ' ', '┐'}, {' ', ' ', ' '}, {'└', ' ', '┘'}}},
+            { typeof(Aim), new char[,]{{'┌', ' ', '┐'}, {' ', ' ', ' '}, {'└', ' ', '┘'}}},
             { typeof(Hen), new char[,] { { '\\', '_', '/','^'} } },
             { typeof(Fox), new char[,] { { '/', '|', ' ' }, { '@', '@', '-' } } },
             { typeof(Lamb), new char[,]  { {'-', '(', '_', ')', '-'}, {'(','_', '_', ')', ' '} } },

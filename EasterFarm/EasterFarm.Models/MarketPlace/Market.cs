@@ -4,9 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    using EasterFarm.Common;
     using EasterFarm.Models.Contracts;
-    using EasterFarm.Models.FarmObjects.Food;
 
     public sealed class Market
     {
