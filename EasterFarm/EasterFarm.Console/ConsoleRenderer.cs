@@ -119,8 +119,17 @@
                     scene.Append(this.renderMatrix[row, col]);
                 }
             }
-
             Console.Write(scene.ToString());
+
+            //Render Market
+            Console.SetCursorPosition(55, 2);
+            int i = 4;
+            foreach (var product in marketProducts)
+            {
+                Console.WriteLine(product);
+                Console.SetCursorPosition(55, i);
+                i += 2;
+            }
         }
 
         public void ClearRenderer()
@@ -133,5 +142,15 @@
                 }
             }
         }
+
+        //Market
+        private readonly List<string> marketProducts = new List<string> 
+        {
+                "Flour 2" ,
+                "Cocoa 4",     
+                "Ribbon 8",        
+                "Basket 12" ,
+                "Rabbit 18"
+        };
     }
 }

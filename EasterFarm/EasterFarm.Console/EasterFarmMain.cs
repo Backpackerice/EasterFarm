@@ -32,11 +32,10 @@
             // Creating an aim for the console user experience.
             IConsoleAim aim = ConsoleAim.Instance;
 
-            // Creating an engine of the game.
-            Engine engine = new Engine(renderer, userInput);
+            GameInitializator gameInitializator = new GameInitializator();
 
-            // Initializing the game engine.
-            GameInitializator.Initialize(engine);
+            // Creating an engine of the game.
+            Engine engine = new Engine(renderer, userInput, gameInitializator);
 
             // Starting the game.
             engine.Start();

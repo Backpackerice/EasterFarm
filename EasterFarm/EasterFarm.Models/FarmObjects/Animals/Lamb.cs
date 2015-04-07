@@ -9,7 +9,7 @@
         public Lamb(MatrixCoords topLeft)
             : base(topLeft, LivestockType.Lamb)
         {
-            this.HasProduct = false;
+            //this.HasProduct = false;
         }
 
         public override Livestock Clone()
@@ -21,7 +21,7 @@
 
         public override Byproduct Produce(ByproductColor color)
         {
-            this.HasProduct = false;
+            //this.HasProduct = false;
             return new Milk(this.TopLeft);
         }
     }
