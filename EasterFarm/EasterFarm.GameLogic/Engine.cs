@@ -35,6 +35,9 @@
             this.Renderer = renderer;
             this.UserInput = userInput;
             this.GameInitializator = gameInitializator;
+            this.farmManager = new FarmManager();
+            this.market = new Market();
+            this.presentFactory = new PresentFactory();
             this.random = new Random();
             this.gameObjects = new HashSet<GameObject>();
             this.farmFoods = new HashSet<FarmFood>();
@@ -91,7 +94,7 @@
             while (true)
             {
                 this.Renderer.RenderAll();
-
+                this.Renderer.RenderPresentFactory(GetPresentsFromInventory());
                 Thread.Sleep(200);
 
                 this.UserInput.ProcessInput();
@@ -277,6 +280,14 @@
             {
                 this.AddGameObject(gameObject);
             }
+        }
+
+        private IDictionary<IStorable, int> GetPresentsFromInventory()
+        {
+            var presents = this.farmManager.Inventory
+                .Where(i => i.Key.GetType() == typeof(Present));
+
+            return presents.ToDictionary(x => x.Key, x => x.Value);
         }
     }
 }

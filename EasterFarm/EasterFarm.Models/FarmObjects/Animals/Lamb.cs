@@ -6,6 +6,11 @@
 
     public class Lamb : Livestock, IEatBerries, IStorable
     {
+        public Lamb()
+            : this(new MatrixCoords())
+        {
+        }
+
         public Lamb(MatrixCoords topLeft)
             : base(topLeft, LivestockType.Lamb)
         {

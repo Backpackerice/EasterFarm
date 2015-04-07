@@ -17,9 +17,17 @@
     public class GameInitializator
     {
         private IList<GameObject> gameObjects;
-
+        private IList<IStorable> inventoryItems;
+        private IList<IBuyable> marketIngredients;
+        private IList<IStorable> presents;
+        private ProductFactory ingredientFactory;
+        private PresentFactory presentFactory;
         public GameInitializator()
         {
+
+            this.ingredientFactory = EasterFarm.Models.MarketPlace.MarketFactory.Get(Category.Ingredient);
+            this.presentFactory = new PresentFactory();
+
             this.gameObjects = new List<GameObject> 
             {
                 new Raspberry(new MatrixCoords(1, 4)),
@@ -29,37 +37,83 @@
                 new Hen(new MatrixCoords(15, 15)),
                 new Hen(new MatrixCoords(8, 8))
             };
+
+            this.inventoryItems = new List<IStorable>
+            {
+                new Raspberry(),
+                new Hen(),
+                new Rabbit(),
+                new Lamb(),
+                new EasterEgg(ByproductColor.Blue),
+                new EasterEgg(ByproductColor.Red),
+                new TrophyEgg(ByproductColor.Blue),
+                new TrophyEgg(ByproductColor.Red),
+                new Milk(),
+            };
+
+            this.marketIngredients = new List<IBuyable>();
+            this.FillIngredients();
+
+            this.presents = new List<IStorable>();
+            this.FillPresents();
         }
 
-        public void Initialize(FarmManager farmManager, Market market, PresentFactory presentFactory, HashSet<GameObject> farmObjects)
+        public void Initialize(FarmManager farmManager, Market market, PresentFactory presentFactory, ICollection<GameObject> farmObjects)
         {
-            this.SetInitialGameObjects(farmManager, market, presentFactory);
+            this.FillGameObjectCollection(farmObjects);
+            this.FillMarketIngredients(market);
+            this.FillInventory(farmManager);
+        }
 
-            foreach (var gameObject in this.gameObjects)
+        private void FillPresents()
+        {
+            foreach (PresentType type in Enum.GetValues(typeof(PresentType)))
             {
-               farmObjects.Add(gameObject);
+                this.presents.Add(presentFactory.Get(type));
             }
         }
 
-        private void SetInitialGameObjects(FarmManager farmManager, Market market, PresentFactory presentFactory)
+        private void FillIngredients()
         {
-            farmManager = new FarmManager();
-
-            market = new Market();
-            var ingredientFactory = EasterFarm.Models.MarketPlace.MarketFactory.Get(Category.Ingredient);
-            this.FillMarketCategory(ingredientFactory, IngredientType.Basket, market);
-
-            presentFactory = new PresentFactory();
+            foreach (IngredientType type in Enum.GetValues(typeof(IngredientType)))
+            {
+                this.marketIngredients.Add(ingredientFactory.Get(type));
+            }
         }
 
         //Market
         //TODO : foreach category - more abstract?
-        private void FillMarketCategory(ProductFactory productFactory, Enum productType, Market market)
+        private void FillMarketIngredients(Market market)
         {
-            foreach (Enum type in Enum.GetValues(productType.GetType()))
+            foreach (var ingredient in this.marketIngredients)
             {
-                IBuyable ingredient = productFactory.Get(type);
                 market.AddProduct(ingredient);
+            }
+        }
+
+        private void FillGameObjectCollection(ICollection<GameObject> farmObjects)
+        {
+            foreach (var gameObject in this.gameObjects)
+            {
+                farmObjects.Add(gameObject);
+            }
+        }
+
+        private void FillInventory(FarmManager farmManager)
+        {
+            foreach (var item in this.inventoryItems)
+            {
+                farmManager.AddMultipleToInventory(item, 5);
+            }
+
+            foreach (var ingredient in this.marketIngredients)
+            {
+                farmManager.AddMultipleToInventory(ingredient, 5);
+            }
+
+            foreach (var present in this.presents)
+            {
+                farmManager.AddToInventory(present);
             }
         }
     }

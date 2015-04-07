@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Linq;
 
     using EasterFarm.GameLogic.Contracts;
     using EasterFarm.Models;
@@ -10,6 +11,8 @@
     using EasterFarm.Models.FarmObjects.Animals;
     using EasterFarm.Models.FarmObjects.Food;
     using EasterFarm.Models.FarmObjects.Byproducts;
+    using EasterFarm.Models.Presents;
+using EasterFarm.Models.MarketPlace;
 
     public class ConsoleRenderer : IRenderer
     {
@@ -151,5 +154,10 @@
                 "Basket 12" ,
                 "Rabbit 18"
         };
+
+        public void RenderPresentFactory(IDictionary<IStorable, int> presents)
+        {
+
+        }
     }
 }

@@ -6,6 +6,11 @@
 
     public class Hen : Livestock, IEatBerries, IStorable
     {
+        public Hen()
+            : this(new MatrixCoords())
+        {
+        }
+
         public Hen(MatrixCoords topLeft)
             : base(topLeft, LivestockType.Hen)
         {
