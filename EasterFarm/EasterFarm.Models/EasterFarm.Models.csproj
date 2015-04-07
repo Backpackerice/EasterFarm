@@ -55,7 +55,7 @@
     <Compile Include="FarmObjects\Animals\Animal.cs" />
     <Compile Include="FarmObjects\Byproducts\Byproduct.cs" />
     <Compile Include="FarmObjects\Byproducts\ByproductType.cs" />
-    <Compile Include="FarmObjects\Byproducts\EggColor.cs" />
+    <Compile Include="FarmObjects\Byproducts\ByproductColor.cs" />
     <Compile Include="FarmObjects\Byproducts\EasterEgg.cs" />
     <Compile Include="FarmObjects\Byproducts\Egg.cs" />
     <Compile Include="FarmObjects\Byproducts\Milk.cs" />

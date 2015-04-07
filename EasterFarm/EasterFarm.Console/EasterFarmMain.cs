@@ -1,4 +1,4 @@
-﻿using System.Runtime.Remoting.Channels;
+﻿
 
 namespace EasterFarm.Console
 {
@@ -7,6 +7,8 @@ namespace EasterFarm.Console
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Runtime.Remoting.Channels;
+
     using EasterFarm.Common;
     using EasterFarm.GameLogic;
     using EasterFarm.GameLogic.Contracts;

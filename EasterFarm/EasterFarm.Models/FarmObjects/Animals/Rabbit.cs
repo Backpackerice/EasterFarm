@@ -7,6 +7,11 @@ namespace EasterFarm.Models.FarmObjects.Animals
 
     public class Rabbit : Livestock, ICollectBerries, IStorable
     {
+        public Rabbit()
+            : this(new MatrixCoords())
+        {
+        }
+
         public Rabbit(MatrixCoords topLeft)
             : base(topLeft, LivestockType.Rabbit)
         {

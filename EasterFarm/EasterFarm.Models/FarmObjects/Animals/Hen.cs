@@ -6,6 +6,11 @@
 
     public class Hen : Livestock, IEatBerries, IStorable
     {
+        public Hen()
+            : this(new MatrixCoords())
+        {
+        }
+
         public Hen(MatrixCoords topLeft)
             : base(topLeft, LivestockType.Hen)
         {
@@ -22,7 +27,7 @@
         public override Byproduct Produce(ByproductColor color)
         {
             //this.HasProduct = false;
-            return new Egg(this.TopLeft);
+            return new EasterEgg(this.TopLeft, color);
         }
     }
 }

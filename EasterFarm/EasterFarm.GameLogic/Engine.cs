@@ -36,6 +36,9 @@
             this.UserInput = userInput;
             this.Aim = aim;
             this.GameInitializator = gameInitializator;
+            this.farmManager = new FarmManager();
+            this.market = new Market();
+            this.presentFactory = new PresentFactory();
             this.random = new Random();
             this.gameObjects = new HashSet<GameObject>();
             this.farmFoods = new HashSet<FarmFood>();
@@ -95,6 +98,8 @@
             while (true)
             {
                 this.Renderer.RenderAll();
+                this.Renderer.RenderPresentFactory(GetPresentsFromInventory());
+                this.Renderer.RenderMarket(GetMarketItems());
 
                 Thread.Sleep(200);
 
@@ -288,6 +293,8 @@
         private void Action()
         {
             DestroyObjectsInAim(this.villains);
+            // TODO: Add to inventory.
+            DestroyObjectsInAim(this.byproducts);
         }
 
         private void DestroyObjectsInAim(IEnumerable<GameObject> collection )
@@ -300,6 +307,19 @@
                     item.IsDestroyed = true;
                 }
             }
+        }
+
+        private IDictionary<IStorable, int> GetPresentsFromInventory()
+        {
+            var presents = this.farmManager.Inventory
+                .Where(i => i.Key.GetType() == typeof(Present));
+
+            return presents.ToDictionary(x => x.Key, x => x.Value);
+        }
+
+        private ICollection<IBuyable> GetMarketItems()
+        {
+            return this.market.BuyableProducts;
         }
     }
 }

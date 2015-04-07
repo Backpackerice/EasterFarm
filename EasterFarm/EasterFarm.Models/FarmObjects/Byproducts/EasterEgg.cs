@@ -6,6 +6,11 @@
     {
         private ByproductColor color;
 
+        public EasterEgg(ByproductColor color)
+            : this(new MatrixCoords(), color)
+        {
+        }
+
         public EasterEgg(MatrixCoords topLeft, ByproductColor color) 
             : base(topLeft)
         {
