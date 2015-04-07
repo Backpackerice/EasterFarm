@@ -10,6 +10,7 @@
     using EasterFarm.Models.FarmObjects.Animals;
     using EasterFarm.Models.FarmObjects.Food;
     using EasterFarm.Models.FarmObjects.Byproducts;
+    using EasterFarm.Common;
 
     public class ConsoleRenderer : IRenderer
     {
@@ -109,7 +110,8 @@
         public void RenderAll()
         {
             Console.SetCursorPosition(0, 0);
-
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.BackgroundColor = ConsoleColor.Green;
             StringBuilder scene = new StringBuilder();
 
             for (int row = 0; row < this.WorldRows; row++)
@@ -122,14 +124,28 @@
             Console.Write(scene.ToString());
 
             //Render Market
-            Console.SetCursorPosition(55, 2);
-            int i = 4;
+            Console.SetCursorPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 20, 2);
+            
+            Console.WriteLine("MARKET");
+            int i = 5;
             foreach (var product in marketProducts)
             {
+                Console.SetCursorPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 5, i);
                 Console.WriteLine(product);
-                Console.SetCursorPosition(55, i);
                 i += 2;
             }
+
+            //Render Factory
+            Console.SetCursorPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 20, (int)(worldRows * Constants.UpDownScreenRatio) + 2);
+            Console.WriteLine("FACTORY");
+            i = (int)(worldRows * Constants.UpDownScreenRatio) + 3;
+            foreach (var product in factoryProducts)
+            {
+                Console.SetCursorPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 5, i);
+                Console.WriteLine(product);
+                i += 2;
+            }
+
         }
 
         public void ClearRenderer()
@@ -146,11 +162,23 @@
         //Market
         private readonly List<string> marketProducts = new List<string> 
         {
-                "Flour 2" ,
-                "Cocoa 4",     
-                "Ribbon 8",        
-                "Basket 12" ,
-                "Rabbit 18"
+                "Flour 2 raspberries" ,
+                "Cocoa 4 raspberries",     
+                "Ribbon 8 raspberries",        
+                "Basket 12 raspberries" ,
+                "Rabbit 18 raspberries"
         };
+
+        //Factory
+        private readonly List<string> factoryProducts = new List<string> 
+        {
+               "Basket",       
+               "Cocoa",    
+               "Ribbon", 
+               "Flour",   
+               "Rabbit"
+
+        };
+
     }
 }
