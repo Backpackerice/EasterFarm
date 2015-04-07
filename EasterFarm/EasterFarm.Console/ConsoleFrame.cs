@@ -6,7 +6,7 @@
     internal sealed class ConsoleFrame
     {
         private static ConsoleFrame instance;
-
+        
         private ConsoleFrame()
         {
             this.Image = GetScreenFrameImage();

@@ -18,9 +18,6 @@
             GameObject gameObject = new Raspberry(new MatrixCoords(1, 4));
             engine.AddGameObject(gameObject);
 
-            gameObject = new Blueberry(new MatrixCoords(20, 20));
-            engine.AddGameObject(gameObject);
-
             gameObject = new Hen(new MatrixCoords(10, 10));
             engine.AddGameObject(gameObject);
 
