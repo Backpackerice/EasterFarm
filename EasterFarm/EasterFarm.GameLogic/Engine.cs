@@ -30,10 +30,11 @@
         private readonly HashSet<Villain> villains;
         private readonly HashSet<Byproduct> byproducts;
 
-        public Engine(IRenderer renderer, IUserKeyboardInput userInput, GameInitializator gameInitializator)
+        public Engine(IRenderer renderer, IUserKeyboardInput userInput, IConsoleAim aim, GameInitializator gameInitializator)
         {
             this.Renderer = renderer;
             this.UserInput = userInput;
+            this.Aim = aim;
             this.GameInitializator = gameInitializator;
             this.random = new Random();
             this.gameObjects = new HashSet<GameObject>();
@@ -46,6 +47,8 @@
         internal IRenderer Renderer { get; private set; }
 
         internal IUserKeyboardInput UserInput { get; private set; }
+
+        internal IConsoleAim Aim { get; private set; }
 
         internal GameInitializator GameInitializator { get; set; }
 
@@ -97,6 +100,8 @@
                 this.UserInput.ProcessInput();
 
                 this.Renderer.ClearRenderer();
+
+                this.Renderer.EnqueueForRendering(this.Aim);
 
                 foreach (var gameObject in gameObjects)
                 {

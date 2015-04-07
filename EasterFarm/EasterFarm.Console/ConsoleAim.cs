@@ -63,11 +63,15 @@
 
         public void MoveRight()
         {
-            if (this.TopLeft.Col >= (Constants.WorldCols * Constants.LeftRightScreenRatio) - 1 - (2 * Size))
+            if (this.TopLeft.Col >= (Constants.WorldCols * Constants.LeftRightScreenRatio) - (2 * Size))
             {
                 this.TopLeft = new MatrixCoords(
                     this.TopLeft.Row,
-                    (int)(Constants.WorldCols * Constants.LeftRightScreenRatio) - 1 - Size);
+                    (int)(Constants.WorldCols * Constants.LeftRightScreenRatio) - Size);
+            }
+            else
+            {
+                this.TopLeft = new MatrixCoords(this.TopLeft.Row, this.TopLeft.Col + Step);
             }
         }
     }

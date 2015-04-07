@@ -1,4 +1,6 @@
-﻿namespace EasterFarm.Console
+﻿using System.Runtime.Remoting.Channels;
+
+namespace EasterFarm.Console
 {
     using System;
     using System.Collections.Generic;
@@ -32,10 +34,16 @@
             // Creating an aim for the console user experience.
             IConsoleAim aim = ConsoleAim.Instance;
 
+            // Ataching the aim methods to the userInput events
+            userInput.OnDownPressed += (sender, args) => { aim.MoveDown(); };
+            userInput.OnLeftPressed += (sender, args) => { aim.MoveLeft(); };
+            userInput.OnRightPressed += (sender, args) => { aim.MoveRight(); };
+            userInput.OnUpPressed += (sender, args) => { aim.MoveUp(); };
+
             GameInitializator gameInitializator = new GameInitializator();
 
             // Creating an engine of the game.
-            Engine engine = new Engine(renderer, userInput, gameInitializator);
+            Engine engine = new Engine(renderer, userInput, aim, gameInitializator);
 
             // Starting the game.
             engine.Start();

@@ -1,6 +1,8 @@
 ﻿namespace EasterFarm.GameLogic.Contracts
 {
-    public interface IConsoleAim
+    using EasterFarm.Models.Contracts;
+
+    public interface IConsoleAim : IRenderable
     {
         void MoveUp();
         void MoveDown();
