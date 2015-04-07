@@ -122,7 +122,6 @@
             Console.Write(scene.ToString());
 
             //Render Market
-
             Console.SetCursorPosition(55, 2);
             int i = 4;
             foreach (var product in marketProducts)
