@@ -9,7 +9,7 @@
         public Hen(MatrixCoords topLeft)
             : base(topLeft, LivestockType.Hen)
         {
-            this.HasProduct = false;
+            //this.HasProduct = false;
         }
 
         public override Livestock Clone()
@@ -21,7 +21,7 @@
 
         public override Byproduct Produce(ByproductColor color)
         {
-            this.HasProduct = false;
+            //this.HasProduct = false;
             return new Egg(this.TopLeft);
         }
     }

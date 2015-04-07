@@ -30,11 +30,9 @@
             // Assigning the user input to the keyboard.
             IUserKeyboardInput userInput = new KeyboardInput();
 
+            GameInitializator gameInitializator = new GameInitializator();
             // Creating an engine of the game.
-            Engine engine = new Engine(renderer, userInput);
-
-            // Initializing the game engine.
-            GameInitializator.Initialize(engine);
+            Engine engine = new Engine(renderer, userInput, gameInitializator);
 
             // Starting the game.
             engine.Start();

@@ -1,12 +1,11 @@
-﻿using System.Runtime.Remoting.Channels;
-
-namespace EasterFarm.GameLogic
+﻿namespace EasterFarm.GameLogic
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading;
+    using System.Runtime.Remoting.Channels;
 
     using Contracts;
     using EasterFarm.Common;
@@ -20,9 +19,9 @@ namespace EasterFarm.GameLogic
 
     public class Engine
     {
-        private FarmManager farmManager;
-        private Market market;
-        private PresentFactory presentFactory;
+        private readonly FarmManager farmManager;
+        private readonly Market market;
+        private readonly PresentFactory presentFactory;
         private Random random;
 
         private readonly HashSet<GameObject> gameObjects;
@@ -31,10 +30,11 @@ namespace EasterFarm.GameLogic
         private readonly HashSet<Villain> villains;
         private readonly HashSet<Byproduct> byproducts;
 
-        public Engine(IRenderer renderer, IUserKeyboardInput userInput)
+        public Engine(IRenderer renderer, IUserKeyboardInput userInput, GameInitializator gameInitializator)
         {
             this.Renderer = renderer;
             this.UserInput = userInput;
+            this.GameInitializator = gameInitializator;
             this.random = new Random();
             this.gameObjects = new HashSet<GameObject>();
             this.farmFoods = new HashSet<FarmFood>();
@@ -47,7 +47,9 @@ namespace EasterFarm.GameLogic
 
         internal IUserKeyboardInput UserInput { get; private set; }
 
-        public void AddGameObject(GameObject gameObject)
+        internal GameInitializator GameInitializator { get; set; }
+
+        private void AddGameObject(GameObject gameObject)
         {
             if (gameObject == null)
             {
@@ -83,7 +85,8 @@ namespace EasterFarm.GameLogic
 
         public void Start()
         {
-            this.SetInitialGameObjects();
+            GameInitializator.Initialize(this.farmManager, this.market, this.presentFactory, this.gameObjects);
+            this.FillGameObjectCollections(this.gameObjects);
 
             while (true)
             {
@@ -108,7 +111,7 @@ namespace EasterFarm.GameLogic
 
                 ClearCollections();
 
-                this.AddGameObject(ProduceNewGameObject());
+                this.AddGameObject(this.ProduceNewGameObject());
             }
         }
 
@@ -219,27 +222,6 @@ namespace EasterFarm.GameLogic
             return map;
         }
 
-        public void SetInitialGameObjects()
-        {
-            this.farmManager = new FarmManager();
-
-            this.market = Market.Instance;
-            var ingredientFactory = EasterFarm.Models.MarketPlace.MarketFactory.Get(Category.Ingredient);
-            this.FillMarketCategory(ingredientFactory, IngredientType.Basket);
-
-            this.presentFactory = new PresentFactory();
-        }
-
-        // Market
-        // TODO : foreach category - more abstract?
-        private void FillMarketCategory(ProductFactory productFactory, Enum productType)
-        {
-            foreach (Enum type in Enum.GetValues(productType.GetType()))
-            {
-                IBuyable ingredient = productFactory.Get(type);
-                this.market.AddProduct(ingredient);
-            }
-        }
 
         // TODO: Introduce difficulty and remove the hardcode from this method.
         private GameObject ProduceNewGameObject()
@@ -260,7 +242,7 @@ namespace EasterFarm.GameLogic
                     return new Fox(GetRandomMatrixCoords());
                 }
 
-                if (next < (2*Constants.DifficultyLevel + Constants.Difficulty) / 2)
+                if (next < (2 * Constants.DifficultyLevel + Constants.Difficulty) / 2)
                 {
                     return new Raspberry(GetRandomMatrixCoords());
                 }
@@ -274,6 +256,14 @@ namespace EasterFarm.GameLogic
         private MatrixCoords GetRandomMatrixCoords()
         {
             return new MatrixCoords(random.Next(1, Constants.WorldRows - 1), random.Next(1, (int)(Constants.WorldCols * Constants.LeftRightScreenRatio)));
+        }
+
+        private void FillGameObjectCollections(ICollection<GameObject> gameObjects)
+        {
+            foreach (var gameObject in gameObjects)
+            {
+                this.AddGameObject(gameObject);
+            }
         }
     }
 }
