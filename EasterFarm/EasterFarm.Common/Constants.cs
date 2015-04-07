@@ -10,5 +10,7 @@ namespace EasterFarm.Common
         public const double UpDownScreenRatio = 0.5;
         public const int Difficulty = 10; // the greater, the easyer
         public const int DifficultyLevel = 1; // should be lesser than Difficulty/2
+        public const int WorldRowsWPF = 20;
+        public const int WorldColsWPF = 29;
     }
 }

@@ -17,7 +17,7 @@ namespace EasterFarm.TestWPF.Converters
         {
             string stringMatrix = value.ToString();
             string[] stringArray = stringMatrix.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
-            int result = Int32.Parse(stringArray[1]) * 40;
+            int result = (Int32.Parse(stringArray[1]) - 1) * 32;
             return result;
         }
 

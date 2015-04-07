@@ -67,7 +67,7 @@ namespace EasterFarm.TestWPF.ViewModels
 
             InitialiazeGameObjectsLists();
 
-            Start();
+            // Start();
         }
 
         public RelayCommand DestroyObject { get; set; }
@@ -142,7 +142,7 @@ namespace EasterFarm.TestWPF.ViewModels
         private void InitialiazeGameObjectsLists()
         {
             this.AddGameObject(new Raspberry(new MatrixCoords(1, 4)));
-            this.AddGameObject(new Raspberry(new MatrixCoords(11, 20)));
+            this.AddGameObject(new Raspberry(new MatrixCoords(20, 29)));
             this.AddGameObject(new Hen(new MatrixCoords(10, 17)));
             this.AddGameObject(new Hen(new MatrixCoords(10, 10)));
             this.AddGameObject(new Hen(new MatrixCoords(9, 9)));
@@ -251,10 +251,10 @@ namespace EasterFarm.TestWPF.ViewModels
 
         private MatrixCoords GetRandomMatrixCoords()
         {
-            var position = new MatrixCoords(random.Next(1, Constants.WorldRows - 1), random.Next(1, (int)(Constants.WorldCols * Constants.LeftRightScreenRatio)));
+            var position = new MatrixCoords(random.Next(1, Constants.WorldRowsWPF - 1), random.Next(1, (int)(Constants.WorldColsWPF)));
             while (gameObjects.Any(go => go.TopLeft == position))
             {
-                position = new MatrixCoords(random.Next(1, Constants.WorldRows - 1), random.Next(1, (int)(Constants.WorldCols * Constants.LeftRightScreenRatio)));
+                position = new MatrixCoords(random.Next(1, Constants.WorldRowsWPF - 1), random.Next(1, (int)(Constants.WorldColsWPF)));
             }
             return position;
         }
@@ -303,7 +303,7 @@ namespace EasterFarm.TestWPF.ViewModels
 
         public int[,] CreateTopographicMap(Type gameObjectType)
         {
-            int[,] map = new int[Constants.WorldRows, (int)(Constants.WorldCols * Constants.LeftRightScreenRatio) + 1];
+            int[,] map = new int[Constants.WorldRows, (int)(Constants.WorldCols) + 1];
             int mapHeight = map.GetLength(0);
             int mapWidth = map.GetLength(1);
 

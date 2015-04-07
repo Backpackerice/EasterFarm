@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:EasterFarm.TestWPF"
         xmlns:converters="clr-namespace:EasterFarm.TestWPF.Converters"
         xmlns:viewModels="clr-namespace:EasterFarm.TestWPF.ViewModels"
-        Title="MainWindow" Height="768" Width="1366">
+        Title="MainWindow" Height="800" Width="1300">
 
     
 
@@ -20,8 +20,8 @@
         <viewModels:MainViewModel x:Key="ViewModel"/>
 
         <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Width" Value="32"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Command" Value="{Binding DataContext.DestroyObject, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl},Mode=FindAncestor}}"/>
