@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IConsoleAim.cs" />
     <Compile Include="Contracts\IRenderer.cs" />
     <Compile Include="Contracts\IUserInput.cs" />
     <Compile Include="Contracts\IUserKeyboardInput.cs" />
