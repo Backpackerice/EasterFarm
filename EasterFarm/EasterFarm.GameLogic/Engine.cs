@@ -92,6 +92,7 @@
         public void Start()
         {
             GameInitializator.Initialize(this.farmManager, this.market, this.presentFactory, this.gameObjects);
+            this.UserInput.OnActionPressed += (sender, args) => { this.Action(); };
             this.FillGameObjectCollections(this.gameObjects);
 
             while (true)
@@ -284,6 +285,25 @@
             foreach (var gameObject in gameObjects)
             {
                 this.AddGameObject(gameObject);
+            }
+        }
+
+        private void Action()
+        {
+            DestroyObjectsInAim(this.villains);
+            // TODO: Add to inventory.
+            DestroyObjectsInAim(this.byproducts);
+        }
+
+        private void DestroyObjectsInAim(IEnumerable<GameObject> collection )
+        {
+            foreach (var item in collection)
+            {
+                if (item.TopLeft.Row >= this.Aim.TopLeft.Row && item.TopLeft.Row < this.Aim.TopLeft.Row + this.Aim.Size
+                    && item.TopLeft.Col >= this.Aim.TopLeft.Col && item.TopLeft.Col < this.Aim.TopLeft.Col + this.Aim.Size)
+                {
+                    item.IsDestroyed = true;
+                }
             }
         }
 
