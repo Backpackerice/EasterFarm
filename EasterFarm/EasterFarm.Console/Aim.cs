@@ -5,73 +5,75 @@
     using EasterFarm.Models;
     using EasterFarm.Models.Contracts;
 
-    public class ConsoleAim : IConsoleAim, IRenderable
+    public class Aim : IAim, IRenderable
     {
-        private const int Step = 3;
-        private const int Size = 3;
-        private static ConsoleAim instance;
+        private const int step = 3;
+        private const int size = 3;
+        private static Aim instance;
 
-        private ConsoleAim()
+        private Aim()
         {
             this.TopLeft = new MatrixCoords(
                 (Constants.WorldRows / 2) - 1,
                 (int)((Constants.WorldCols * Constants.LeftRightScreenRatio / 2) - 1));
         }
 
-        public static ConsoleAim Instance
+        public static Aim Instance
         {
-            get { return instance ?? (instance = new ConsoleAim()); }
+            get { return instance ?? (instance = new Aim()); }
         }
 
         public MatrixCoords TopLeft { get; private set; }
 
+        public int Size { get { return size;} }
+
         public void MoveUp()
         {
-            if (this.TopLeft.Row <= Size)
+            if (this.TopLeft.Row <= size)
             {
                 this.TopLeft = new MatrixCoords(1, this.TopLeft.Col);
             }
             else
             {
-                this.TopLeft = new MatrixCoords(this.TopLeft.Row - Step, this.TopLeft.Col);
+                this.TopLeft = new MatrixCoords(this.TopLeft.Row - step, this.TopLeft.Col);
             }
         }
 
         public void MoveDown()
         {
-            if (this.TopLeft.Row >= Constants.WorldRows - 1 - (2 * Size))
+            if (this.TopLeft.Row >= Constants.WorldRows - 1 - (2 * size))
             {
-                this.TopLeft = new MatrixCoords(Constants.WorldRows - 1 - Size, this.TopLeft.Col);
+                this.TopLeft = new MatrixCoords(Constants.WorldRows - 1 - size, this.TopLeft.Col);
             }
             else
             {
-                this.TopLeft = new MatrixCoords(this.TopLeft.Row + Step, this.TopLeft.Col);
+                this.TopLeft = new MatrixCoords(this.TopLeft.Row + step, this.TopLeft.Col);
             }
         }
 
         public void MoveLeft()
         {
-            if (this.TopLeft.Col <= Size)
+            if (this.TopLeft.Col <= size)
             {
                 this.TopLeft = new MatrixCoords(this.TopLeft.Row, 1);
             }
             else
             {
-                this.TopLeft = new MatrixCoords(this.TopLeft.Row, this.TopLeft.Col - Step);
+                this.TopLeft = new MatrixCoords(this.TopLeft.Row, this.TopLeft.Col - step);
             }
         }
 
         public void MoveRight()
         {
-            if (this.TopLeft.Col >= (Constants.WorldCols * Constants.LeftRightScreenRatio) - (2 * Size))
+            if (this.TopLeft.Col >= (Constants.WorldCols * Constants.LeftRightScreenRatio) - (2 * size))
             {
                 this.TopLeft = new MatrixCoords(
                     this.TopLeft.Row,
-                    (int)(Constants.WorldCols * Constants.LeftRightScreenRatio) - Size);
+                    (int)(Constants.WorldCols * Constants.LeftRightScreenRatio) - size);
             }
             else
             {
-                this.TopLeft = new MatrixCoords(this.TopLeft.Row, this.TopLeft.Col + Step);
+                this.TopLeft = new MatrixCoords(this.TopLeft.Row, this.TopLeft.Col + step);
             }
         }
     }

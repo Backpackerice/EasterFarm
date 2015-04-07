@@ -4,7 +4,12 @@
 
     public class Milk : Byproduct, ICookable, IStorable
     {
-        public Milk(MatrixCoords topLeft) 
+        public Milk()
+            : this(new MatrixCoords())
+        {
+        }
+
+        public Milk(MatrixCoords topLeft)
             : base(topLeft, ByproductType.Milk)
         {
         }

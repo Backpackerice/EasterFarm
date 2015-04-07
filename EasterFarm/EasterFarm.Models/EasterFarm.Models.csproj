@@ -55,7 +55,7 @@
     <Compile Include="FarmObjects\Animals\Animal.cs" />
     <Compile Include="FarmObjects\Byproducts\Byproduct.cs" />
     <Compile Include="FarmObjects\Byproducts\ByproductType.cs" />
-    <Compile Include="FarmObjects\Byproducts\EggColor.cs" />
+    <Compile Include="FarmObjects\Byproducts\ByproductColor.cs" />
     <Compile Include="FarmObjects\Byproducts\EasterEgg.cs" />
     <Compile Include="FarmObjects\Byproducts\Egg.cs" />
     <Compile Include="FarmObjects\Byproducts\Milk.cs" />
@@ -92,9 +92,6 @@
       <Project>{e5c262ce-f613-45f4-b9ab-bd137773f299}</Project>
       <Name>EasterFarm.Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

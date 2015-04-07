@@ -2,11 +2,16 @@
 {
     using EasterFarm.Models.Contracts;
 
-    public interface IConsoleAim : IRenderable
+    public interface IAim : IRenderable
     {
         void MoveUp();
+
         void MoveDown();
+
         void MoveLeft();
+
         void MoveRight();
+
+        int Size { get; }
     }
 }

@@ -30,12 +30,15 @@
         private readonly HashSet<Villain> villains;
         private readonly HashSet<Byproduct> byproducts;
 
-        public Engine(IRenderer renderer, IUserKeyboardInput userInput, IConsoleAim aim, GameInitializator gameInitializator)
+        public Engine(IRenderer renderer, IUserKeyboardInput userInput, IAim aim, GameInitializator gameInitializator)
         {
             this.Renderer = renderer;
             this.UserInput = userInput;
             this.Aim = aim;
             this.GameInitializator = gameInitializator;
+            this.farmManager = new FarmManager();
+            this.market = new Market();
+            this.presentFactory = new PresentFactory();
             this.random = new Random();
             this.gameObjects = new HashSet<GameObject>();
             this.farmFoods = new HashSet<FarmFood>();
@@ -48,7 +51,7 @@
 
         internal IUserKeyboardInput UserInput { get; private set; }
 
-        internal IConsoleAim Aim { get; private set; }
+        internal IAim Aim { get; private set; }
 
         internal GameInitializator GameInitializator { get; set; }
 
@@ -89,11 +92,14 @@
         public void Start()
         {
             GameInitializator.Initialize(this.farmManager, this.market, this.presentFactory, this.gameObjects);
+            this.UserInput.OnActionPressed += (sender, args) => { this.Action(); };
             this.FillGameObjectCollections(this.gameObjects);
 
             while (true)
             {
                 this.Renderer.RenderAll();
+                this.Renderer.RenderPresentFactory(GetPresentsFromInventory());
+                this.Renderer.RenderMarket(GetMarketItems());
 
                 Thread.Sleep(200);
 
@@ -282,6 +288,38 @@
             {
                 this.AddGameObject(gameObject);
             }
+        }
+
+        private void Action()
+        {
+            DestroyObjectsInAim(this.villains);
+            // TODO: Add to inventory.
+            DestroyObjectsInAim(this.byproducts);
+        }
+
+        private void DestroyObjectsInAim(IEnumerable<GameObject> collection )
+        {
+            foreach (var item in collection)
+            {
+                if (item.TopLeft.Row >= this.Aim.TopLeft.Row && item.TopLeft.Row < this.Aim.TopLeft.Row + this.Aim.Size
+                    && item.TopLeft.Col >= this.Aim.TopLeft.Col && item.TopLeft.Col < this.Aim.TopLeft.Col + this.Aim.Size)
+                {
+                    item.IsDestroyed = true;
+                }
+            }
+        }
+
+        private IDictionary<IStorable, int> GetPresentsFromInventory()
+        {
+            var presents = this.farmManager.Inventory
+                .Where(i => i.Key.GetType() == typeof(Present));
+
+            return presents.ToDictionary(x => x.Key, x => x.Value);
+        }
+
+        private ICollection<IBuyable> GetMarketItems()
+        {
+            return this.market.BuyableProducts;
         }
     }
 }

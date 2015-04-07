@@ -3,32 +3,49 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Linq;
 
+	using EasterFarm.Common;
     using EasterFarm.GameLogic.Contracts;
     using EasterFarm.Models;
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.FarmObjects.Animals;
     using EasterFarm.Models.FarmObjects.Food;
     using EasterFarm.Models.FarmObjects.Byproducts;
-    using EasterFarm.Common;
+    using EasterFarm.Models.Presents;
+	using EasterFarm.Models.MarketPlace;
 
     public class ConsoleRenderer : IRenderer
     {
         private readonly Dictionary<Type, char[,]> images = new Dictionary<Type, char[,]>
         {
-            { typeof(ConsoleAim), new char[,]{{'┌', ' ', '┐'}, {' ', ' ', ' '}, {'└', ' ', '┘'}}},
-            { typeof(Hen), new char[,] { { '⌠' } } },
-            { typeof(Fox), new char[,] { { '¥' } } },
-            { typeof(Lamb), new char[,]  { {'π'} } },
-            { typeof(Rabbit), new char[,] { { '╓' } } },
-            { typeof(Wolf), new char[,] { {'╪'} } },
+
+            //{ typeof(ConsoleAim), new char[,]{{'┌', ' ', '┐'}, {' ', ' ', ' '}, {'└', ' ', '┘'}}},
+            //{ typeof(Hen), new char[,] { { '⌠' } } },
+            //{ typeof(Fox), new char[,] { { '¥' } } },
+            //{ typeof(Lamb), new char[,]  { {'π'} } },
+            //{ typeof(Rabbit), new char[,] { { '╓' } } },
+            //{ typeof(Wolf), new char[,] { {'╪'} } },
+            //{ typeof(Blueberry), new char[,] { { '♠' } } },
+            //{ typeof(Raspberry), new char[,] { { '♣' } } },
+            //{ typeof(Egg), new char[,] {{'#'}}},
+            //{ typeof(TrophyEgg), new char[,] {{'#'}}},
+            //{ typeof(EasterEgg), new char[,] {{'#'}}},
+            //{ typeof(Milk), new char[,] {{'#'}}},
+            //{ typeof(Villain), new char[,] {{'#'}}},
+
+            { typeof(Aim), new char[,]{{'┌', ' ', '┐'}, {' ', ' ', ' '}, {'└', ' ', '┘'}}},
+            { typeof(Hen), new char[,] { { '\\', '_', '/','^'} } },
+            { typeof(Fox), new char[,] { { '/', '|', ' ' }, { '@', '@', '-' } } },
+            { typeof(Lamb), new char[,]  { {'-', '(', '_', ')', '-'}, {'(','_', '_', ')', ' '} } },
+            { typeof(Rabbit), new char[,] { { ' ', '!', '!' }, { '*', '_', '"' } } },
+            { typeof(Wolf), new char[,] { { '(', '\\', '_', ' ' }, { ' ',' ', '"', '.' } } },
             { typeof(Blueberry), new char[,] { { '♠' } } },
             { typeof(Raspberry), new char[,] { { '♣' } } },
-            { typeof(Egg), new char[,] {{'#'}}},
-            { typeof(TrophyEgg), new char[,] {{'#'}}},
-            { typeof(EasterEgg), new char[,] {{'#'}}},
-            { typeof(Milk), new char[,] {{'#'}}},
-            { typeof(Villain), new char[,] {{'#'}}},
+            { typeof(Egg), new char[,] {{'/', '^', '\\'}, {'\\', '_', '/'}}},
+            { typeof(TrophyEgg), new char[,] {{'/', '^', '\\'}, {'\\', '@', '/'}}},
+            { typeof(EasterEgg), new char[,] {{'/', '^', '\\'}, {'\\', '#', '/'}}},
+            { typeof(Milk), new char[,] {{' ', '_', ' '}, {'|',' ', '|'}, {'(','_', ')'}}},
         };
         //Added default symbol # because we dont yet know what symbols we are gonna use for the classes.
 
@@ -112,6 +129,7 @@
             Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.BackgroundColor = ConsoleColor.Green;
+
             StringBuilder scene = new StringBuilder();
 
             for (int row = 0; row < this.WorldRows; row++)
@@ -121,31 +139,8 @@
                     scene.Append(this.renderMatrix[row, col]);
                 }
             }
+
             Console.Write(scene.ToString());
-
-            //Render Market
-            Console.SetCursorPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 20, 2);
-            
-            Console.WriteLine("MARKET");
-            int i = 5;
-            foreach (var product in marketProducts)
-            {
-                Console.SetCursorPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 5, i);
-                Console.WriteLine(product);
-                i += 2;
-            }
-
-            //Render Factory
-            Console.SetCursorPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 20, (int)(worldRows * Constants.UpDownScreenRatio) + 2);
-            Console.WriteLine("FACTORY");
-            i = (int)(worldRows * Constants.UpDownScreenRatio) + 3;
-            foreach (var product in factoryProducts)
-            {
-                Console.SetCursorPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 5, i);
-                Console.WriteLine(product);
-                i += 2;
-            }
-
         }
 
         public void ClearRenderer()
@@ -159,26 +154,32 @@
             }
         }
 
-        //Market
-        private readonly List<string> marketProducts = new List<string> 
+        public void RenderPresentFactory(IDictionary<IStorable, int> presents)
         {
-                "Flour 2 raspberries" ,
-                "Cocoa 4 raspberries",     
-                "Ribbon 8 raspberries",        
-                "Basket 12 raspberries" ,
-                "Rabbit 18 raspberries"
-        };
+            HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 2, (int)(worldRows * Constants.UpDownScreenRatio) + 2, new string('_', 45), ConsoleColor.Red);
+            HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 20, (int)(worldRows * Constants.UpDownScreenRatio) + 2, "PRESENT FACTORY", ConsoleColor.Red);
 
-        //Factory
-        private readonly List<string> factoryProducts = new List<string> 
+            int row = (int)(worldRows * Constants.UpDownScreenRatio) + 4;
+            foreach (var present in presents.Keys)
+            {
+                HelperMethods.PrintOnPosition(((int)(WorldCols * Constants.LeftRightScreenRatio) + 5), row, present.Type.ToString(), ConsoleColor.Black);
+                HelperMethods.PrintOnPosition(((int)(WorldCols * Constants.LeftRightScreenRatio) + 40), row, presents[present].ToString(), ConsoleColor.Black);
+                row += 2;
+            }
+        }
+
+        public void RenderMarket(ICollection<IBuyable> products)
         {
-               "Basket",       
-               "Cocoa",    
-               "Ribbon", 
-               "Flour",   
-               "Rabbit"
-
-        };
-
+            HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 2, 2, new string('_', 45), ConsoleColor.Red);
+            HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 20, 2, "MARKET PLACE", ConsoleColor.Red);
+            
+            int row = 4;
+            foreach (var product in products)
+            {
+                HelperMethods.PrintOnPosition(((int)(WorldCols * Constants.LeftRightScreenRatio) + 5), row, product.Type.ToString(), ConsoleColor.Black);
+                HelperMethods.PrintOnPosition(((int)(WorldCols * Constants.LeftRightScreenRatio) + 40), row, product.Price.ToString() + " rbs", ConsoleColor.Black);
+                row += 2;
+            }
+        }
     }
 }
