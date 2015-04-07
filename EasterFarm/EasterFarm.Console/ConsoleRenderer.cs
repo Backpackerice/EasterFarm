@@ -16,7 +16,7 @@
     {
         private readonly Dictionary<Type, char[,]> images = new Dictionary<Type, char[,]>
         {
-            { typeof(ConsoleAim), new char[,]{{'┌', ' ', '┐'}, {' ', ' ', ' '}, {'└', ' ', '┘'}}},
+            { typeof(Aim), new char[,]{{'┌', ' ', '┐'}, {' ', ' ', ' '}, {'└', ' ', '┘'}}},
             { typeof(Hen), new char[,] { { '⌠' } } },
             { typeof(Fox), new char[,] { { '¥' } } },
             { typeof(Lamb), new char[,]  { {'π'} } },

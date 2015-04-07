@@ -5,22 +5,22 @@
     using EasterFarm.Models;
     using EasterFarm.Models.Contracts;
 
-    public class ConsoleAim : IConsoleAim, IRenderable
+    public class Aim : IAim, IRenderable
     {
         private const int step = 3;
         private const int size = 3;
-        private static ConsoleAim instance;
+        private static Aim instance;
 
-        private ConsoleAim()
+        private Aim()
         {
             this.TopLeft = new MatrixCoords(
                 (Constants.WorldRows / 2) - 1,
                 (int)((Constants.WorldCols * Constants.LeftRightScreenRatio / 2) - 1));
         }
 
-        public static ConsoleAim Instance
+        public static Aim Instance
         {
-            get { return instance ?? (instance = new ConsoleAim()); }
+            get { return instance ?? (instance = new Aim()); }
         }
 
         public MatrixCoords TopLeft { get; private set; }
