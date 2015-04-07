@@ -5,7 +5,7 @@
     using System.Text;
     using System.Linq;
 
-	using EasterFarm.Common;
+    using EasterFarm.Common;
     using EasterFarm.GameLogic.Contracts;
     using EasterFarm.Models;
     using EasterFarm.Models.Contracts;
@@ -13,7 +13,7 @@
     using EasterFarm.Models.FarmObjects.Food;
     using EasterFarm.Models.FarmObjects.Byproducts;
     using EasterFarm.Models.Presents;
-	using EasterFarm.Models.MarketPlace;
+    using EasterFarm.Models.MarketPlace;
 
     public class ConsoleRenderer : IRenderer
     {
@@ -128,7 +128,6 @@
             Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.BackgroundColor = ConsoleColor.Green;
-
             StringBuilder scene = new StringBuilder();
 
             for (int row = 0; row < this.WorldRows; row++)
@@ -139,7 +138,7 @@
                 }
             }
 
-            Console.Write(scene.ToString());
+            Console.Write(scene.ToString());        
         }
 
         public void ClearRenderer()
@@ -153,17 +152,26 @@
             }
         }
 
-        public void RenderPresentFactory(IDictionary<IStorable, int> presents)
+        public void RenderPresentFactory(IDictionary<IStorable, int> inventory)
         {
-            HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 2, (int)(worldRows * Constants.UpDownScreenRatio) + 2, new string('_', 45), ConsoleColor.Red);
-            HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 20, (int)(worldRows * Constants.UpDownScreenRatio) + 2, "PRESENT FACTORY", ConsoleColor.Red);
+            HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 2, (int)(worldRows * Constants.UpDownScreenRatio) + 1, new string('_', 45), ConsoleColor.Red);
+            HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 20, (int)(worldRows * Constants.UpDownScreenRatio) + 1, "INVENTORY", ConsoleColor.Red);
 
-            int row = (int)(worldRows * Constants.UpDownScreenRatio) + 4;
-            foreach (var present in presents.Keys)
+            int row = (int)(worldRows * Constants.UpDownScreenRatio) + 3;
+            int colItem = (int)(WorldCols * Constants.LeftRightScreenRatio) + 5;
+            int colQuantity = (int)(WorldCols * Constants.LeftRightScreenRatio) + 20;
+            foreach (var item in inventory.Keys)
             {
-                HelperMethods.PrintOnPosition(((int)(WorldCols * Constants.LeftRightScreenRatio) + 5), row, present.Type.ToString(), ConsoleColor.Black);
-                HelperMethods.PrintOnPosition(((int)(WorldCols * Constants.LeftRightScreenRatio) + 40), row, presents[present].ToString(), ConsoleColor.Black);
-                row += 2;
+                HelperMethods.PrintOnPosition(colItem, row, item.Type.ToString(), ConsoleColor.Black);
+                HelperMethods.PrintOnPosition(colQuantity, row, inventory[item].ToString(), ConsoleColor.Black);
+                row++;
+
+                if (row == (WorldRows - 2))
+                {
+                    row = (int)(worldRows * Constants.UpDownScreenRatio) + 3;
+                    colItem = (int)(WorldCols * Constants.LeftRightScreenRatio) + 25;
+                    colQuantity = (int)(WorldCols * Constants.LeftRightScreenRatio) + 42;
+                }
             }
         }
 
@@ -171,7 +179,7 @@
         {
             HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 2, 2, new string('_', 45), ConsoleColor.Red);
             HelperMethods.PrintOnPosition((int)(WorldCols * Constants.LeftRightScreenRatio) + 20, 2, "MARKET PLACE", ConsoleColor.Red);
-            
+
             int row = 4;
             foreach (var product in products)
             {

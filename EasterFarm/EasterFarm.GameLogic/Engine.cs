@@ -98,10 +98,10 @@
             while (true)
             {
                 this.Renderer.RenderAll();
-                this.Renderer.RenderPresentFactory(GetPresentsFromInventory());
+                this.Renderer.RenderPresentFactory(this.farmManager.Inventory);
                 this.Renderer.RenderMarket(GetMarketItems());
 
-                Thread.Sleep(200);
+                Thread.Sleep(400);
 
                 this.UserInput.ProcessInput();
 
@@ -133,6 +133,17 @@
             villains.RemoveWhere(v => v.IsDestroyed);
             byproducts.RemoveWhere(bp => bp.IsDestroyed);
             gameObjects.RemoveWhere(go => go.IsDestroyed);
+
+            //if (this.farmManager != null && this.farmManager.Inventory.Count > 0)
+            //{
+            //    foreach (var item in farmManager.Inventory.Keys)
+            //    {
+            //        if ((item as GameObject).IsDestroyed)
+            //        {
+            //            farmManager.RemoveFromInventory(item);
+            //        }
+            //    }
+            //}
         }
 
         private void Collide(IEnumerable<Animal> colliders, IEnumerable<GameObject> destroyables)
@@ -292,12 +303,12 @@
 
         private void Action()
         {
-            DestroyObjectsInAim(this.villains);
-            // TODO: Add to inventory.
-            DestroyObjectsInAim(this.byproducts);
+            this.DestroyObjectsInAim(this.villains);
+            this.CollectByproduct(this.byproducts);
+            this.DestroyObjectsInAim(this.byproducts);
         }
 
-        private void DestroyObjectsInAim(IEnumerable<GameObject> collection )
+        private void DestroyObjectsInAim(IEnumerable<GameObject> collection)
         {
             foreach (var item in collection)
             {
@@ -305,6 +316,18 @@
                     && item.TopLeft.Col >= this.Aim.TopLeft.Col && item.TopLeft.Col < this.Aim.TopLeft.Col + this.Aim.Size)
                 {
                     item.IsDestroyed = true;
+                }
+            }
+        }
+
+        private void CollectByproduct(IEnumerable<Byproduct> collection)
+        {
+            foreach (var item in collection)
+            {
+                if (item.TopLeft.Row >= this.Aim.TopLeft.Row && item.TopLeft.Row < this.Aim.TopLeft.Row + this.Aim.Size
+                    && item.TopLeft.Col >= this.Aim.TopLeft.Col && item.TopLeft.Col < this.Aim.TopLeft.Col + this.Aim.Size)
+                {
+                    this.farmManager.AddToInventory(item);
                 }
             }
         }

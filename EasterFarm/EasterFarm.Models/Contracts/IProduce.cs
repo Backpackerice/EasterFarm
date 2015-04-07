@@ -6,7 +6,6 @@ namespace EasterFarm.Models.Contracts
 
     interface IProduce
     {
-        bool HasProduct { get; }
         Byproduct Produce(ByproductColor color);
     }
 }

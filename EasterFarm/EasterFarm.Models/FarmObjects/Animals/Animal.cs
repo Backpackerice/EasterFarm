@@ -33,8 +33,6 @@
             map[currentRow, currentCol] = int.MaxValue;
         }
 
-        public bool HasProduct { get; protected set; }
-
         public virtual Byproduct Produce(ByproductColor color)
         {
             return null;

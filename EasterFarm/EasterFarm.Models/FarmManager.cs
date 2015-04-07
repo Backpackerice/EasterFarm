@@ -14,15 +14,8 @@
     using EasterFarm.Models.FarmObjects.Byproducts;
     using EasterFarm.Models.FarmObjects.Animals;
 
-    // The player
     public class FarmManager
     {
-        // TODO:
-        // shoot villains
-        // collect eggs
-        // milks the lamb
-        // add name?
-
         private const string NoItemInInventoryExcMsg = "No such item in inventory: ";
 
         private Dictionary<IStorable, int> inventory;
@@ -58,9 +51,13 @@
 
         public void AddToInventory(IStorable item)
         {
-            if (this.Inventory.ContainsKey(item))
+            var storedItem = this.Inventory
+                .FirstOrDefault(i => i.Key.Type.ToString() == item.Type.ToString())
+                .Key;
+
+            if (storedItem != null)
             {
-                this.Inventory[item] += 1;
+                this.Inventory[storedItem] += 1;
             }
             else
             {
@@ -70,9 +67,13 @@
 
         public void AddMultipleToInventory(IStorable item, int quantity)
         {
-            if (this.Inventory.ContainsKey(item))
+            var storedItem = this.Inventory
+                           .FirstOrDefault(i => i.Key.Type.ToString() == item.Type.ToString())
+                           .Key;
+
+            if (storedItem != null)
             {
-                this.Inventory[item] += quantity;
+                this.Inventory[storedItem] += 1;
             }
             else
             {
@@ -94,7 +95,11 @@
 
         public void SubtractFromInventoryItem(IStorable item, int quantity)
         {
-            if (this.InventoryContains(item) && this.Inventory[item] >= quantity)
+            var storedItem = this.Inventory
+                           .FirstOrDefault(i => i.Key.Type.ToString() == item.Type.ToString())
+                           .Key;
+
+            if (storedItem != null && this.Inventory[item] >= quantity)
             {
                 this.Inventory[item] -= quantity;
             }
@@ -106,7 +111,11 @@
 
         public bool InventoryContains(IStorable item)
         {
-            return this.Inventory.ContainsKey(item) ? true : false;
+            var storedItem = this.Inventory
+                        .FirstOrDefault(i => i.Key.Type.ToString() == item.Type.ToString())
+                        .Key;
+
+            return storedItem != null;
         }
 
         public IStorable GetFromInventoryByType(Enum type)
