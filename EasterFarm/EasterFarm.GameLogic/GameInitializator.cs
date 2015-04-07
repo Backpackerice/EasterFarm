@@ -2,17 +2,14 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
-    using EasterFarm.Models.FarmObjects.Animals;
     using EasterFarm.Models;
+    using EasterFarm.Models.Contracts;
+    using EasterFarm.Models.FarmObjects.Animals;
+    using EasterFarm.Models.FarmObjects.Byproducts;
     using EasterFarm.Models.FarmObjects.Food;
     using EasterFarm.Models.MarketPlace;
     using EasterFarm.Models.Presents;
-    using EasterFarm.Models.Contracts;
-    using EasterFarm.Models.FarmObjects.Byproducts;
 
     public class GameInitializator
     {
@@ -25,7 +22,7 @@
         public GameInitializator()
         {
 
-            this.ingredientFactory = EasterFarm.Models.MarketPlace.MarketFactory.Get(Category.Ingredient);
+            this.ingredientFactory = MarketFactory.Get(Category.Ingredient);
             this.presentFactory = new PresentFactory();
 
             this.gameObjects = new List<GameObject> 

@@ -1,6 +1,4 @@
-﻿using System.Runtime.Remoting.Messaging;
-
-namespace EasterFarm.Common
+﻿namespace EasterFarm.Common
 {
     public static class Constants
     {

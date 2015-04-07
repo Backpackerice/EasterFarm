@@ -3,20 +3,10 @@
 namespace EasterFarm.Console
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Runtime.Remoting.Channels;
 
     using EasterFarm.Common;
     using EasterFarm.GameLogic;
     using EasterFarm.GameLogic.Contracts;
-    using EasterFarm.Models.Presents;
-    using EasterFarm.Models;
-    using EasterFarm.Models.FarmObjects.Food;
-    using EasterFarm.Models.FarmObjects.Animals;
-    using EasterFarm.Models.MarketPlace;
 
     class EasterFarmMain
     {
