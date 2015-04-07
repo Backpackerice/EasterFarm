@@ -23,7 +23,6 @@
             this.gameObjects = new List<GameObject> 
             {
                 new Raspberry(new MatrixCoords(1, 4)),
-                new Blueberry(new MatrixCoords(20, 20)),
                 new Hen(new MatrixCoords(10, 10)),
                 new Hen(new MatrixCoords(9, 9)),
                 new Hen(new MatrixCoords(15, 15)),

@@ -5,7 +5,6 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-
     using EasterFarm.Common;
     using EasterFarm.GameLogic;
     using EasterFarm.GameLogic.Contracts;
@@ -30,7 +29,11 @@
             // Assigning the user input to the keyboard.
             IUserKeyboardInput userInput = new KeyboardInput();
 
+            // Creating an aim for the console user experience.
+            IConsoleAim aim = ConsoleAim.Instance;
+
             GameInitializator gameInitializator = new GameInitializator();
+
             // Creating an engine of the game.
             Engine engine = new Engine(renderer, userInput, gameInitializator);
 
