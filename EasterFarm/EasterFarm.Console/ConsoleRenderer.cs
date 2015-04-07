@@ -122,6 +122,7 @@
             Console.Write(scene.ToString());
 
             //Render Market
+
             Console.SetCursorPosition(55, 2);
             int i = 4;
             foreach (var product in marketProducts)
@@ -152,23 +153,9 @@
                 "Basket 12" ,
                 "Rabbit 18"
         };
-        private readonly List<string> factoryProducts = new List<string> 
-        {
-                "Flour 2" ,
-                "Cocoa 4",     
-                "Ribbon 8",        
-                "Basket 12" ,
-                "Rabbit 18"
-        };
+       
 
-        //private readonly List<int> marketPrice = new List<int>
-        //{
-        //     2,
-        //     4,
-        //     8,
-        //     12,
-        //     18,
-        //};
+    
     
        
     }
