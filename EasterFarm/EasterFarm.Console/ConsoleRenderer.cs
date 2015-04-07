@@ -3,17 +3,14 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
-    using System.Linq;
 
-	using EasterFarm.Common;
+    using EasterFarm.Common;
     using EasterFarm.GameLogic.Contracts;
     using EasterFarm.Models;
     using EasterFarm.Models.Contracts;
     using EasterFarm.Models.FarmObjects.Animals;
-    using EasterFarm.Models.FarmObjects.Food;
     using EasterFarm.Models.FarmObjects.Byproducts;
-    using EasterFarm.Models.Presents;
-	using EasterFarm.Models.MarketPlace;
+    using EasterFarm.Models.FarmObjects.Food;
 
     public class ConsoleRenderer : IRenderer
     {
