@@ -118,7 +118,6 @@
                     scene.Append(this.renderMatrix[row, col]);
                 }
             }
-           
             Console.Write(scene.ToString());
 
             //Render Market
