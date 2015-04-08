@@ -30,16 +30,5 @@
                 this.color = value;
             }
         }
-
-        public override bool Equals(object obj)
-        {
-            var gameObject = obj as EasterEgg;
-            return this.GetType() == gameObject.GetType() || this.GetType().IsSubclassOf(typeof(GameObject));
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
     }
 }

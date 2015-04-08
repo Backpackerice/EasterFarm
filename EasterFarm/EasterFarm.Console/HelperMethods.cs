@@ -1,6 +1,7 @@
 ﻿namespace EasterFarm.Console
 {
     using System;
+    using System.Text;
 
     public static class HelperMethods
     {
@@ -36,6 +37,21 @@
             ClearConsolePart(x, y, 40, 5);
             PrintOnPosition(x, y, "Uh oh... Something went wrong!", color);
             PrintOnPosition(x, y, e.Message, color);
+        }
+
+        public static void PrintMatrix(char[,] matrix, int x, int y, ConsoleColor color)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int row = 0; row < matrix.GetLength(0); row++)
+            {
+                for (int col = 0; col < matrix.GetLength(1); col++)
+                {
+                    sb.AppendFormat("{0}", matrix[row, col]);
+                }
+
+                PrintOnPosition(x, y + row, sb.ToString(), color);
+                sb.Clear();
+            }
         }
     }
 }

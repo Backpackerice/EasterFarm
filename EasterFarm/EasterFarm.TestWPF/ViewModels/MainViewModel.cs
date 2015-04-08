@@ -1,43 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-
-using EasterFarm.Common;
-using EasterFarm.GameLogic;
-using EasterFarm.Models;
-using EasterFarm.Models.FarmObjects.Animals;
-using EasterFarm.Models.FarmObjects.Byproducts;
-using EasterFarm.Models.FarmObjects.Food;
-using System.Windows.Media;
-using System.Threading;
-using System.Windows.Input;
-using TestCanvas.ViewModels;
-using System.Windows.Threading;
-using EasterFarm.Models.Contracts;
-using System.Windows.Controls;
-using System.Windows;
-using System.Windows.Data;
-using EasterFarm.Models.MarketPlace;
-using EasterFarm.Models.Presents;
-
-namespace EasterFarm.TestWPF.ViewModels
+﻿namespace EasterFarm.TestWPF.ViewModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.ComponentModel;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Threading;
+
+    using EasterFarm.Common;
+    using EasterFarm.Models;
+    using EasterFarm.Models.FarmObjects.Animals;
+    using EasterFarm.Models.FarmObjects.Byproducts;
+    using EasterFarm.Models.FarmObjects.Food;
+    using TestCanvas.ViewModels;
 
     // Implement Command Design Pattern in order to abstract behaviour into an object (property of a object). We have method in an odject 
     // It works using ICommand interface
-
     public class MainViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<uint> inventory {get; set; }
-
         //private FarmManager farmManager;
         // private Market market;
         //private PresentFactory presentFactory;
-        private Random random;
+        private static Random random;
 
         private ObservableCollection<GameObject> gameObjects;
         private ObservableCollection<FarmFood> farmFoods;
@@ -45,8 +30,7 @@ namespace EasterFarm.TestWPF.ViewModels
         private ObservableCollection<Villain> villains;
         private ObservableCollection<Byproduct> byproducts;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        DispatcherTimer timer;
+        private DispatcherTimer timer;
 
         public MainViewModel()
         {                                                                        
@@ -56,29 +40,28 @@ namespace EasterFarm.TestWPF.ViewModels
             this.villains = new ObservableCollection<Villain>();
             this.byproducts = new ObservableCollection<Byproduct>();
 
-            
+            random = new Random();
 
-            this.random = new Random();
-
-            this.DestroyObject = new RelayCommand(OnDestroyObjectExecute, OnDestroyObjectCanExecute);
-            this.MinusKozunak = new RelayCommand(OnMinusClickedExecute, OnMinusClickCanExecute);
-            this.PlusKozunak = new RelayCommand(OnPlusClickedExecute, OnPlusClickCanExecute);
+            this.DestroyObject = new RelayCommand(this.OnDestroyObjectExecute, this.OnDestroyObjectCanExecute);
+            this.MinusKozunak = new RelayCommand(this.OnMinusClickedExecute, this.OnMinusClickCanExecute);
+            this.PlusKozunak = new RelayCommand(this.OnPlusClickedExecute, this.OnPlusClickCanExecute);
             this.timer = new DispatcherTimer();
 
-            InitialiazeGameObjectsLists();
-            InitaliazeInventoryObjects();
+            this.InitialiazeGameObjectsLists();
+            this.InitaliazeInventoryObjects();
 
-            Start();
+            this.Start();
         }
 
-        private void InitaliazeInventoryObjects()
-        {
-            this.inventory = new ObservableCollection<uint> { 4, 1, 3, 4, 1, 0, 0, 0, 0, 0, 0, 0, 250 };
-        }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public RelayCommand DestroyObject { get; set; }
+
         public RelayCommand MinusKozunak { get; set; }
+
         public RelayCommand PlusKozunak { get; set; }
+
+        public ObservableCollection<uint> Inventory { get; set; }
 
         public ObservableCollection<GameObject> GameObjects
         {
@@ -86,18 +69,41 @@ namespace EasterFarm.TestWPF.ViewModels
             private set { this.gameObjects = value; }
         }
 
+        public void Start()
+        {
+            this.timer.Interval = TimeSpan.FromMilliseconds(700);
+            this.timer.Tick += delegate
+            {
+                this.Seek(this.livestocks, typeof(FarmFood));
+                this.Seek(this.villains, typeof(Livestock));
+                this.Collide(this.livestocks, this.farmFoods);
+                this.Collide(this.villains, this.livestocks);
+                this.RebuildCollections();
+                this.AddGameObject(this.ProduceNewGameObject());
+            };
+
+            this.timer.Start();
+        }
+
+        private void InitaliazeInventoryObjects()
+        {
+            this.Inventory = new ObservableCollection<uint> { 4, 1, 3, 4, 1, 0, 0, 0, 0, 0, 0, 0, 250 };
+        }
+
         private void RebuildCollections()
         {
             ObservableCollection<GameObject> temp = new ObservableCollection<GameObject>();
-            foreach (var item in gameObjects)
+            foreach (var item in this.gameObjects)
             {
                 temp.Add(item);
             }
+
             this.gameObjects.Clear();
             this.farmFoods.Clear();
             this.livestocks.Clear();
             this.villains.Clear();
             this.byproducts.Clear();
+
             foreach (var item in temp)
             {
                 if (!item.IsDestroyed)
@@ -107,29 +113,44 @@ namespace EasterFarm.TestWPF.ViewModels
                     {
                         this.farmFoods.Add(item as FarmFood);
                     }
+
                     if (item is Livestock)
                     {
                         this.livestocks.Add(item as Livestock);
                     }
+
                     if (item is Villain)
                     {
                         this.villains.Add(item as Villain);
                     }
+
                     if (item is Byproduct)
                     {
                         this.byproducts.Add(item as Byproduct);
                     }
                 }
             }
+
             if (this.livestocks.Count < 1)
             {
-                GameOver();
+                this.GameOver();
             }
+
+            if (this.Inventory[7] == 10)
+            {
+                this.HappyEaster();
+            }
+        }
+
+        private void HappyEaster()
+        {
+            this.timer.Stop();
+            MessageBox.Show("Happy Easter!!!");
         }
 
         private void GameOver()
         {
-            timer.Stop();
+            this.timer.Stop();
             MessageBox.Show("Game Over!!!");
         }
 
@@ -137,31 +158,19 @@ namespace EasterFarm.TestWPF.ViewModels
         {
             this.AddGameObject(new Raspberry(new MatrixCoords(1, 4)));
             this.AddGameObject(new Raspberry(new MatrixCoords(20, 29)));
+            this.AddGameObject(new Blueberry(new MatrixCoords(20, 5)));
+            this.AddGameObject(new Blueberry(new MatrixCoords(10, 15)));
+            this.AddGameObject(new Blueberry(new MatrixCoords(10, 25)));
             this.AddGameObject(new Hen(new MatrixCoords(10, 17)));
             this.AddGameObject(new Rabbit(new MatrixCoords(10, 10)));
-            this.AddGameObject(new Hen(new MatrixCoords(9, 9)));
-            this.AddGameObject(new Hen(new MatrixCoords(9, 15)));
-            this.AddGameObject(new Rabbit(new MatrixCoords(8, 8)));
+            this.AddGameObject(new Hen(new MatrixCoords(20, 9)));
+            this.AddGameObject(new Hen(new MatrixCoords(9, 10)));
+            this.AddGameObject(new Rabbit(new MatrixCoords(8, 20)));
             this.AddGameObject(new Hen(new MatrixCoords(1, 17)));
             this.AddGameObject(new Lamb(new MatrixCoords(1, 10)));
             this.AddGameObject(new Lamb(new MatrixCoords(9, 1)));
             this.AddGameObject(new Lamb(new MatrixCoords(9, 16)));
             this.AddGameObject(new Hen(new MatrixCoords(5, 8)));
-        }
-
-        public void Start()
-        {
-            timer.Interval = TimeSpan.FromMilliseconds(700);
-            timer.Tick += delegate
-            {
-                this.Seek(livestocks, typeof(FarmFood));
-                this.Seek(villains, typeof(Livestock));
-                this.Collide(livestocks, farmFoods);
-                this.Collide(villains, livestocks);
-                this.RebuildCollections();
-                this.AddGameObject(this.ProduceNewGameObject());
-            };
-            timer.Start();
         }
 
         private void Collide(IEnumerable<Animal> colliders, IEnumerable<GameObject> destroyables)
@@ -173,7 +182,7 @@ namespace EasterFarm.TestWPF.ViewModels
                     if (destroyable.TopLeft == collider.TopLeft)
                     {
                         destroyable.IsDestroyed = true;
-                        Byproduct byproduct = collider.Produce((GetByproductColor(destroyable)));
+                        Byproduct byproduct = collider.Produce(this.GetByproductColor(destroyable));
                         if (byproduct != null)
                         {
                             this.AddGameObject(byproduct);
@@ -190,6 +199,7 @@ namespace EasterFarm.TestWPF.ViewModels
             {
                 return farmFood.GetColor();
             }
+
             return ByproductColor.None;
         }
 
@@ -204,18 +214,20 @@ namespace EasterFarm.TestWPF.ViewModels
 
         private GameObject ProduceNewGameObject()
         {
-            int next = this.random.Next(0, Constants.Difficulty);
+            int next = random.Next(0, Constants.Difficulty);
             if (next < Constants.Difficulty / 4) // On each n-th cicle on avarage will produce a new object.
             {
                 next = random.Next(0, Constants.Difficulty);
                 if (next < Constants.DifficultyLevel)
                 {
-                    return new Wolf(GetRandomMatrixCoords());
+                    return new Wolf(this.GetRandomMatrixCoords());
                 }
+
                 if (next < Constants.DifficultyLevel * 2)
                 {
-                    return new Fox(GetRandomMatrixCoords());
+                    return new Fox(this.GetRandomMatrixCoords());
                 }
+
                 return null;
             }
             else if (next > Constants.Difficulty * 0.6)
@@ -223,24 +235,27 @@ namespace EasterFarm.TestWPF.ViewModels
                 next = random.Next(0, Constants.Difficulty);
                 if (next < Constants.DifficultyLevel + Constants.Difficulty / 2)
                 {
-                    return new Raspberry(GetRandomMatrixCoords());
+                    return new Raspberry(this.GetRandomMatrixCoords());
                 }
-                return new Blueberry(GetRandomMatrixCoords());
+
+                return new Blueberry(this.GetRandomMatrixCoords());
             }
+
             return null;
         }
 
         private MatrixCoords GetRandomMatrixCoords()
         {
             var position = new MatrixCoords(random.Next(1, Constants.WorldRowsWPF - 1), random.Next(1, (int)(Constants.WorldColsWPF)));
-            while (gameObjects.Any(go => go.TopLeft == position))
+            while (this.gameObjects.Any(go => go.TopLeft == position))
             {
                 position = new MatrixCoords(random.Next(1, Constants.WorldRowsWPF - 1), random.Next(1, (int)(Constants.WorldColsWPF)));
             }
+
             return position;
         }
 
-        public void AddGameObject(GameObject gameObject)
+        private void AddGameObject(GameObject gameObject)
         {
             if (gameObject == null)
             {
@@ -274,7 +289,7 @@ namespace EasterFarm.TestWPF.ViewModels
             this.gameObjects.Add(gameObject);
         }
 
-        public int[,] CreateTopographicMap(Type gameObjectType)
+        private int[,] CreateTopographicMap(Type gameObjectType)
         {
             int[,] map = new int[Constants.WorldRows, (int)(Constants.WorldCols) + 1];
             int mapHeight = map.GetLength(0);
@@ -328,6 +343,7 @@ namespace EasterFarm.TestWPF.ViewModels
                     }
                 }
             }
+
             return map;
         }
 
@@ -351,20 +367,22 @@ namespace EasterFarm.TestWPF.ViewModels
 
         private bool OnMinusClickCanExecute(object sender)
         {
-            return inventory[0] > 0;
+            return this.Inventory[0] > 0;
         }
+
         private void OnMinusClickedExecute(object sender)
         {
-            this.inventory[0]--;
+            this.Inventory[0]--;
         }
 
         private bool OnPlusClickCanExecute(object sender)
         {
             return true;
         }
+
         private void OnPlusClickedExecute(object sender)
         {
-            this.inventory[0]++;
+            this.Inventory[0]++;
         }
 
         private bool OnDestroyObjectCanExecute(object sender)
@@ -373,27 +391,28 @@ namespace EasterFarm.TestWPF.ViewModels
             {
                 return true;
             }
+
             return false;
         }
 
         private void OnDestroyObjectExecute(object sender)
         {
-            gameObjects.Remove(sender as GameObject);
+            this.gameObjects.Remove(sender as GameObject);
             if (sender is Milk)
             {
-                this.inventory[5]++;
+                this.Inventory[5]++;
             }
             else if (sender is TrophyEgg)
             {
-                this.inventory[8]++;
+                this.Inventory[8]++;
             }
             else if (sender is EasterEgg)
             {
-                this.inventory[7]++;
+                this.Inventory[7]++;
             }
             else if (sender is Egg)
             {
-                this.inventory[6]++;
+                this.Inventory[6]++;
             }
         }
 

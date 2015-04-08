@@ -22,12 +22,9 @@
         private readonly FarmManager farmManager;
         private readonly Market market;
         private readonly PresentFactory presentFactory;
+        private readonly Farm farm;
 
         private readonly HashSet<GameObject> gameObjects;
-        private readonly HashSet<FarmFood> farmFoods;
-        private readonly HashSet<Livestock> livestocks;
-        private readonly HashSet<Villain> villains;
-        private readonly HashSet<Byproduct> byproducts;
 
         public Engine()
         {
@@ -39,15 +36,14 @@
             this.UserInput = userInput;
             this.Aim = aim;
             this.GameInitializator = gameInitializator;
+            random = new Random();
+
+            this.gameObjects = new HashSet<GameObject>();
+
+            this.farm = new Farm();
             this.farmManager = new FarmManager();
             this.market = new Market();
             this.presentFactory = new PresentFactory();
-            random = new Random();
-            this.gameObjects = new HashSet<GameObject>();
-            this.farmFoods = new HashSet<FarmFood>();
-            this.livestocks = new HashSet<Livestock>();
-            this.villains = new HashSet<Villain>();
-            this.byproducts = new HashSet<Byproduct>();
         }
 
         internal IRenderer Renderer { get; private set; }
@@ -56,7 +52,7 @@
 
         internal IAim Aim { get; private set; }
 
-        internal GameInitializator GameInitializator { get; set; }      
+        internal GameInitializator GameInitializator { get; set; }
 
         public void Start()
         {
@@ -83,19 +79,27 @@
                     this.Renderer.EnqueueForRendering(gameObject);
                 }
 
-                this.Seek(this.livestocks, typeof(FarmFood));
-                this.Seek(this.villains, typeof(Livestock));
+                this.Seek(this.farm.Livestocks, typeof(FarmFood));
+                this.Seek(this.farm.Villains, typeof(Livestock));
 
-                this.Collide(this.livestocks, this.farmFoods);
-                this.Collide(this.villains, this.livestocks);
+                this.Collide(this.farm.Livestocks, this.farm.FarmFoods);
+                this.Collide(this.farm.Villains, this.farm.Livestocks);
 
                 this.ClearCollections();
 
-                this.AddGameObject(this.ProduceNewGameObject());
+                this.AddGameObject(this.ProduceNewGameObject(), this.farm, this.gameObjects);
+
+                if (this.CheckGameOver()) 
+                {
+                    this.Renderer.RenderGameOver();
+                    break;
+                }
             }
+
+
         }
 
-        public void AddGameObject(GameObject gameObject)
+        public void AddGameObject(GameObject gameObject, Farm farm, HashSet<GameObject> gameObjects)
         {
             if (gameObject == null)
             {
@@ -105,38 +109,39 @@
             var farmFood = gameObject as FarmFood;
             if (farmFood != null)
             {
-                this.farmFoods.Add(farmFood);
+                this.farm.FarmFoods.Add(farmFood);
             }
 
             var livestock = gameObject as Livestock;
             if (livestock != null)
             {
-                this.livestocks.Add(livestock);
+                this.farm.Livestocks.Add(livestock);
             }
 
             var villain = gameObject as Villain;
             if (villain != null)
             {
-                this.villains.Add(villain);
+                this.farm.Villains.Add(villain);
             }
 
             var byproduct = gameObject as Byproduct;
             if (byproduct != null)
             {
-                this.byproducts.Add(byproduct);
+                this.farm.Byproducts.Add(byproduct);
             }
 
-            this.gameObjects.Add(gameObject);
+            gameObjects.Add(gameObject);
         }
 
         public void ClearCollections()
         {
-            this.farmFoods.RemoveWhere(ff => ff.IsDestroyed);
-            this.livestocks.RemoveWhere(ls => ls.IsDestroyed);
-            this.villains.RemoveWhere(v => v.IsDestroyed);
-            this.byproducts.RemoveWhere(bp => bp.IsDestroyed);
+            this.farm.FarmFoods.RemoveWhere(ff => ff.IsDestroyed);
+            this.farm.Livestocks.RemoveWhere(ls => ls.IsDestroyed);
+            this.farm.Villains.RemoveWhere(v => v.IsDestroyed);
+            this.farm.Byproducts.RemoveWhere(bp => bp.IsDestroyed);
             this.gameObjects.RemoveWhere(go => go.IsDestroyed);
 
+            // TODO : remove items from inventory
             //if (this.farmManager != null && this.farmManager.Inventory.Count > 0)
             //{
             //    foreach (var item in farmManager.Inventory.Keys)
@@ -161,7 +166,7 @@
                         Byproduct byproduct = collider.Produce(this.GetByproductColor(destroyable));
                         if (byproduct != null)
                         {
-                            this.AddGameObject(byproduct);
+                            this.AddGameObject(byproduct, this.farm, this.gameObjects);
                         }
                     }
                 }
@@ -298,15 +303,15 @@
         {
             foreach (var gameObject in gameObjects)
             {
-                this.AddGameObject(gameObject);
+                this.AddGameObject(gameObject, this.farm, this.gameObjects);
             }
         }
 
         public void Action()
         {
-            this.DestroyObjectsInAim(this.villains);
-            this.CollectByproduct(this.byproducts);
-            this.DestroyObjectsInAim(this.byproducts);
+            this.DestroyObjectsInAim(this.farm.Villains);
+            this.CollectByproduct(this.farm.Byproducts);
+            this.DestroyObjectsInAim(this.farm.Byproducts);
         }
 
         public void DestroyObjectsInAim(IEnumerable<GameObject> collection)
@@ -344,6 +349,11 @@
         public ICollection<IBuyable> GetMarketItems()
         {
             return this.market.BuyableProducts;
+        }
+
+        public bool CheckGameOver()
+        {
+            return this.farm.Livestocks.Count == 0;
         }
     }
 }

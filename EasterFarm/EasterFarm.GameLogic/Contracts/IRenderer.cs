@@ -15,6 +15,8 @@
 
         void RenderMarket(ICollection<IBuyable> proucts);
 
+        void RenderGameOver();
+
         void ClearRenderer();
     }
 }

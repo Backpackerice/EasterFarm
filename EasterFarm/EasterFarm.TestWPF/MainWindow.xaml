@@ -20,8 +20,8 @@
         <viewModels:MainViewModel x:Key="ViewModel"/>
         
         <Style x:Key="inactiveButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Height" Value="32"/>
-            <Setter Property="Width" Value="32"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Width" Value="45"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Template">
@@ -40,8 +40,8 @@
             </Setter>
         </Style>
         <Style x:Key="activeButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Height" Value="32"/>
-            <Setter Property="Width" Value="32"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Width" Value="45"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Command" Value="{Binding DataContext.DestroyObject, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl},Mode=FindAncestor}}"/>
@@ -202,7 +202,11 @@
                     ItemTemplateSelector="{StaticResource templateSelector}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <Canvas/>
+                            <Canvas x:Name="FarmCanvas">
+                                <Canvas.Background>
+                                    <SolidColorBrush Color="ForestGreen" Opacity="0.3" />
+                                </Canvas.Background>
+                            </Canvas>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemContainerStyle>

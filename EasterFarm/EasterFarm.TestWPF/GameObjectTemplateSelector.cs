@@ -19,13 +19,21 @@ namespace EasterFarm.TestWPF
     class GameObjectTemplateSelector : DataTemplateSelector
     {
         public DataTemplate WolfTemplate { get; set; }
+
         public DataTemplate FoxTemplate { get; set; }
+
         public DataTemplate LambTemplate { get; set; }
+
         public DataTemplate HenTemplate { get; set; }
+
         public DataTemplate RaspberryTemplate { get; set; }
+
         public DataTemplate BlueberryTemplate { get; set; }
+
         public DataTemplate MilkTemplate { get; set; }
+
         public DataTemplate EggTemplate { get; set; }
+
         public DataTemplate RabbitTemplate { get; set; }
 
         public override System.Windows.DataTemplate SelectTemplate(object item, System.Windows.DependencyObject container)

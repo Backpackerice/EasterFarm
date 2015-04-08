@@ -184,5 +184,12 @@
                 row += 2;
             }
         }
+
+        public void RenderGameOver()
+        {
+            Console.Clear();
+            HelperMethods.PrintMatrix(Constants.GameOverMessage, 22, this.worldRows / 2 - 3, ConsoleColor.Black);
+            Console.ReadKey();
+        }
     }
 }
