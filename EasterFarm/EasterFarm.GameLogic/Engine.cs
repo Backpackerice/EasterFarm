@@ -15,7 +15,7 @@
     using EasterFarm.Models.MarketPlace;
     using EasterFarm.Models.Presents;
 
-    public class Engine
+    public class Engine : IEngine
     {
         private static Random random;
 

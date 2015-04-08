@@ -9,15 +9,17 @@
     using System.Windows.Threading;
 
     using EasterFarm.Common;
+    using EasterFarm.GameLogic.Contracts;
     using EasterFarm.Models;
     using EasterFarm.Models.FarmObjects.Animals;
     using EasterFarm.Models.FarmObjects.Byproducts;
     using EasterFarm.Models.FarmObjects.Food;
     using TestCanvas.ViewModels;
 
+
     // Implement Command Design Pattern in order to abstract behaviour into an object (property of a object). We have method in an odject 
     // It works using ICommand interface
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : INotifyPropertyChanged, IEngine
     {
         //private FarmManager farmManager;
         // private Market market;
