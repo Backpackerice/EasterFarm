@@ -19,7 +19,7 @@
 
     // Command Design Pattern - in order to abstract behaviour into an object (property of a object). We have method in an odject 
     // It works using ICommand interface
-    public class MainViewModel : INotifyPropertyChanged, IEngine
+    public class EasterFarmViewModel : INotifyPropertyChanged, IEngine
     {
         //private FarmManager farmManager;
         // private Market market;
@@ -34,7 +34,7 @@
 
         private DispatcherTimer timer;
 
-        public MainViewModel()
+        public EasterFarmViewModel()
         {                                                                        
             this.gameObjects = new ObservableCollection<GameObject>();
             this.farmFoods = new ObservableCollection<FarmFood>();
@@ -51,6 +51,17 @@
 
             this.InitialiazeGameObjectsLists();
             this.InitaliazeInventoryObjects();
+
+            this.timer.Interval = TimeSpan.FromMilliseconds(700);
+            this.timer.Tick += delegate
+            {
+                this.Seek(this.livestocks, typeof(FarmFood));
+                this.Seek(this.villains, typeof(Livestock));
+                this.Collide(this.livestocks, this.farmFoods);
+                this.Collide(this.villains, this.livestocks);
+                this.RebuildCollections();
+                this.AddGameObject(this.ProduceNewGameObject());
+            };
 
             this.Start();
         }
@@ -73,17 +84,6 @@
 
         public void Start()
         {
-            this.timer.Interval = TimeSpan.FromMilliseconds(700);
-            this.timer.Tick += delegate
-            {
-                this.Seek(this.livestocks, typeof(FarmFood));
-                this.Seek(this.villains, typeof(Livestock));
-                this.Collide(this.livestocks, this.farmFoods);
-                this.Collide(this.villains, this.livestocks);
-                this.RebuildCollections();
-                this.AddGameObject(this.ProduceNewGameObject());
-            };
-
             this.timer.Start();
         }
 
@@ -138,7 +138,7 @@
                 this.GameOver();
             }
 
-            if (this.Inventory[8] == 5)
+            if (this.Inventory[8] == 10)
             {
                 this.HappyEaster();
             }
@@ -148,6 +148,7 @@
         {
             this.timer.Stop();
             MessageBox.Show("Happy Easter!!!");
+            //this.timer.Start();
         }
 
         private void GameOver()
