@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:EasterFarm.TestWPF"
         xmlns:converters="clr-namespace:EasterFarm.TestWPF.Converters"
         xmlns:viewModels="clr-namespace:EasterFarm.TestWPF.ViewModels"
-        Title="MainWindow" Height="800" Width="1300">
+        Title="MainWindow" Height="720" Width="960">
 
     
 
@@ -230,7 +230,7 @@
                     <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" Background="#77A074" Margin="2">
-                    <TextBlock Text="Make presents in the factory" 
+                    <TextBlock Text="Present factory" 
                                TextBlock.FontSize="20" 
                                Foreground="White" 
                                VerticalAlignment="Center" 
@@ -267,7 +267,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Kozunak" Style="{StaticResource factoryMarketTextStyle}"/>
-                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[0], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=Inventory[0], Mode=TwoWay}" Style="{StaticResource textStyle}" />
                         </Grid>
                         <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}" Command="{Binding Path=PlusKozunak}"/>
                     </Grid>
@@ -293,7 +293,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Choco Egg" Style="{StaticResource factoryMarketTextStyle}"/>
-                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[1], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=Inventory[1], Mode=TwoWay}" Style="{StaticResource textStyle}" />
                         </Grid>
                         <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}"/>
                     </Grid>
@@ -319,7 +319,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Cookie" Style="{StaticResource factoryMarketTextStyle}"/>
-                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[2], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=Inventory[2], Mode=TwoWay}" Style="{StaticResource textStyle}" />
                         </Grid>
                         <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}"/>
                     </Grid>
@@ -345,7 +345,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Choco Rabbit" Style="{StaticResource factoryMarketTextStyle}"/>
-                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[3], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=Inventory[3], Mode=TwoWay}" Style="{StaticResource textStyle}" />
                         </Grid>
                         <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}"/>
                     </Grid>
@@ -371,7 +371,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Rabbit with Ribbon" Style="{StaticResource factoryMarketTextStyle}"/>
-                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[4], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=Inventory[4], Mode=TwoWay}" Style="{StaticResource textStyle}" />
                         </Grid>
                         <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}"/>
                     </Grid>
@@ -386,7 +386,7 @@
                     <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" Background="#419DB2" Margin="2">
-                    <TextBlock Text="Trade on the market" 
+                    <TextBlock Text="Market" 
                                TextBlock.FontSize="20" 
                                Foreground="White" 
                                VerticalAlignment="Center" 
@@ -425,7 +425,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Flour" Style="{StaticResource factoryMarketTextStyle}"/>
-                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[5], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=Inventory[5], Mode=TwoWay}" Style="{StaticResource textStyle}" />
                         </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
@@ -459,8 +459,8 @@
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Eggs" Style="{StaticResource factoryMarketTextStyle}"/>
-                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[6], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                            <TextBlock Grid.Row="0" Text="Milk" Style="{StaticResource factoryMarketTextStyle}"/>
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=Inventory[6], Mode=TwoWay}" Style="{StaticResource textStyle}" />
                         </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
@@ -495,7 +495,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="EasterEggs" Style="{StaticResource factoryMarketTextStyle}"/>
-                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[7], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=Inventory[7], Mode=TwoWay}" Style="{StaticResource textStyle}" />
                         </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
@@ -530,7 +530,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="TrophyEggs" Style="{StaticResource factoryMarketTextStyle}"/>
-                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[8], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=Inventory[8], Mode=TwoWay}" Style="{StaticResource textStyle}" />
                         </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
@@ -565,7 +565,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Ribbon" Style="{StaticResource factoryMarketTextStyle}"/>
-                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[9], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=Inventory[9], Mode=TwoWay}" Style="{StaticResource textStyle}" />
                         </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
@@ -600,7 +600,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Basket" Style="{StaticResource factoryMarketTextStyle}"/>
-                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[10], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=Inventory[10], Mode=TwoWay}" Style="{StaticResource textStyle}" />
                         </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
@@ -635,7 +635,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" Text="Cocoa" Style="{StaticResource factoryMarketTextStyle}"/>
-                            <TextBlock Grid.Row="1" Text ="{Binding Path=inventory[11], Mode=TwoWay}" Style="{StaticResource textStyle}" />
+                            <TextBlock Grid.Row="1" Text ="{Binding Path=Inventory[11], Mode=TwoWay}" Style="{StaticResource textStyle}" />
                         </Grid>
                         <Button Grid.Column="2" Style="{StaticResource marketBuyButtonStyle}">
                             <Grid>
@@ -656,14 +656,14 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
-                           Text="Available Raspberries:"
+                           Text="Raspberries:"
                            FontSize="20" 
                            Foreground="White" 
                            VerticalAlignment="Center" 
                            HorizontalAlignment="Center"
                            FontFamily="Segoe UI Light"/>
                 <TextBlock Grid.Column="1"
-                           Text="{Binding Path=inventory[12], Mode=TwoWay}"
+                           Text="{Binding Path=Inventory[12], Mode=TwoWay}"
                            FontSize="20" 
                            Foreground="White" 
                            VerticalAlignment="Center" 

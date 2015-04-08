@@ -89,7 +89,7 @@
 
         private void InitaliazeInventoryObjects()
         {
-            this.Inventory = new ObservableCollection<uint> { 4, 1, 3, 4, 1, 0, 0, 0, 0, 0, 0, 0, 250 };
+            this.Inventory = new ObservableCollection<uint> { 4, 1, 3, 4, 1, 5, 0, 0, 0, 0, 0, 0, 250 };
         }
 
         private void RebuildCollections()
@@ -138,7 +138,7 @@
                 this.GameOver();
             }
 
-            if (this.Inventory[7] == 10)
+            if (this.Inventory[8] == 5)
             {
                 this.HappyEaster();
             }
@@ -159,10 +159,10 @@
         private void InitialiazeGameObjectsLists()
         {
             this.AddGameObject(new Raspberry(new MatrixCoords(1, 4)));
-            this.AddGameObject(new Raspberry(new MatrixCoords(20, 29)));
+            this.AddGameObject(new Raspberry(new MatrixCoords(20, 21)));
             this.AddGameObject(new Blueberry(new MatrixCoords(20, 5)));
             this.AddGameObject(new Blueberry(new MatrixCoords(10, 15)));
-            this.AddGameObject(new Blueberry(new MatrixCoords(10, 25)));
+            this.AddGameObject(new Blueberry(new MatrixCoords(10, 20)));
             this.AddGameObject(new Hen(new MatrixCoords(10, 17)));
             this.AddGameObject(new Rabbit(new MatrixCoords(10, 10)));
             this.AddGameObject(new Hen(new MatrixCoords(20, 9)));
@@ -375,6 +375,7 @@
         private void OnMinusClickedExecute(object sender)
         {
             this.Inventory[0]--;
+            this.Inventory[12] += 24;
         }
 
         private bool OnPlusClickCanExecute(object sender)
@@ -384,7 +385,18 @@
 
         private void OnPlusClickedExecute(object sender)
         {
-            this.Inventory[0]++;
+            if (this.Inventory[5] > 0 && this.Inventory[6] > 0 && this.Inventory[7] > 1)
+            {
+                this.Inventory[0]++;
+                this.Inventory[5]--;
+                this.Inventory[6]--;
+                this.Inventory[7] -= 2;
+            }
+            else
+            {
+                MessageBox.Show("You don't have enough products to make the Kozunak!!!");
+            }
+            
         }
 
         private bool OnDestroyObjectCanExecute(object sender)
@@ -402,7 +414,7 @@
             this.gameObjects.Remove(sender as GameObject);
             if (sender is Milk)
             {
-                this.Inventory[5]++;
+                this.Inventory[6]++;
             }
             else if (sender is TrophyEgg)
             {
@@ -411,10 +423,6 @@
             else if (sender is EasterEgg)
             {
                 this.Inventory[7]++;
-            }
-            else if (sender is Egg)
-            {
-                this.Inventory[6]++;
             }
         }
 
