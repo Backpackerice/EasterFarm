@@ -4,20 +4,16 @@
         xmlns:local="clr-namespace:EasterFarm.TestWPF"
         xmlns:converters="clr-namespace:EasterFarm.TestWPF.Converters"
         xmlns:viewModels="clr-namespace:EasterFarm.TestWPF.ViewModels"
-        Title="MainWindow" Height="720" Width="960">
-
-    
+        Title="Easter Farm" Height="720" Width="960">
 
     <Window.DataContext>
-        <viewModels:MainViewModel/>
+        <viewModels:EasterFarmViewModel/>
     </Window.DataContext>
-    
-    
     
     <Window.Resources>
         <converters:MatrixToLeftConverter x:Key="leftConverter" />
         <converters:MatrixToTopConverter x:Key="topConverter" />
-        <viewModels:MainViewModel x:Key="ViewModel"/>
+        <viewModels:EasterFarmViewModel x:Key="ViewModel"/>
         
         <Style x:Key="inactiveButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Height" Value="45"/>
@@ -38,6 +34,11 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+        <Trigger Property="IsMouseOver" Value="True">
+            <Setter Property="Background" Value="Red"/>
+        </Trigger>
+    </Style.Triggers>
         </Style>
         <Style x:Key="activeButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Height" Value="45"/>
@@ -375,9 +376,6 @@
                         </Grid>
                         <Button Grid.Column="2" Style="{StaticResource factoryProduceButtonStyle}"/>
                     </Grid>
-
-
-
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Margin="5">
