@@ -1,7 +1,7 @@
 # EasterFarm
 A single-player arcade game - a team project for Telerik Academy 2015's Object-oriented Programming course
 
-<p align="center"><img src="https://raw.github.com/TeamRaspberry-Telerik/EasterFarm/master/Screenshots/start.png"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/TeamRaspberry-Telerik/EasterFarm/master/EasterFarm/Screenshots/start.png"></p>
 
 Hans, lambs and bunnies running in a **farm**, eating berries and producing Easter eggs and milk. Easter presents made in a **present factory** from ingredients bought from a **market** place. Wolves and foxes, sneaking in the farm, trying to steal all the livestock and ruin Easter. Intrigued yet?
 
