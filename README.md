@@ -1,4 +1,4 @@
-# EasterFarm
+# Easter Farm
 A single-player arcade game - a team project for Telerik Academy 2015's Object-oriented Programming course
 
 <p align="center"><img src="https://raw.githubusercontent.com/TeamRaspberry-Telerik/EasterFarm/master/EasterFarm/Screenshots/start.png"></p>
