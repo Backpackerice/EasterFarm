@@ -207,7 +207,9 @@
                                 <Canvas.Background>
                                     <SolidColorBrush Color="ForestGreen" Opacity="0.3" />
                                 </Canvas.Background>
+                                
                             </Canvas>
+                           
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemContainerStyle>
@@ -384,7 +386,7 @@
                     <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" Background="#419DB2" Margin="2">
-                    <TextBlock Text="Market" 
+                    <TextBlock Text="Inventory / Market" 
                                TextBlock.FontSize="20" 
                                Foreground="White" 
                                VerticalAlignment="Center" 

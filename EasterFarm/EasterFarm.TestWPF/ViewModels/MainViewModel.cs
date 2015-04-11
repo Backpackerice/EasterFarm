@@ -82,6 +82,11 @@
             private set { this.gameObjects = value; }
         }
 
+        public void GameMenu()
+        {
+
+        }
+
         public void Start()
         {
             this.timer.Start();
@@ -138,7 +143,7 @@
                 this.GameOver();
             }
 
-            if (this.Inventory[8] == 10)
+            if (this.Inventory[8] == 5)
             {
                 this.HappyEaster();
             }
@@ -160,13 +165,13 @@
         private void InitialiazeGameObjectsLists()
         {
             this.AddGameObject(new Raspberry(new MatrixCoords(1, 4)));
-            this.AddGameObject(new Raspberry(new MatrixCoords(20, 21)));
-            this.AddGameObject(new Blueberry(new MatrixCoords(20, 5)));
+            this.AddGameObject(new Raspberry(new MatrixCoords(18, 21)));
+            this.AddGameObject(new Blueberry(new MatrixCoords(18, 5)));
             this.AddGameObject(new Blueberry(new MatrixCoords(10, 15)));
             this.AddGameObject(new Blueberry(new MatrixCoords(10, 20)));
             this.AddGameObject(new Hen(new MatrixCoords(10, 17)));
             this.AddGameObject(new Rabbit(new MatrixCoords(10, 10)));
-            this.AddGameObject(new Hen(new MatrixCoords(20, 9)));
+            this.AddGameObject(new Hen(new MatrixCoords(18, 9)));
             this.AddGameObject(new Hen(new MatrixCoords(9, 10)));
             this.AddGameObject(new Rabbit(new MatrixCoords(8, 20)));
             this.AddGameObject(new Hen(new MatrixCoords(1, 17)));
