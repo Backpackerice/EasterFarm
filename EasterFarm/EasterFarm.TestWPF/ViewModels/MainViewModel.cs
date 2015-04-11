@@ -17,7 +17,7 @@
     using TestCanvas.ViewModels;
 
 
-    // Implement Command Design Pattern in order to abstract behaviour into an object (property of a object). We have method in an odject 
+    // Command Design Pattern - in order to abstract behaviour into an object (property of a object). We have method in an odject 
     // It works using ICommand interface
     public class EasterFarmViewModel : INotifyPropertyChanged, IEngine
     {
